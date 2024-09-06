@@ -1,0 +1,11 @@
+{
+  "accent": {
+    "primary": "#DA627D",
+    "secondary": "#F9DBBD",
+    "danger": "#AD2831",
+    "success": "#007F5F",
+    "info": "#1446A0",
+    "warning": "#FFE66D"
+  },
+  "appearance": "dark"
+}

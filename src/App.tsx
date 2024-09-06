@@ -1,25 +1,17 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import Header from "./components/Header/Header";
+import { ThemeProvider } from "stelios";
+import colors from "./tokens/colors.json";
+
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <ThemeProvider
+      accents={{ primary: colors.accent.primary, secondary: colors.accent.secondary, danger: colors.accent.danger, warning: colors.accent.warning, success: colors.accent.success, info: colors.accent.info }}
+      appearance={colors.appearance as "light" | "dark"}
+    >
+      <Header/>
+    </ThemeProvider>
   );
 }
 
