@@ -1,9 +1,12 @@
 import React from "react";
-import { IconMoon, IconSettings, IconSun, IconExternalLink } from "@tabler/icons-react";
 import {
-  Accordion,
-  AccordionItem,
+  IconMoon,
+  IconSettings,
+  IconSun,
+} from "@tabler/icons-react";
+import {
   Button,
+  Collapsible,
   ColorPicker,
   Drawer,
   IconButton,
@@ -25,10 +28,6 @@ const StyledDrawerChildrenItem = styled.div`
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
-
-  &.revert-button {
-    margin-top: 2rem;
-  }
 `;
 
 const Settings = () => {
@@ -37,8 +36,6 @@ const Settings = () => {
   const [appearance, setAppearance] = React.useState<"light" | "dark">(
     colorPalette.primary.appearance
   );
-
-  console.log(colorPalette);
 
   const [primaryColor, setPrimaryColor] = React.useState(
     colorPalette.primary.main
@@ -210,10 +207,13 @@ const Settings = () => {
         position="right"
         onClose={_handleDrawerClose}
         color="primary"
+        style={{ backgroundColor: colorPalette.primary.accentScale[1] }}
       >
         <StyledDrawerChildren>
           <StyledDrawerChildrenItem>
-            <Text color="primary" variant="paragraph">Appearance</Text>
+            <Text color="primary" variant="paragraph">
+              Appearance
+            </Text>
             <ToggleButtonGroup
               color="primary"
               value={appearance}
@@ -238,62 +238,64 @@ const Settings = () => {
           <StyledDrawerChildrenItem>
             <ColorPicker
               variant="outlined"
-              label={<Text color="primary" variant="paragraph">Primary Color</Text>}
+              label={
+                <Text color="primary" variant="paragraph">
+                  Primary Color
+                </Text>
+              }
               color="primary"
               width="100%"
               onChange={_handlePrimaryColorChange}
             />
           </StyledDrawerChildrenItem>
 
-          <Accordion width="100%" color="primary" variant="outlined-soft">
-            <AccordionItem title="Additional Settings">
-              <div
-                style={{
-                  display: "flex",
-                  flexDirection: "column",
-                  gap: "1rem",
-                  marginTop: "0.5rem",
-                }}
-              >
+          <StyledDrawerChildrenItem>
+            <Collapsible
+              title="Additional Color Settings"
+              color="primary"
+              variant="transparent"
+              open={false}
+            >
+              <div style={{ marginTop: "1rem" }}>
                 <ColorPicker
                   label="Secondary Color"
-                  color={secondaryColor}
+                  color="secondary"
                   width="100%"
                   onChange={_handleSecondaryColorChange}
                 />
 
                 <ColorPicker
                   label="Danger Color"
-                  color={dangerColor}
+                  color="danger"
                   width="100%"
                   onChange={_handleDangerColorChange}
                 />
 
                 <ColorPicker
                   label="Warning Color"
-                  color={warningColor}
+                  color="warning"
                   width="100%"
                   onChange={_handleWarningColorChange}
                 />
 
                 <ColorPicker
                   label="Success Color"
-                  color={successColor}
+                  color="success"
                   width="100%"
                   onChange={_handleSuccessColorChange}
                 />
 
                 <ColorPicker
                   label="Info Color"
-                  color={infoColor}
+                  color="info"
                   width="100%"
                   onChange={_handleInfoColorChange}
                 />
               </div>
-            </AccordionItem>
-          </Accordion>
+            </Collapsible>
+          </StyledDrawerChildrenItem>
 
-          <StyledDrawerChildrenItem className="revert-button">
+          <StyledDrawerChildrenItem className="revert-button" style={{marginTop:"0.5rem"}}>
             <Button variant="contained" color="danger" onClick={_onClickRevert}>
               Revert to Default Settings
             </Button>

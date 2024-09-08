@@ -18,6 +18,9 @@ import {
 
 import Settings from "./Settings";
 
+const _onStorybookClick = () => {
+  window.open("https://yuva0.github.io/stelios/storybook/?path=/docs/foundations-colors--docs");
+};
 
 const Header = () => {
   const theme = useTheme().theme!;
@@ -72,7 +75,7 @@ const Header = () => {
           <Settings/>
         </HeaderItem>
         <HeaderItem>
-          <Button variant="soft" color="secondary" size="small" trailingIcon={<IconExternalLink/>}>Blog</Button>
+          <Button variant="soft" color="secondary" size="small" trailingIcon={<IconExternalLink/>} onClick={_onStorybookClick}>Storybook</Button>
         </HeaderItem>
       </HeaderGroup>
     </HeaderUI>
