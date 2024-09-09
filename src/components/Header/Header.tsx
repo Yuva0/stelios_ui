@@ -4,23 +4,15 @@ import {
   HeaderGroup,
   HeaderItem,
   IconButton,
-  Autocomplete,
-  Text,
   useTheme,
-  Button,
   Input,
 } from "stelios";
 import {
   IconBrandGithub,
   IconBrandLinkedin,
-  IconExternalLink
 } from "@tabler/icons-react";
 
 import Settings from "./Settings";
-
-const _onStorybookClick = () => {
-  window.open("https://yuva0.github.io/stelios/storybook/?path=/docs/foundations-colors--docs");
-};
 
 const Header = () => {
   const theme = useTheme().theme!;
@@ -30,7 +22,7 @@ const Header = () => {
       id="header"
       expandable={false}
       height="3.5rem"
-      style={{ backgroundColor: colorPalette.primary.accentScale[1] }}
+      style={{ backgroundColor: colorPalette.primary.accentScale[1], outline: `2px solid ${colorPalette.primary.accentScale[2]}` }}
       color="primary"
     >
       <HeaderGroup style={{ marginLeft: "4rem", height: "100%" }}>
@@ -73,9 +65,6 @@ const Header = () => {
         </HeaderItem>
         <HeaderItem>
           <Settings/>
-        </HeaderItem>
-        <HeaderItem>
-          <Button variant="soft" color="secondary" size="small" trailingIcon={<IconExternalLink/>} onClick={_onStorybookClick}>Storybook</Button>
         </HeaderItem>
       </HeaderGroup>
     </HeaderUI>

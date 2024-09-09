@@ -264,7 +264,7 @@ const Settings = () => {
                   onChange={_handleSecondaryColorChange}
                 />
 
-                <ColorPicker
+                {/* <ColorPicker
                   label="Danger Color"
                   color="danger"
                   width="100%"
@@ -290,7 +290,7 @@ const Settings = () => {
                   color="info"
                   width="100%"
                   onChange={_handleInfoColorChange}
-                />
+                /> */}
               </div>
             </Collapsible>
           </StyledDrawerChildrenItem>

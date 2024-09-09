@@ -1,63 +1,125 @@
-interface TopicsProps {
+export interface TopicsProps {
   [key: string]: {
     title: string;
     content: {
       [key: string]: {
         title: string;
+        content?: {
+          [key: string]: {
+            title: string;
+          }
+        }
       };
     };
   };
 }
 
 const Topics: TopicsProps = {
-  guides: {
-    title: "Guides",
+  forms: {
+    title: "Forms",
     content: {
-      "understanding-react": {
-        title: "Understanding React",
+      inputBase: {
+        title: "Input Base",
+        content: {
+          input: {
+            title: "Input"
+          },
+          password: {
+            title: "Password"
+          },
+          select: {
+            title: "Select"
+          },
+          autocomplete: {
+            title: "Autocomplete"
+          },
+          numberInput: {
+            title: "Number Input"
+          }
+        }
       },
-      "jsx": {
-        title: "JSX",
+      formControl: {
+        title: "Form Control",
+        content: {
+          checkbox: {
+            title: "Checkbox"
+          },
+          radio: {
+            title: "Radio"
+          },
+          switch: {
+            title: "Switch"
+          },
+          formControlLabel: {
+            title: "Form Control Label"
+          }
+        }
       },
-      "virtual-dom": {
-        title: "Virtual DOM",
+      buttonBase: {
+        title: "Button Base",
+        content: {
+          button: {
+            title: "Button"
+          },
+          iconButton: {
+            title: "Icon Button"
+          },
+          toggleButton: {
+            title: "Toggle Button"
+          }
+        }
       },
-    },
+    }
   },
-  components: {
-    title: "Components",
+  display: {
+    title: "Display",
     content: {
-      "function-component": {
-        title: "Function Component",
+      avatar: {
+        title: "Avatar"
       },
-      "class-component": {
-        title: "Class Component",
+      badge: {
+        title: "Tag"
       },
-    },
+      banner: {
+        title: "Banner"
+      },
+      capsule: {
+        title: "Capsule"
+      },
+      card: {
+        title: "Card"
+      },
+      list: {
+        title: "List"
+      },
+      link: {
+        title: "Link"
+      },
+      text: {
+        title: "Text"
+      }
+    }
   },
-  hooks: {
-    title: "Hooks",
+  navigation: {
+    title: "Navigation",
     content: {
-      "use-state": {
-        title: "useState",
+      navigationBar:{
+        title: "Navigation Bar"
       },
-      "use-effect": {
-        title: "useEffect",
+      sidebar: {
+        title: "Side Bar"
       },
-      "use-memo": {
-        title: "useMemo",
+      drawer: {
+        title: "Drawer"
       },
-      "use-callback": {
-        title: "useCallback",
+      tabs: {
+        title: "Tabs"
       },
-      "use-ref": {
-        title: "useRef",
+      breadcrumbs: {
+        title: "Breadcrumbs"
       },
-      "use-context": {
-        title: "useContext",
-      },
-    },
-  },
+    }
+  }
 };
 
 export default Topics;
