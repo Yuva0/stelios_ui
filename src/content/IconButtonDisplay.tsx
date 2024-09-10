@@ -5,7 +5,6 @@ import {
   CodePreview,
   Text,
   useTheme,
-  Button,
   Link,
   CodeDisplay,
   SideBar,
@@ -17,148 +16,103 @@ import {
   TabPanel,
   Tag,
   ThemeProvider,
+  IconButton,
 } from "stelios";
 import { IconAwardFilled, IconHeartFilled } from "@tabler/icons-react";
 
-const TITLE = "Button";
-const DESCRIPTION = "A button initiates an action when clicked.";
+const TITLE = "IconButton";
+const DESCRIPTION = "IconButton is a button component that can be used to trigger an event or action.";
 
 const BANNER_GRATEFUL_TITLE = "Thank you for using Stelios!";
 
-const INSTALLATION_1 = `import { Button } from "stelios"`;
+const INSTALLATION_1 = `import { IconButton } from "stelios"`;
 
 const CODE_1 = (
   <div style={{ display: "flex", gap: "2rem" }}>
-    <Button color="primary" variant="contained">
-      Click Me
-    </Button>
-    <Button color="primary" variant="outlined">
-      Click Me
-    </Button>
-    <Button color="primary" variant="outlined-soft">
-      Click Me
-    </Button>
-    <Button color="primary" variant="soft">
-      Click Me
-    </Button>
-    <Button color="primary" variant="neumorph">
-      Click Me
-    </Button>
-    <Button color="primary" disabled>
-      Click Me
-    </Button>
+    <IconButton icon={<IconAwardFilled/>} alt="Award" color="primary" variant="contained"/>
+    <IconButton icon={<IconAwardFilled/>} alt="Award" color="primary" variant="outlined"/>
+    <IconButton icon={<IconAwardFilled/>} alt="Award" color="primary" variant="outlined-soft"/>
+    <IconButton icon={<IconAwardFilled/>} alt="Award" color="primary" variant="soft"/>
+    <IconButton icon={<IconAwardFilled/>} alt="Award" color="primary" variant="neumorph"/>
+    <IconButton icon={<IconAwardFilled/>} alt="Award" color="primary" variant="neumorph-contained"/>
+    <IconButton icon={<IconAwardFilled/>} alt="Award" color="primary" disabled/>
   </div>
 );
 const TEXT_1 = `
-    <Button color="primary" variant="contained"> Click Me </Button>
-    <Button color="primary" variant="outlined"> Click Me </Button>
-    <Button color="primary" variant="outlined-soft"> Click Me </Button>
-    <Button color="primary" variant="soft"> Click Me </Button>
-    <Button color="primary" variant="neumorph"> Click Me </Button>
-    <Button color="primary" disabled>Click Me</Button>`;
+    <IconButton icon={<IconAwardFilled/>} alt="Award" color="primary" variant="contained"/>
+    <IconButton icon={<IconAwardFilled/>} alt="Award" color="primary" variant="outlined"/>
+    <IconButton icon={<IconAwardFilled/>} alt="Award" color="primary" variant="outlined-soft"/>
+    <IconButton icon={<IconAwardFilled/>} alt="Award" color="primary" variant="soft"/>
+    <IconButton icon={<IconAwardFilled/>} alt="Award" color="primary" variant="neumorph"/>
+    <IconButton icon={<IconAwardFilled/>} alt="Award" color="primary" variant="neumorph-contained"/>
+    <IconButton icon={<IconAwardFilled/>} alt="Award" color="primary" disabled/>`;
 
 const CODE_2 = (
-  <div style={{ display: "flex", gap: "2rem" }}>
-    <Button color="primary" size="small">
-      Click Me
-    </Button>
-    <Button color="primary" size="medium">
-      Click Me
-    </Button>
-    <Button color="primary" size="large">
-      Click Me
-    </Button>
+  <div style={{ display: "flex", gap: "2rem", justifyContent: "center", alignItems: "center" }}>
+    <IconButton icon={<IconAwardFilled/>} alt="Award" color="primary" size="small" style={{height: "fit-content"}}/>
+    <IconButton icon={<IconAwardFilled/>} alt="Award" color="primary" size="medium" style={{height: "fit-content"}}/>
+    <IconButton icon={<IconAwardFilled/>} alt="Award" color="primary" size="large" style={{height: "fit-content"}}/>
   </div>
 );
 const TEXT_2 = `
-    <Button color="primary" size="small"> Click Me </Button>
-    <Button color="primary" size="medium"> Click Me </Button>
-    <Button color="primary" size="large"> Click Me </Button>`;
-
-const CODE_3 = (
-  <div style={{ display: "flex", gap: "2rem" }}>
-    <Button color="primary" leadingIcon={<IconHeartFilled />}>
-      Click Me
-    </Button>
-    <Button color="primary" trailingIcon={<IconAwardFilled />}>
-      Click Me
-    </Button>
-    <Button
-      color="primary"
-      leadingIcon={<IconHeartFilled />}
-      trailingIcon={<IconAwardFilled />}
-    >
-      Click Me
-    </Button>
-  </div>
-);
-const TEXT_3 = `
-    <Button color="primary" leadingIcon={<IconHeartFilled />}> Click Me </Button>
-    <Button color="primary" trailingIcon={<IconHeartFilled />}> Click Me </Button>
-    <Button color="primary" leadingIcon={<IconHeartFilled />} trailingIcon={<IconTrophy/>}> Click Me </Button>`;
-
-const CODE_4 = (
-  <div style={{ display: "flex", gap: "2rem" }}>
-    <Button color="primary" rounded>
-      Click Me
-    </Button>
-  </div>
-);
-const TEXT_4 = `
-    <Button color="primary" rounded> Click Me </Button>`;
+    <IconButton icon={<IconAwardFilled/>} alt="Award" color="primary" size="small"/>
+    <IconButton icon={<IconAwardFilled/>} alt="Award" color="primary" size="medium"/>
+    <IconButton icon={<IconAwardFilled/>} alt="Award" color="primary" size="large"/>`;
 
 const CODE_5 = (
   <div style={{ display: "flex", gap: "2rem" }}>
-    <Button color="primary" disabled>
+    <IconButton icon={<IconAwardFilled/>} alt="Award" color="primary" disabled>
       Click Me
-    </Button>
+    </IconButton>
   </div>
 );
 const TEXT_5 = `
-    <Button color="primary" disabled> Click Me </Button>`;
-
-const CODE_6 = (
-  <div style={{ display: "flex", gap: "2rem", width: "100%" }}>
-    <Button color="primary" isFullWidth>
-      Click Me
-    </Button>
-  </div>
-);
-const TEXT_6 = `
-    <Button color="primary" isFullWidth> Click Me </Button>`;
+    <IconButton color="primary" disabled> Click Me </IconButton>`;
 
 const CODE_7 = (
   <div style={{ display: "flex", gap: "2rem", width: "100%", justifyContent:"center", alignItems: "center" }}>
     <ThemeProvider accents={{primary: "#0096ee", secondary: "#305c84", success: "#639765", info: "#376390", warning: "#dbc533", danger: "#ee0032"}}>
-      <Button color="primary">
+      <IconButton alt="Award" icon={<IconAwardFilled/>} color="primary">
         Click Me
-      </Button>
-      <Button color="secondary">
+      </IconButton>
+      <IconButton alt="Award" icon={<IconAwardFilled/>} color="secondary">
         Click Me
-      </Button>
-      <Button color="success">
+      </IconButton>
+      <IconButton alt="Award" icon={<IconAwardFilled/>} color="success">
         Click Me
-      </Button>
-      <Button color="info">
+      </IconButton>
+      <IconButton alt="Award" icon={<IconAwardFilled/>} color="info">
         Click Me
-      </Button>
-      <Button color="warning">
+      </IconButton>
+      <IconButton alt="Award" icon={<IconAwardFilled/>} color="warning">
         Click Me
-      </Button>
-      <Button color="danger">
+      </IconButton>
+      <IconButton alt="Award" icon={<IconAwardFilled/>} color="danger">
         Click Me
-      </Button>
+      </IconButton>
     </ThemeProvider>
   </div>
 )
 const TEXT_7 = `
     <ThemeProvider accents={{primary: "#0096ee", secondary: "#305c84", success: "#639765", info: "#376390", warning: "#dbc533", danger: "#ee0032"}}>
-      <Button color="primary"> Click Me </Button>
-      <Button color="secondary"> Click Me </Button>
-      <Button color="success"> Click Me </Button>
-      <Button color="info"> Click Me </Button>
-      <Button color="warning"> Click Me </Button>
-      <Button color="danger"> Click Me </Button>
+      <IconButton alt="Award" icon={<IconAwardFilled/>} color="primary">
+        Click Me
+      </IconButton>
+      <IconButton alt="Award" icon={<IconAwardFilled/>} color="secondary">
+        Click Me
+      </IconButton>
+      <IconButton alt="Award" icon={<IconAwardFilled/>} color="success">
+        Click Me
+      </IconButton>
+      <IconButton alt="Award" icon={<IconAwardFilled/>} color="info">
+        Click Me
+      </IconButton>
+      <IconButton alt="Award" icon={<IconAwardFilled/>} color="warning">
+        Click Me
+      </IconButton>
+      <IconButton alt="Award" icon={<IconAwardFilled/>} color="danger">
+        Click Me
+      </IconButton
     </ThemeProvider>`;
 
 const BANNER_GRATEFUL_DESC = (
@@ -215,7 +169,7 @@ const ButtonDisplay = () => {
           delimiter="/"
         >
           <BreadcrumbsItem title="Components" />
-          <BreadcrumbsItem link="item" title="Button" />
+          <BreadcrumbsItem link="item" title="IconButton" />
         </Breadcrumbs>
         <div style={{ padding: "1rem" }}>
           <Text preciseColor={textColor} variant="h1">
@@ -279,7 +233,7 @@ const ButtonDisplay = () => {
                   size="medium"
                   style={{ marginTop: "0.25rem" }}
                 >
-                  Button comes in multiple variants: contained, outlined, soft,
+                  IconButton comes in multiple variants: contained, outlined, soft,
                   outlined-soft & neumorph.
                 </Text>
                 <CodePreview
@@ -304,61 +258,11 @@ const ButtonDisplay = () => {
                   variant="paragraph"
                   style={{ marginTop: "0.5rem" }}
                       >
-                  Button comes in multiple sizes: small, medium & large.
+                  IconButton comes in multiple sizes: small, medium & large.
                 </Text>
                 <CodePreview
                   code={CODE_2}
                   text={TEXT_2}
-                  codeStyle={{ backgroundColor: bgColor }}
-                  textStyle={{ padding: "0 0 1rem 0" }}
-                  style={{ marginTop: "1rem" }}
-                  color="primary"
-                  language="jsx"
-                />
-                <Text
-                  preciseColor={textColor}
-                  size="large"
-                  color="primary"
-                  style={{ marginTop: "2rem" }}
-                >
-                  Icons
-                </Text>
-                <Text
-                  preciseColor={textColor}
-                  size="medium"
-                  color="primary"
-                  style={{ marginTop: "0.25rem" }}
-                >
-                  Button can have icons: leading, trailing or both.
-                </Text>
-                <CodePreview
-                  code={CODE_3}
-                  text={TEXT_3}
-                  codeStyle={{ backgroundColor: bgColor }}
-                  textStyle={{ padding: "0 0 1rem 0" }}
-                  style={{ marginTop: "1rem" }}
-                  color="primary"
-                  language="jsx"
-                />
-                <Text
-                  preciseColor={textColor}
-                  size="large"
-                  color="primary"
-                  style={{ marginTop: "2rem" }}
-                >
-                  Rounded
-                </Text>
-                <Text
-                  preciseColor={textColor}
-                  size="medium"
-                  color="primary"
-                  style={{ marginTop: "0.25rem" }}
-                >
-                  Button can be rounded
-                </Text>
-                <CodePreview
-                  code={CODE_4}
-                  text={TEXT_4}
                   codeStyle={{ backgroundColor: bgColor }}
                   textStyle={{ padding: "0 0 1rem 0" }}
                   style={{ marginTop: "1rem" }}
@@ -379,36 +283,11 @@ const ButtonDisplay = () => {
                   color="primary"
                   style={{ marginTop: "0.25rem" }}
                 >
-                  Button can be disabled
+                  IconButton can be disabled
                 </Text>
                 <CodePreview
                   code={CODE_5}
                   text={TEXT_5}
-                  codeStyle={{ backgroundColor: bgColor }}
-                  textStyle={{ padding: "0 0 1rem 0" }}
-                  style={{ marginTop: "1rem" }}
-                  color="primary"
-                  language="jsx"
-                />
-                                <Text
-                  preciseColor={textColor}
-                  size="large"
-                  color="primary"
-                  style={{ marginTop: "2rem" }}
-                >
-                  Full Width
-                </Text>
-                <Text
-                  preciseColor={textColor}
-                  size="medium"
-                  color="primary"
-                  style={{ marginTop: "0.25rem" }}
-                >
-                  Button can take full width of the container
-                </Text>
-                <CodePreview
-                  code={CODE_6}
-                  text={TEXT_6}
                   codeStyle={{ backgroundColor: bgColor }}
                   textStyle={{ padding: "0 0 1rem 0" }}
                   style={{ marginTop: "1rem" }}
@@ -421,10 +300,7 @@ const ButtonDisplay = () => {
                   </SideBarItem>
                   <SideBarItem color="primary">Variants</SideBarItem>
                   <SideBarItem color="primary">Sizes</SideBarItem>
-                  <SideBarItem color="primary">Icons</SideBarItem>
-                  <SideBarItem color="primary">Rounded</SideBarItem>
                   <SideBarItem color="primary">Disabled</SideBarItem>
-                  <SideBarItem color="primary">Full Width</SideBarItem>
                 </SideBar>
               </TabPanel>
               <TabPanel value="props">
@@ -433,17 +309,17 @@ const ButtonDisplay = () => {
                   size="large"
                   style={{ marginTop: "2rem" }}
                 >
-                  Button Props
+                  IconButton Props
                 </Text>
                 <Tag color="primary" variant="outlined" style={{marginTop: "1rem",}}>variant</Tag>
                 {line}
                 <div style={{marginTop: "1rem", display: "flex", flexDirection: "row"}}>
                   <Text preciseColor={textColor} style={{minWidth: "200px"}}><b>Description</b></Text>
-                  <Text preciseColor={textColor}>The variant of the button</Text>
+                  <Text preciseColor={textColor}>The variant of the icon button</Text>
                 </div>
                 <div style={{marginTop: "1rem", display: "flex", flexDirection: "row"}}>
                   <Text preciseColor={textColor} style={{minWidth: "200px"}}><b>Type</b></Text>
-                  <Text color="primary" style={{wordSpacing: "1rem"}}>"contained" | "outlined" | "soft" | "outlined-soft" | "neumorph"</Text>
+                  <Text color="primary" style={{wordSpacing: "1rem"}}>"contained" | "outlined" | "soft" | "outlined-soft" | "neumorph" | "neumorph-contained"</Text>
                 </div>
                 <div style={{marginTop: "1rem", display: "flex", flexDirection: "row"}}>
                   <Text preciseColor={textColor} style={{minWidth: "200px"}}><b>Default</b></Text>
@@ -454,7 +330,7 @@ const ButtonDisplay = () => {
                 {line}
                 <div style={{marginTop: "1rem", display: "flex", flexDirection: "row"}}>
                   <Text preciseColor={textColor} style={{minWidth: "200px"}}><b>Description</b></Text>
-                  <Text preciseColor={textColor}>The size of the button</Text>
+                  <Text preciseColor={textColor}>The size of the icon button</Text>
                 </div>
                 <div style={{marginTop: "1rem", display: "flex", flexDirection: "row"}}>
                   <Text preciseColor={textColor} style={{minWidth: "200px"}}><b>Type</b></Text>
@@ -465,26 +341,11 @@ const ButtonDisplay = () => {
                   <Text color="primary" style={{wordSpacing: "1rem"}}>medium</Text>
                 </div>
 
-                <Tag color="primary" variant="outlined" style={{marginTop: "3rem",}}>rounded</Tag>
-                {line}
-                <div style={{marginTop: "1rem", display: "flex", flexDirection: "row"}}>
-                  <Text preciseColor={textColor} style={{minWidth: "200px"}}><b>Description</b></Text>
-                  <Text preciseColor={textColor}>Whether the button should be rounded or not</Text>
-                </div>
-                <div style={{marginTop: "1rem", display: "flex", flexDirection: "row"}}>
-                  <Text preciseColor={textColor} style={{minWidth: "200px"}}><b>Type</b></Text>
-                  <Text color="primary" style={{wordSpacing: "1rem"}}>boolean</Text>
-                </div>
-                <div style={{marginTop: "1rem", display: "flex", flexDirection: "row"}}>
-                  <Text preciseColor={textColor} style={{minWidth: "200px"}}><b>Default</b></Text>
-                  <Text color="primary" style={{wordSpacing: "1rem"}}>false</Text>
-                </div>
-
                 <Tag color="primary" variant="outlined" style={{marginTop: "3rem",}}>disabled</Tag>
                 {line}
                 <div style={{marginTop: "1rem", display: "flex", flexDirection: "row"}}>
                   <Text preciseColor={textColor} style={{minWidth: "200px"}}><b>Description</b></Text>
-                  <Text preciseColor={textColor}>Whether the button is disabled or not</Text>
+                  <Text preciseColor={textColor}>Whether the icon button is disabled or not</Text>
                 </div>
                 <div style={{marginTop: "1rem", display: "flex", flexDirection: "row"}}>
                   <Text preciseColor={textColor} style={{minWidth: "200px"}}><b>Type</b></Text>
@@ -493,73 +354,13 @@ const ButtonDisplay = () => {
                 <div style={{marginTop: "1rem", display: "flex", flexDirection: "row"}}>
                   <Text preciseColor={textColor} style={{minWidth: "200px"}}><b>Default</b></Text>
                   <Text color="primary" style={{wordSpacing: "1rem"}}>false</Text>
-                </div>
-
-                <Tag color="primary" variant="outlined" style={{marginTop: "3rem",}}>isFullWidth</Tag>
-                {line}
-                <div style={{marginTop: "1rem", display: "flex", flexDirection: "row"}}>
-                  <Text preciseColor={textColor} style={{minWidth: "200px"}}><b>Description</b></Text>
-                  <Text preciseColor={textColor}>Whether the button should take full width of the container or not</Text>
-                </div>
-                <div style={{marginTop: "1rem", display: "flex", flexDirection: "row"}}>
-                  <Text preciseColor={textColor} style={{minWidth: "200px"}}><b>Type</b></Text>
-                  <Text color="primary" style={{wordSpacing: "1rem"}}>boolean</Text>
-                </div>
-                <div style={{marginTop: "1rem", display: "flex", flexDirection: "row"}}>
-                  <Text preciseColor={textColor} style={{minWidth: "200px"}}><b>Default</b></Text>
-                  <Text color="primary" style={{wordSpacing: "1rem"}}>false</Text>
-                </div>
-
-                <Tag color="primary" variant="outlined" style={{marginTop: "3rem",}}>color</Tag>
-                {line}
-                <div style={{marginTop: "1rem", display: "flex", flexDirection: "row"}}>
-                  <Text preciseColor={textColor} style={{minWidth: "200px"}}><b>Description</b></Text>
-                  <Text preciseColor={textColor}>Color of the button created using colorPalette</Text>
-                </div>
-                <div style={{marginTop: "1rem", display: "flex", flexDirection: "row"}}>
-                  <Text preciseColor={textColor} style={{minWidth: "200px"}}><b>Type</b></Text>
-                  <Text color="primary" style={{wordSpacing: "1rem"}}>string</Text>
-                </div>
-                <div style={{marginTop: "1rem", display: "flex", flexDirection: "row"}}>
-                  <Text preciseColor={textColor} style={{minWidth: "200px"}}><b>Default</b></Text>
-                  <Text color="primary" style={{wordSpacing: "1rem"}}>#00b4d8</Text>
-                </div>
-
-                <Tag color="primary" variant="outlined" style={{marginTop: "3rem",}}>leadingIcon</Tag>
-                {line}
-                <div style={{marginTop: "1rem", display: "flex", flexDirection: "row"}}>
-                  <Text preciseColor={textColor} style={{minWidth: "200px"}}><b>Description</b></Text>
-                  <Text preciseColor={textColor}>Leading Icon of the button</Text>
-                </div>
-                <div style={{marginTop: "1rem", display: "flex", flexDirection: "row"}}>
-                  <Text preciseColor={textColor} style={{minWidth: "200px"}}><b>Type</b></Text>
-                  <Text color="primary" style={{wordSpacing: "1rem"}}>React.ReactNode</Text>
-                </div>
-                <div style={{marginTop: "1rem", display: "flex", flexDirection: "row"}}>
-                  <Text preciseColor={textColor} style={{minWidth: "200px"}}><b>Default</b></Text>
-                  <Text color="primary" style={{wordSpacing: "1rem"}}>none</Text>
-                </div>
-
-                <Tag color="primary" variant="outlined" style={{marginTop: "3rem",}}>trailingIcon</Tag>
-                {line}
-                <div style={{marginTop: "1rem", display: "flex", flexDirection: "row"}}>
-                  <Text preciseColor={textColor} style={{minWidth: "200px"}}><b>Description</b></Text>
-                  <Text preciseColor={textColor}>Trailing Icon of the button</Text>
-                </div>
-                <div style={{marginTop: "1rem", display: "flex", flexDirection: "row"}}>
-                  <Text preciseColor={textColor} style={{minWidth: "200px"}}><b>Type</b></Text>
-                  <Text color="primary" style={{wordSpacing: "1rem"}}>React.ReactNode</Text>
-                </div>
-                <div style={{marginTop: "1rem", display: "flex", flexDirection: "row"}}>
-                  <Text preciseColor={textColor} style={{minWidth: "200px"}}><b>Default</b></Text>
-                  <Text color="primary" style={{wordSpacing: "1rem"}}>none</Text>
                 </div>
 
                 <Tag color="primary" variant="outlined" style={{marginTop: "3rem",}}>children</Tag>
                 {line}
                 <div style={{marginTop: "1rem", display: "flex", flexDirection: "row"}}>
                   <Text preciseColor={textColor} style={{minWidth: "200px"}}><b>Description</b></Text>
-                  <Text preciseColor={textColor}>Children of the button</Text>
+                  <Text preciseColor={textColor}>Children of the icon button</Text>
                 </div>
                 <div style={{marginTop: "1rem", display: "flex", flexDirection: "row"}}>
                   <Text preciseColor={textColor} style={{minWidth: "200px"}}><b>Type</b></Text>
@@ -574,7 +375,7 @@ const ButtonDisplay = () => {
                 {line}
                 <div style={{marginTop: "1rem", display: "flex", flexDirection: "row"}}>
                   <Text preciseColor={textColor} style={{minWidth: "200px"}}><b>Description</b></Text>
-                  <Text preciseColor={textColor}>Called on click of the button</Text>
+                  <Text preciseColor={textColor}>Called on click of the icon button</Text>
                 </div>
                 <div style={{marginTop: "1rem", display: "flex", flexDirection: "row"}}>
                   <Text preciseColor={textColor} style={{minWidth: "200px"}}><b>Type</b></Text>
@@ -614,7 +415,7 @@ const ButtonDisplay = () => {
                   color="primary"
                   style={{ marginTop: "0.25rem" }}
                 >
-                  ThemeProvider with accents prop can be used to change the color of the button.
+                  ThemeProvider with accents prop can be used to change the color of the icon button.
                 </Text>
                 <CodePreview
                   code={CODE_7}
