@@ -68,6 +68,7 @@ const NavigationBar = () => {
         boxSizing: "border-box",
         backgroundColor: colorPalette.primary.appearance === "light" ? "white" : "black",
         borderRight: 0,
+        top: "4rem"
       }}
     >
       {ChildrenArray}
