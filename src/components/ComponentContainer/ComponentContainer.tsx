@@ -7,7 +7,7 @@ import InputDisplay from '../../content/InputDisplay';
 const ComponentContainer = () => {
   return (
     <div style={{width: "calc(100% - 12rem)"}}>
-      <IconButtonDisplay/>
+      <ToggleButtonDisplay/>
     </div>
   );
 };

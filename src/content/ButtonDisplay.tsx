@@ -1,22 +1,12 @@
 import {
-  Banner,
-  Breadcrumbs,
-  BreadcrumbsItem,
-  CodePreview,
   Text,
   useTheme,
   Button,
-  Link,
-  CodeDisplay,
   SideBar,
   SideBarItem,
-  Tab,
   Tabs,
-  TabList,
   TabPanels,
   TabPanel,
-  Tag,
-  ThemeProvider,
 } from "stelios";
 import { IconAwardFilled, IconHeartFilled } from "@tabler/icons-react";
 import { RenderBreadcrumbsForComponent, RenderComponentHeading, RenderProps, RenderTabsList, RenderVariations } from "../helpers/helpers";

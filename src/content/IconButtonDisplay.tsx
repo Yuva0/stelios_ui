@@ -1,37 +1,25 @@
 import {
-  Banner,
-  Breadcrumbs,
-  BreadcrumbsItem,
-  CodePreview,
   Text,
   useTheme,
-  Link,
-  CodeDisplay,
   SideBar,
   SideBarItem,
-  Tab,
   Tabs,
-  TabList,
   TabPanels,
   TabPanel,
-  Tag,
-  ThemeProvider,
   IconButton,
 } from "stelios";
 import { IconAwardFilled, IconHeartFilled } from "@tabler/icons-react";
-import { RenderBreadcrumbsForComponent, RenderComponentHeading, RenderProps, RenderTabsList } from "../helpers/helpers";
+import { RenderBreadcrumbsForComponent, RenderComponentHeading, RenderProps, RenderTabsList, RenderVariations } from "../helpers/helpers";
 import i18n from "../i18n/i18n_en.json";
 
 const ICONBUTTON = i18n.iconButton;
 
-const ButtonDisplay = () => {
+const IconButtonDisplay = () => {
   const theme = useTheme().theme!;
   const colorPalette = theme.colorPalette;
 
   const textColor =
     colorPalette.primary.appearance === "light" ? "black" : "white";
-  const bgColor =
-    colorPalette.primary.appearance === "light" ? "white" : "black";
 
   return (
     <div>
@@ -54,93 +42,12 @@ const ButtonDisplay = () => {
                 }}
               />
               <TabPanel value="usage">
-                <Text
-                  preciseColor={textColor}
-                  size="large"
-                  style={{ marginTop: "2rem" }}
-                >
-                  {ICONBUTTON.usage.installation.label}
-                </Text>
-                <CodeDisplay
-                  color="primary"
-                  language="jsx"
-                  text={ICONBUTTON.usage.installation.description}
-                  style={{ marginTop: "0.5rem" }}
-                />
-                <Text
-                  preciseColor={textColor}
-                  size="large"
-                  color="primary"
-                  style={{ marginTop: "2rem" }}
-                >
-                  Variants
-                </Text>
-                <Text
-                  preciseColor={textColor}
-                  size="medium"
-                  style={{ marginTop: "0.25rem" }}
-                >
-                  IconButton comes in multiple variants: contained, outlined, soft,
-                  outlined-soft & neumorph.
-                </Text>
-                <CodePreview
-                  code={CODE_1}
-                  text={TEXT_1}
-                  codeStyle={{ backgroundColor: bgColor }}
-                  textStyle={{ padding: "0 0 1rem 0" }}
-                  style={{ marginTop: "1rem" }}
-                  color="primary"
-                  language="jsx"
-                />
-                <Text
-                  preciseColor={textColor}
-                  size="large"
-                  color="primary"
-                  style={{ marginTop: "2rem" }}
-                >
-                  Sizes
-                </Text>
-                <Text
-                  preciseColor={textColor}
-                  variant="paragraph"
-                  style={{ marginTop: "0.5rem" }}
-                      >
-                  IconButton comes in multiple sizes: small, medium & large.
-                </Text>
-                <CodePreview
-                  code={CODE_2}
-                  text={TEXT_2}
-                  codeStyle={{ backgroundColor: bgColor }}
-                  textStyle={{ padding: "0 0 1rem 0" }}
-                  style={{ marginTop: "1rem" }}
-                  color="primary"
-                  language="jsx"
-                />
-                <Text
-                  preciseColor={textColor}
-                  size="large"
-                  color="primary"
-                  style={{ marginTop: "2rem" }}
-                >
-                  Disabled
-                </Text>
-                <Text
-                  preciseColor={textColor}
-                  size="medium"
-                  color="primary"
-                  style={{ marginTop: "0.25rem" }}
-                >
-                  IconButton can be disabled
-                </Text>
-                <CodePreview
-                  code={CODE_3}
-                  text={TEXT_3}
-                  codeStyle={{ backgroundColor: bgColor }}
-                  textStyle={{ padding: "0 0 1rem 0" }}
-                  style={{ marginTop: "1rem" }}
-                  color="primary"
-                  language="jsx"
-                />
+
+                <RenderVariations label={ICONBUTTON.usage.installation.label} text={ICONBUTTON.usage.installation.description} />
+                <RenderVariations label={ICONBUTTON.usage.variants.label} description={ICONBUTTON.usage.variants.description} code={CODE_1} text={TEXT_1}/>
+                <RenderVariations label={ICONBUTTON.usage.sizes.label} description={ICONBUTTON.usage.sizes.description} code={CODE_2} text={TEXT_2}/>
+                <RenderVariations label={ICONBUTTON.usage.disabled.label} description={ICONBUTTON.usage.disabled.description} code={CODE_3} text={TEXT_3}/>
+
                 <SideBar style={{ width: "10rem", top: "5rem" }}>
                   <SideBarItem color="primary" selected>
                     Installation
@@ -156,7 +63,7 @@ const ButtonDisplay = () => {
                   size="large"
                   style={{ marginTop: "2rem" }}
                 >
-                  IconButton Props
+                  {ICONBUTTON.props.label}
                 </Text>
 
                 <RenderProps propName={ICONBUTTON.props.variant.name} description={ICONBUTTON.props.variant.description} type={ICONBUTTON.props.variant.type} defaultValue={ICONBUTTON.props.variant.default} marginTop="1rem"/>
@@ -189,7 +96,7 @@ const ButtonDisplay = () => {
     </div>
   );
 };
-export default ButtonDisplay;
+export default IconButtonDisplay;
 
 const CODE_1 = (
   <div style={{ display: "flex", gap: "2rem" }}>
