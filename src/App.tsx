@@ -4,7 +4,7 @@ import ListContainer from "./components/ListContainer/ListContainer";
 import { ThemeProvider } from "stelios";
 import NavigationBar from "./components/NavigationBar/NavigationBar";
 import colors from "./tokens/colors.json";
-import ComponentContainer from "./components/ComponentContainer/ComponentContainer";
+import { Route, Routes } from "react-router-dom";
 
 function App() {
   return (
@@ -21,10 +21,9 @@ function App() {
     >
       <div style={{display:"flex", flexDirection:"column"}}>
         <Header />
-        <ListContainer>
-          <NavigationBar />
-          <ComponentContainer />
-        </ListContainer>
+        <Routes>
+          <Route path="components/:idComponent" element={<ListContainer/>}/>
+        </Routes>
       </div>
     </ThemeProvider>
   );

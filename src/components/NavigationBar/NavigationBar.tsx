@@ -1,4 +1,4 @@
-import * as React from "react";
+import React, { useEffect, useState } from "react";
 import {
   NavigationBarGroup,
   NavigationBar as NavigationBarUI,
@@ -8,22 +8,49 @@ import {
   useTheme,
 } from "stelios";
 import Topics, { TopicsProps } from "../../content/Topics";
+import { useNavigate, useParams } from "react-router-dom";
+import { memo } from "react";
 
 const TOPICS: TopicsProps = Topics;
 
 const NavigationBar = () => {
   const theme = useTheme().theme!;
   const colorPalette = theme.colorPalette;
+  const navigate = useNavigate();
+  const path = useParams();
+  const [component, setComponent] = useState(path.idComponent);
+  const [category, setCategory] = useState<string | null | undefined>(
+    getSelectedCategory(path.idComponent)
+  );
+
+  useEffect(() => {
+    setComponent(path.idComponent);
+    setCategory(getSelectedCategory(path.idComponent));
+  }, [path]);
+
+  const _onNavigationBarClick = (value: string) => {
+    navigate(`/components/${value}`);
+  };
 
   const ChildrenArray = Object.keys(TOPICS).map((topicGroup) => {
     const groupedTopics = TOPICS[topicGroup];
     return (
-      <NavigationBarGroup title={groupedTopics.title} key={topicGroup} selected>
+      <NavigationBarGroup
+        title={groupedTopics.title}
+        key={topicGroup}
+        expanded={topicGroup === category}
+      >
         {Object.keys(groupedTopics.content).map((topic) => {
           const topics = groupedTopics.content[topic];
           if (!topics.content) {
             return (
-              <NavigationBarGroupItem value={topic} size="small" key={topics.title}>
+              <NavigationBarGroupItem
+                value={topic}
+                size="small"
+                key={topic}
+                onClick={() => _onNavigationBarClick(topic)}
+                selected={topic === component}
+              >
                 {topics.title}
               </NavigationBarGroupItem>
             );
@@ -46,6 +73,8 @@ const NavigationBar = () => {
                   size="small"
                   key={subTopic}
                   value={subTopic}
+                  selected={subTopic === component}
+                  onClick={() => _onNavigationBarClick(subTopic)}
                 >
                   {subTopics.title}
                 </NavigationBarGroupItem>
@@ -66,13 +95,34 @@ const NavigationBar = () => {
         height: "calc(100vh - 3.5rem)",
         padding: "1rem 0",
         boxSizing: "border-box",
-        backgroundColor: colorPalette.primary.appearance === "light" ? "white" : "black",
+        backgroundColor:
+          colorPalette.primary.appearance === "light" ? "white" : "black",
         borderRight: 0,
-        top: "4rem"
+        top: "4rem",
       }}
     >
       {ChildrenArray}
     </NavigationBarUI>
   );
 };
-export default NavigationBar;
+export default memo(NavigationBar);
+
+const getSelectedCategory = (topic?: string) => {
+  if (!topic) return null;
+
+  const category = Object.keys(TOPICS).find((categories) => {
+    const allCategoryKeys = Object.keys(TOPICS[categories].content);
+    return allCategoryKeys.find((category) => {
+      console.log(TOPICS[categories].content[category]);
+
+      const subCategories = TOPICS[categories].content[category];
+      if (subCategories.content) {
+        return Object.keys(subCategories.content).includes(topic);
+      } else {
+        return category === topic;
+      }
+    });
+  });
+  console.log(category);
+  return category;
+};

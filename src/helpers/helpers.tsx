@@ -193,7 +193,7 @@ export const RenderVariations = ({
   );
 };
 
-export const RenderBreadcrumbsForComponent = ({ name }: { name: string }) => {
+export const RenderBreadcrumbsForComponent = ({ name, path }: { name: string, path?: string }) => {
   return (
     <Breadcrumbs
       color="primary"
@@ -202,7 +202,7 @@ export const RenderBreadcrumbsForComponent = ({ name }: { name: string }) => {
       delimiter="/"
     >
       <BreadcrumbsItem title={i18n.components.title} />
-      <BreadcrumbsItem link="item" title={name} />
+      <BreadcrumbsItem link={`/component/${path}`} title={name} />
     </Breadcrumbs>
   );
 };

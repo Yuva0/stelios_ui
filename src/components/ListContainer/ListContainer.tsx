@@ -1,23 +1,58 @@
-import * as React from "react";
+import React, { lazy, useEffect, useState } from "react";
 import { useTheme } from "stelios";
+import NavigationBar from "../../components/NavigationBar/NavigationBar";
 import styled from "styled-components";
+import { useParams } from "react-router-dom";
 
 interface ListContainerStyleProps {
   $colorPalette: any;
 }
-
-interface ListContainerProps {
-  children?: React.ReactNode | [React.ReactNode];
+const TimeoutPromise = new Promise((resolve) => setTimeout(resolve, 300));
+const importComponent = (path: string) => {
+  return import(`../../content/${path}`);
+};
+const renderLazyComponent = (path: string) => {
+  return lazy(() => {
+    return Promise.all([importComponent(path), TimeoutPromise]).then(
+      ([moduleExports]) => moduleExports
+    );
+  });
 }
 
-const ListContainer: React.FunctionComponent<ListContainerProps> = ({
-  children,
-}) => {
+const ButtonDisplay = renderLazyComponent("ButtonDisplay");
+const ToggleButtonDisplay = renderLazyComponent("ToggleButtonDisplay");
+const IconButtonDisplay = renderLazyComponent("IconButtonDisplay");
+const InputDisplay = renderLazyComponent("InputDisplay");
+
+const ListContainer: React.FunctionComponent = () => {
   const theme = useTheme().theme;
+  const path = useParams();
+  const [component, setComponent] = useState(path.idComponent);
+
+  useEffect(() => {
+    setComponent(path.idComponent);
+  },[path]);
+
+  const RenderComponent = () => {
+    switch (component) {
+      case "button":
+        return <ButtonDisplay />;
+      case "toggle-button":
+        return <ToggleButtonDisplay />;
+      case "icon-button":
+        return <IconButtonDisplay />;
+      case "input":
+        return <InputDisplay />;
+      default:
+        return <ButtonDisplay />;
+    }
+  };
+
 
   return (
     <StyledContainer $colorPalette={theme!.colorPalette}>
-        {children}
+      <NavigationBar />
+      <RenderComponent />
     </StyledContainer>
   );
 };

@@ -61,10 +61,10 @@ const Topics: TopicsProps = {
           button: {
             title: "Button"
           },
-          iconButton: {
+          "icon-button": {
             title: "Icon Button"
           },
-          toggleButton: {
+          "toggle-button": {
             title: "Toggle Button"
           }
         }
@@ -103,7 +103,7 @@ const Topics: TopicsProps = {
   navigation: {
     title: "Navigation",
     content: {
-      navigationBar:{
+      "navigation-bar":{
         title: "Navigation Bar"
       },
       sidebar: {
