@@ -1,5 +1,5 @@
 import * as React from "react";
-import { SideBarItem, SideBar, useTheme } from "stelios";
+import { useTheme } from "stelios";
 import styled from "styled-components";
 
 interface ListContainerStyleProps {

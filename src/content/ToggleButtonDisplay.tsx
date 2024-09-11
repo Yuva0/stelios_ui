@@ -73,10 +73,10 @@ const CODE_1 = (
     </ToggleButtonGroup>
   </div>
 )
-const TEXT_1 = `<ToggleButtonGroup color="primary">
-  <ToggleButton>Toggle 1</ToggleButton>
-  <ToggleButton>Toggle 2</ToggleButton>
-  <ToggleButton>Toggle 3</ToggleButton>
+const TEXT_1 = `<ToggleButtonGroup value="toggle1">
+  <ToggleButton value="toggle1">Toggle 1</ToggleButton>
+  <ToggleButton value="toggle2">Toggle 2</ToggleButton>
+  <ToggleButton value="toggle3">Toggle 3</ToggleButton>
 </ToggleButtonGroup>
 `;
 
@@ -316,7 +316,6 @@ const ToggleButtonDisplay = () => {
                   code={CODE_2}
                   text={TEXT_2}
                   codeStyle={{ backgroundColor: bgColor }}
-                  textStyle={{ padding: "0 0 1rem 0" }}
                   style={{ marginTop: "1rem" }}
                   color="primary"
                   language="jsx"

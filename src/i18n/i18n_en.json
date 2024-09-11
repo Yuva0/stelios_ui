@@ -1,0 +1,189 @@
+{
+  "grateful": {
+    "title": "Thank you for using Stelios!",
+    "description_1": "If you've enjoyed using my design system and appreciate it's features, I would be incredibly grateful if you could show your support by starring the",
+    "description_2": "repository",
+    "description_3": "A tremendous amount of thought, effort, and time has gone into crafting a responsive, accessible, and versatile system and one star would be a great way to show your appreciation."
+  },
+  "components": {
+    "title": "Components"
+  },
+  "props": {
+    "usage": {
+      "label": "Usage",
+      "value": "usage"
+    },
+    "props": {
+      "label": "Props",
+      "value": "props"
+    },
+    "theme": {
+      "label": "Theme",
+      "value": "theme"
+    }
+  },
+  "button": {
+    "title": "Button",
+    "description": "A button initiates an action when clicked.",
+    "usage": {
+      "installation": {
+        "label": "Installation Guide",
+        "description": "import { Button } from \"stelios\""
+      },
+      "variants": {
+        "label": "Variants",
+        "description": "Button comes in multiple variants: contained, outlined, soft, outlined-soft & neumorph."
+      },
+      "sizes": {
+        "label": "Sizes",
+        "description": "Button comes in multiple sizes: small, medium & large."
+      },
+      "icons": {
+        "label": "Icons",
+        "description": "Button can have icons: leading, trailing or both."
+      },
+      "rounded": {
+        "label": "Rounded",
+        "description": "Button can be rounded or not."
+      },
+      "disabled": {
+        "label": "Disabled",
+        "description": "Button can be disabled or not."
+      },
+      "fullWidth": {
+        "label": "Full Width",
+        "description": "Button can be full width or not."
+      }
+    },
+    "props": {
+      "label": "Button Props",
+      "variant": {
+        "name": "variant",
+        "description": "The variant of the button",
+        "type": "contained | outlined | soft | outlined-soft | neumorph",
+        "default": "contained"
+      },
+      "size": {
+        "name": "size",
+        "description": "The size of the button",
+        "type": "small | medium | large",
+        "default": "medium"
+      },
+      "rounded": {
+        "name": "rounded",
+        "description": "Is the button rounded or not?",
+        "type": "boolean",
+        "default": "false"
+      },
+      "disabled": {
+        "name": "disabled",
+        "description": "Is the button disabled or not?",
+        "type": "boolean",
+        "default": "false"
+      },
+      "isFullWidth": {
+        "name": "isFullWidth",
+        "description": "Is the button full width or not?",
+        "type": "boolean",
+        "default": "false"
+      },
+      "color": {
+        "name": "color",
+        "description": "The color of the button created using the color palette",
+        "type": "string",
+        "default": "#00b4d8"
+      },
+      "leadingIcon": {
+        "name": "leadingIcon",
+        "description": "The leading icon of the button",
+        "type": "ReactNode",
+        "default": "null"
+      },
+      "trailingIcon": {
+        "name": "trailingIcon",
+        "description": "The trailing icon of the button",
+        "type": "ReactNode",
+        "default": "null"
+      },
+      "children": {
+        "name": "children",
+        "description": "The content of the button",
+        "type": "ReactNode",
+        "default": "null"
+      },
+      "onClick": {
+        "name": "onClick",
+        "description": "The function to be called when the button is clicked",
+        "type": "(e: React.MouseEvent<HTMLButtonElement>) => void;",
+        "default": "undefined"
+      }
+    }
+  },
+  "iconButton": {
+    "title": "Icon Button",
+    "description": "IconButton is a button component that can be used to trigger an event or action.",
+    "usage": {
+      "installation": {
+        "label": "Installation Guide",
+        "description": "import { IconButton } from \"stelios\""
+      },
+      "variants": {
+        "label": "Variants",
+        "description": "IconButton comes in multiple variants: contained, outlined, soft, outlined-soft & neumorph."
+      },
+      "sizes": {
+        "label": "Sizes",
+        "description": "IconButton comes in multiple sizes: small, medium & large."
+      },
+      "disabled": {
+        "label": "Disabled",
+        "description": "IconButton can be disabled or not."
+      }
+    },
+    "props": {
+      "label": "IconButton Props",
+      "variant": {
+        "name": "variant",
+        "description": "The variant of the IconButton",
+        "type": "contained | outlined | soft | outlined-soft | neumorph",
+        "default": "contained"
+      },
+      "size": {
+        "name": "size",
+        "description": "The size of the IconButton",
+        "type": "small | medium | large",
+        "default": "medium"
+      },
+      "disabled": {
+        "name": "disabled",
+        "description": "Is the IconButton disabled or not?",
+        "type": "boolean",
+        "default": "false"
+      },
+      "color": {
+        "name": "color",
+        "description": "The color of the IconButton created using the color palette",
+        "type": "string",
+        "default": "#00b4d8"
+      },
+      "icon": {
+        "name": "icon",
+        "description": "The icon of the IconButton",
+        "type": "ReactNode",
+        "default": "null"
+      },
+      "alt": {
+        "name": "alt",
+        "description": "The alt text of the icon",
+        "type": "string",
+        "default": "undefined"
+      },
+      "onClick": {
+        "name": "onClick",
+        "description": "The function to be called when the IconButton is clicked",
+        "type": "(e: React.MouseEvent<HTMLButtonElement>) => void;",
+        "default": "undefined"
+      }
+    }
+  }
+}
