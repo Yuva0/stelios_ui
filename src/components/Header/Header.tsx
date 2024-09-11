@@ -46,7 +46,7 @@ const Header = () => {
             color="primary"
             alt="github"
             icon={<IconBrandGithub />}
-            onClick={() => window.open("https://github.com/yuva0")}
+            onClick={() => window.open("https://github.com/yuva0/stelios")}
           />
         </HeaderItem>
         <HeaderItem>

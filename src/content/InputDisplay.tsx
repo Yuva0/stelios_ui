@@ -87,6 +87,7 @@ const InputDisplay = () => {
                 description={INPUTTEXT.props.variant.description}
                 type={INPUTTEXT.props.variant.type}
                 defaultValue={INPUTTEXT.props.variant.default}
+                marginTop="1rem"
               />
               <RenderProps
                 propName={INPUTTEXT.props.size.name}

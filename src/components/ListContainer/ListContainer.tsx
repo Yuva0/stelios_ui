@@ -23,6 +23,7 @@ const ButtonDisplay = renderLazyComponent("ButtonDisplay");
 const ToggleButtonDisplay = renderLazyComponent("ToggleButtonDisplay");
 const IconButtonDisplay = renderLazyComponent("IconButtonDisplay");
 const InputDisplay = renderLazyComponent("InputDisplay");
+const PasswordDisplay = renderLazyComponent("PasswordDisplay");
 
 const ListContainer: React.FunctionComponent = () => {
   const theme = useTheme().theme;
@@ -43,6 +44,8 @@ const ListContainer: React.FunctionComponent = () => {
         return <IconButtonDisplay />;
       case "input":
         return <InputDisplay />;
+      case "password":
+        return <PasswordDisplay />;
       default:
         return <ButtonDisplay />;
     }
