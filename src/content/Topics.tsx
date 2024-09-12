@@ -33,7 +33,7 @@ const Topics: TopicsProps = {
           autocomplete: {
             title: "Autocomplete"
           },
-          numberInput: {
+          "number-input": {
             title: "Number Input"
           }
         }
@@ -50,9 +50,6 @@ const Topics: TopicsProps = {
           switch: {
             title: "Switch"
           },
-          formControlLabel: {
-            title: "Form Control Label"
-          }
         }
       },
       buttonBase: {

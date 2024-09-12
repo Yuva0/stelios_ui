@@ -640,5 +640,343 @@
         "default": "undefined"
       }
     }
+  },
+  "numberInput": {
+    "title": "Number Input",
+    "path": "number-input",
+    "description": "Number Input is a field that allows users to enter a number.",
+    "usage": {
+      "installation": {
+        "label": "Installation Guide",
+        "description": "import { NumberInput } from \"stelios\""
+      },
+      "variants": {
+        "label": "Variants",
+        "description": "Number Input comes in multiple variants: contained, outlined and soft."
+      },
+      "sizes": {
+        "label": "Sizes",
+        "description": "Number Input comes in multiple sizes: small, medium & large."
+      }
+    },
+    "props": {
+      "_label": "Number Input Props",
+      "variant": {
+        "name": "variant",
+        "description": "the variant of the number input",
+        "type": "contained | outlined | soft",
+        "default": "contained"
+      },
+      "size": {
+        "name": "size",
+        "description": "the size of the number input",
+        "type": "small | medium | large",
+        "default": "medium"
+      },
+      "label": {
+        "name": "label",
+        "description": "the label of the number input",
+        "type": "string",
+        "default": "undefined"
+      },
+      "min": {
+        "name": "min",
+        "description": "the minimum value of the number input",
+        "type": "number",
+        "default": "0"
+      },
+      "max": {
+        "name": "max",
+        "description": "the maximum value of the number input",
+        "type": "number",
+        "default": "100"
+      },
+      "value": {
+        "name": "value",
+        "description": "the value of the number input",
+        "type": "number",
+        "default": "0"
+      },
+      "color": {
+        "name": "color",
+        "description": "the color of the number input created using the color palette",
+        "type": "string",
+        "default": "#00b4d8"
+      },
+      "onChange": {
+        "name": "onChange",
+        "description": "the function to be called when the number input is changed",
+        "type": "(e: React.ChangeEvent<HTMLInputElement> | React.MouseEvent, value?: number) => void;",
+        "default": "undefined"
+      },
+      "onIncrement": {
+        "name": "onIncrement",
+        "description": "the function to be called when the number input is incremented",
+        "type": "(e: React.MouseEvent, value?: number) => void;",
+        "default": "undefined"
+      },
+      "onDecrement": {
+        "name": "onDecrement",
+        "description": "the function to be called when the number input is decremented",
+        "type": "(e: React.MouseEvent, value?: number) => void;",
+        "default": "undefined"
+      }
+    }
+  },
+  "checkbox": {
+    "title": "Checkbox",
+    "path": "checkbox",
+    "description": "Checkbox is a field that allows users to select one or more options from a list.",
+    "usage": {
+      "installation": {
+        "label": "Installation Guide",
+        "description": "import { Checkbox, FormControlLabel } from \"stelios\""
+      },
+      "sizes": {
+        "label": "Sizes",
+        "description": "Checkbox comes in multiple sizes: small, medium & large."
+      }
+    },
+    "props": {
+      "_label": "Checkbox Props",
+      "value": {
+        "name": "value",
+        "description": "the value of the checkbox",
+        "type": "string",
+        "default": "undefined"
+      },
+      "label": {
+        "name": "label",
+        "description": "the label of the checkbox",
+        "type": "string",
+        "default": "undefined"
+      },
+      "size": {
+        "name": "size",
+        "description": "the size of the checkbox",
+        "type": "small | medium | large",
+        "default": "medium"
+      },
+      "color": {
+        "name": "color",
+        "description": "the color of the checkbox created using the color palette",
+        "type": "string",
+        "default": "#00b4d8"
+      },
+      "checked": {
+        "name": "checked",
+        "description": "Is the checkbox checked or not?",
+        "type": "boolean",
+        "default": "false"
+      },
+      "name": {
+        "name": "name",
+        "description": "the name of the checkbox",
+        "type": "string",
+        "default": "undefined"
+      },
+      "disabled": {
+        "name": "disabled",
+        "description": "Is the checkbox disabled or not?",
+        "type": "boolean",
+        "default": "false"
+      }
+    }
+  },
+  "radio": {
+    "title": "Radio",
+    "path": "radio",
+    "description": "Radio is a field that allows users to select one option from a list.",
+    "usage": {
+      "installation": {
+        "label": "Installation Guide",
+        "description": "import { Radio, FormControlLabel } from \"stelios\""
+      },
+      "sizes": {
+        "label": "Sizes",
+        "description": "Radio comes in multiple sizes: small, medium & large."
+      }
+    },
+    "props": {
+      "_label": "Radio Props",
+      "value": {
+        "name": "value",
+        "description": "the value of the radio",
+        "type": "string",
+        "default": "undefined"
+      },
+      "label": {
+        "name": "label",
+        "description": "the label of the radio",
+        "type": "string",
+        "default": "undefined"
+      },
+      "size": {
+        "name": "size",
+        "description": "the size of the radio",
+        "type": "small | medium | large",
+        "default": "medium"
+      },
+      "color": {
+        "name": "color",
+        "description": "the color of the radio created using the color palette",
+        "type": "string",
+        "default": "#00b4d8"
+      },
+      "checked": {
+        "name": "checked",
+        "description": "Is the radio checked or not?",
+        "type": "boolean",
+        "default": "false"
+      },
+      "name": {
+        "name": "name",
+        "description": "the name of the radio",
+        "type": "string",
+        "default": "undefined"
+      },
+      "disabled": {
+        "name": "disabled",
+        "description": "Is the radio disabled or not?",
+        "type": "boolean",
+        "default": "false"
+      }
+    }
+  },
+  "switch": {
+    "title": "Switch",
+    "path": "switch",
+    "description": "Switch is a field that allows users to turn an option on or off.",
+    "usage": {
+      "installation": {
+        "label": "Installation Guide",
+        "description": "import { Switch, FormControlLabel } from \"stelios\""
+      },
+      "sizes": {
+        "label": "Sizes",
+        "description": "Switch comes in multiple sizes: small, medium & large."
+      }
+    },
+    "props": {
+      "_label": "Switch Props",
+      "value": {
+        "name": "value",
+        "description": "the value of the switch",
+        "type": "string",
+        "default": "undefined"
+      },
+      "label": {
+        "name": "label",
+        "description": "the label of the switch",
+        "type": "string",
+        "default": "undefined"
+      },
+      "size": {
+        "name": "size",
+        "description": "the size of the switch",
+        "type": "small | medium | large",
+        "default": "medium"
+      },
+      "color": {
+        "name": "color",
+        "description": "the color of the switch created using the color palette",
+        "type": "string",
+        "default": "#00b4d8"
+      },
+      "checked": {
+        "name": "checked",
+        "description": "Is the switch checked or not?",
+        "type": "boolean",
+        "default": "false"
+      },
+      "disabled": {
+        "name": "disabled",
+        "description": "Is the switch disabled or not?",
+        "type": "boolean",
+        "default": "false"
+      }
+    }
+  },
+  "avatar": {
+    "title": "Avatar",
+    "path": "avatar",
+    "description": "Avatar is an image that represents a user or an icon.",
+    "usage": {
+      "installation": {
+        "label": "Installation Guide",
+        "description": "import { Avatar } from \"stelios\""
+      },
+      "sizes": {
+        "label": "Sizes",
+        "description": "Avatar comes in multiple sizes: small, medium & large."
+      },
+      "shape": {
+        "label": "Shapes",
+        "description": "Avatar comes in multiple shapes: rounded & square."
+      },
+      "initials": {
+        "label": "Initials",
+        "description": "Avatar can be initials."
+      },
+      "image": {
+        "label": "Image",
+        "description": "Avatar can be an image."
+      },
+      "variant": {
+        "label": "Variants",
+        "description": "Avatar comes in multiple variants: contained, outlined & soft."
+      }
+    },
+    "props": {
+      "_label": "Avatar Props",
+      "src": {
+        "name": "src",
+        "description": "the source of the image",
+        "type": "string",
+        "default": "undefined"
+      },
+      "alt": {
+        "name": "alt",
+        "description": "the alt text of the image",
+        "type": "string",
+        "default": "undefined"
+      },
+      "type": {
+        "name": "type",
+        "description": "the type of the avatar",
+        "type": "image | initials",
+        "default": "image"
+      },
+      "initials": {
+        "name": "initials",
+        "description": "the initials of the avatar",
+        "type": "string",
+        "default": "undefined"
+      },
+      "size": {
+        "name": "size",
+        "description": "the size of the avatar",
+        "type": "small | medium | large | xlarge",
+        "default": "medium"
+      },
+      "shape": {
+        "name": "shape",
+        "description": "the shape of the avatar",
+        "type": "rounded | square",
+        "default": "rounded"
+      },
+      "variant": {
+        "name": "variant",
+        "description": "the variant of the avatar",
+        "type": "contained | outlined | soft",
+        "default": "contained"
+      }
+    },
+    "color": {
+      "name": "color",
+      "description": "the color of the avatar created using the color palette",
+      "type": "string",
+      "default": "#00b4d8"
+    }
   }
 }

@@ -25,6 +25,12 @@ const IconButtonDisplay = renderLazyComponent("IconButtonDisplay");
 const InputDisplay = renderLazyComponent("InputDisplay");
 const PasswordDisplay = renderLazyComponent("PasswordDisplay");
 const SelectDisplay = renderLazyComponent("SelectDisplay");
+const AutocompleteDisplay = renderLazyComponent("AutocompleteDisplay");
+const NumberInputDisplay = renderLazyComponent("NumberInputDisplay");
+const CheckboxDisplay = renderLazyComponent("CheckboxDisplay");
+const RadioDisplay = renderLazyComponent("RadioDisplay");
+const SwitchDisplay = renderLazyComponent("SwitchDisplay");
+const AvatarDisplay = renderLazyComponent("AvatarDisplay");
 
 const ListContainer: React.FunctionComponent = () => {
   const theme = useTheme().theme;
@@ -49,6 +55,18 @@ const ListContainer: React.FunctionComponent = () => {
         return <PasswordDisplay />;
       case "select":
         return <SelectDisplay />;
+      case "autocomplete":
+        return <AutocompleteDisplay />;
+      case "number-input":
+        return <NumberInputDisplay />;
+      case "checkbox":
+        return <CheckboxDisplay />;
+      case "radio":
+        return <RadioDisplay />;
+      case "switch":
+        return <SwitchDisplay />;
+      case "avatar":
+        return <AvatarDisplay />;
       default:
         return <ButtonDisplay />;
     }
