@@ -113,7 +113,6 @@ const getSelectedCategory = (topic?: string) => {
   const category = Object.keys(TOPICS).find((categories) => {
     const allCategoryKeys = Object.keys(TOPICS[categories].content);
     return allCategoryKeys.find((category) => {
-      console.log(TOPICS[categories].content[category]);
 
       const subCategories = TOPICS[categories].content[category];
       if (subCategories.content) {
@@ -123,6 +122,5 @@ const getSelectedCategory = (topic?: string) => {
       }
     });
   });
-  console.log(category);
   return category;
 };

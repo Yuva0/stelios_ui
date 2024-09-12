@@ -19,7 +19,6 @@ import {
 import i18n from "../i18n/i18n_en.json";
 
 const TOGGLEBUTTON = i18n.toggleButton;
-
 const ToggleButtonDisplay = () => {
   const theme = useTheme().theme!;
   const colorPalette = theme.colorPalette;
@@ -192,7 +191,7 @@ const CODE_1 = (
     }}
   >
     <ToggleButtonGroup
-      color="primary"
+      color="component"
       width="400px"
       value="toggle1"
       size="small"
@@ -202,7 +201,7 @@ const CODE_1 = (
       <ToggleButton value="toggle3">Toggle 3</ToggleButton>
     </ToggleButtonGroup>
     <ToggleButtonGroup
-      color="primary"
+      color="component"
       width="400px"
       value="toggle1"
       size="medium"
@@ -212,7 +211,7 @@ const CODE_1 = (
       <ToggleButton value="toggle3">Toggle 3</ToggleButton>
     </ToggleButtonGroup>
     <ToggleButtonGroup
-      color="primary"
+      color="component"
       width="400px"
       value="toggle1"
       size="large"

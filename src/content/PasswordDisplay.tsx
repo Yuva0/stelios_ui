@@ -112,9 +112,9 @@ const CODE_1 = (
       alignItems: "center",
     }}
   >
-    <Password color="primary" variant="contained" placeholder="Search here" />
-    <Password color="primary" variant="outlined" placeholder="Search here" />
-    <Password color="primary" variant="soft" placeholder="Search here" />
+    <Password color="component" variant="contained" placeholder="Search here" />
+    <Password color="component" variant="outlined" placeholder="Search here" />
+    <Password color="component" variant="soft" placeholder="Search here" />
   </div>
 );
 const TEXT_1 = `<Password variant="contained" placeholder="Search here" />
@@ -132,9 +132,9 @@ const CODE_2 = (
       alignItems: "center",
     }}
   >
-    <Password color="primary" size="small" placeholder="Search here" />
-    <Password color="primary" size="medium" placeholder="Search here" />
-    <Password color="primary" size="large" placeholder="Search here" />
+    <Password color="component" size="small" placeholder="Search here" />
+    <Password color="component" size="medium" placeholder="Search here" />
+    <Password color="component" size="large" placeholder="Search here" />
   </div>
 );
 const TEXT_2 = `<Password size="small" placeholder="Search here" />
@@ -152,7 +152,7 @@ const CODE_3 = (
       alignItems: "center",
     }}
   >
-    <Password color="primary" size="small" placeholder="Search here" hasError errorMessage="Error is displayed here"/>
+    <Password color="component" size="small" placeholder="Search here" hasError errorMessage="Error is displayed here"/>
   </div>
 );
 const TEXT_3 = `<Password size="small" placeholder="Search here" hasError errorMessage="Error is displayed here"/>`;
@@ -167,7 +167,7 @@ const CODE_4 = (
       alignItems: "center",
     }}
   >
-    <Password color="primary" size="small" placeholder="Custom Placeholder" label="Password Label"/>
+    <Password color="component" size="small" placeholder="Custom Placeholder" label="Password Label"/>
   </div>
 );
 const TEXT_4 = `<Password size="small" placeholder="Custom Placeholder" label="Password Label"/>`;

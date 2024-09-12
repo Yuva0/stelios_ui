@@ -178,55 +178,55 @@ const CODE_1 = (
     <IconButton
       icon={<IconAwardFilled />}
       alt="Award"
-      color="primary"
+      color="component"
       variant="contained"
     />
     <IconButton
       icon={<IconAwardFilled />}
       alt="Award"
-      color="primary"
+      color="component"
       variant="outlined"
     />
     <IconButton
       icon={<IconAwardFilled />}
       alt="Award"
-      color="primary"
+      color="component"
       variant="outlined-soft"
     />
     <IconButton
       icon={<IconAwardFilled />}
       alt="Award"
-      color="primary"
+      color="component"
       variant="soft"
     />
     <IconButton
       icon={<IconAwardFilled />}
       alt="Award"
-      color="primary"
+      color="component"
       variant="neumorph"
     />
     <IconButton
       icon={<IconAwardFilled />}
       alt="Award"
-      color="primary"
+      color="component"
       variant="neumorph-contained"
     />
     <IconButton
       icon={<IconAwardFilled />}
       alt="Award"
-      color="primary"
+      color="component"
       disabled
     />
   </div>
 );
 const TEXT_1 = `
-    <IconButton icon={<IconAwardFilled/>} alt="Award" color="primary" variant="contained"/>
-    <IconButton icon={<IconAwardFilled/>} alt="Award" color="primary" variant="outlined"/>
-    <IconButton icon={<IconAwardFilled/>} alt="Award" color="primary" variant="outlined-soft"/>
-    <IconButton icon={<IconAwardFilled/>} alt="Award" color="primary" variant="soft"/>
-    <IconButton icon={<IconAwardFilled/>} alt="Award" color="primary" variant="neumorph"/>
-    <IconButton icon={<IconAwardFilled/>} alt="Award" color="primary" variant="neumorph-contained"/>
-    <IconButton icon={<IconAwardFilled/>} alt="Award" color="primary" disabled/>`;
+    <IconButton icon={<IconAwardFilled/>} alt="Award" variant="contained"/>
+    <IconButton icon={<IconAwardFilled/>} alt="Award" variant="outlined"/>
+    <IconButton icon={<IconAwardFilled/>} alt="Award" variant="outlined-soft"/>
+    <IconButton icon={<IconAwardFilled/>} alt="Award" variant="soft"/>
+    <IconButton icon={<IconAwardFilled/>} alt="Award" variant="neumorph"/>
+    <IconButton icon={<IconAwardFilled/>} alt="Award" variant="neumorph-contained"/>
+    <IconButton icon={<IconAwardFilled/>} alt="Award" disabled/>`;
 
 const CODE_2 = (
   <div
@@ -240,37 +240,37 @@ const CODE_2 = (
     <IconButton
       icon={<IconAwardFilled />}
       alt="Award"
-      color="primary"
+      color="component"
       size="small"
       style={{ height: "fit-content" }}
     />
     <IconButton
       icon={<IconAwardFilled />}
       alt="Award"
-      color="primary"
+      color="component"
       size="medium"
       style={{ height: "fit-content" }}
     />
     <IconButton
       icon={<IconAwardFilled />}
       alt="Award"
-      color="primary"
+      color="component"
       size="large"
       style={{ height: "fit-content" }}
     />
   </div>
 );
 const TEXT_2 = `
-    <IconButton icon={<IconAwardFilled/>} alt="Award" color="primary" size="small"/>
-    <IconButton icon={<IconAwardFilled/>} alt="Award" color="primary" size="medium"/>
-    <IconButton icon={<IconAwardFilled/>} alt="Award" color="primary" size="large"/>`;
+    <IconButton icon={<IconAwardFilled/>} alt="Award" size="small"/>
+    <IconButton icon={<IconAwardFilled/>} alt="Award" size="medium"/>
+    <IconButton icon={<IconAwardFilled/>} alt="Award" size="large"/>`;
 
 const CODE_3 = (
   <div style={{ display: "flex", gap: "2rem" }}>
-    <IconButton icon={<IconAwardFilled />} alt="Award" color="primary" disabled>
+    <IconButton icon={<IconAwardFilled />} alt="Award" color="component" disabled>
       Click Me
     </IconButton>
   </div>
 );
 const TEXT_3 = `
-    <IconButton color="primary" disabled> Click Me </IconButton>`;
+    <IconButton disabled> Click Me </IconButton>`;

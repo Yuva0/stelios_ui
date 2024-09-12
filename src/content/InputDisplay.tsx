@@ -206,9 +206,9 @@ const CODE_1 = (
       alignItems: "center",
     }}
   >
-    <Input color="primary" variant="contained" placeholder="Search here" />
-    <Input color="primary" variant="outlined" placeholder="Search here" />
-    <Input color="primary" variant="soft" placeholder="Search here" />
+    <Input color="component" variant="contained" placeholder="Search here" />
+    <Input color="component" variant="outlined" placeholder="Search here" />
+    <Input color="component" variant="soft" placeholder="Search here" />
   </div>
 );
 const TEXT_1 = `
@@ -227,9 +227,9 @@ const CODE_2 = (
       alignItems: "center",
     }}
   >
-    <Input color="primary" size="small" placeholder="Search here" />
-    <Input color="primary" size="medium" placeholder="Search here" />
-    <Input color="primary" size="large" placeholder="Search here" />
+    <Input color="component" size="small" placeholder="Search here" />
+    <Input color="component" size="medium" placeholder="Search here" />
+    <Input color="component" size="large" placeholder="Search here" />
   </div>
 );
 const TEXT_2 = `

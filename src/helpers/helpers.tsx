@@ -91,7 +91,7 @@ export const RenderProps: React.FC<{
   );
   return (
     <>
-      <Tag color="primary" variant="outlined" style={{ marginTop: marginTop }}>
+      <Tag color="component" variant="outlined" style={{ marginTop: marginTop }}>
         {propName}
       </Tag>
       {line}
@@ -105,7 +105,7 @@ export const RenderProps: React.FC<{
         <Text preciseColor={textColor} style={{ minWidth: "200px" }}>
           <b>Type</b>
         </Text>
-        <Text color="primary" style={{ wordSpacing: wordSpacing }}>
+        <Text color="component" style={{ wordSpacing: wordSpacing }}>
           {type}
         </Text>
       </div>
@@ -113,7 +113,7 @@ export const RenderProps: React.FC<{
         <Text preciseColor={textColor} style={{ minWidth: "200px" }}>
           <b>Default</b>
         </Text>
-        <Text color="primary" style={{ wordSpacing: wordSpacing }}>
+        <Text color="component" style={{ wordSpacing: wordSpacing }}>
           {defaultValue}
         </Text>
       </div>
@@ -196,7 +196,7 @@ export const RenderVariations = ({
 export const RenderBreadcrumbsForComponent = ({ name, path }: { name: string, path?: string }) => {
   return (
     <Breadcrumbs
-      color="primary"
+      color="component"
       variant="text"
       style={{ padding: 0 }}
       delimiter="/"
@@ -226,7 +226,7 @@ export const RenderComponentHeading = ({
         <Link
           variant="underline"
           size="small"
-          color="primary"
+          color="component"
           href="https://github.com/Yuva0/stelios"
           target={"_blank"}
         >
@@ -251,7 +251,7 @@ export const RenderComponentHeading = ({
       <Banner
         width="100%"
         title={i18n.grateful.title}
-        color="secondary"
+        color="component"
         description={BANNER_GRATEFUL_DESC}
         titleIcon={<IconHeartFilled />}
         style={{ marginTop: "1rem" }}

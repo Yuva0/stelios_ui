@@ -225,60 +225,60 @@ export default ButtonDisplay;
 
 const CODE_1 = (
   <div style={{ display: "flex", gap: "2rem" }}>
-    <Button color="primary" variant="contained">
+    <Button color="component" variant="contained">
       Click Me
     </Button>
-    <Button color="primary" variant="outlined">
+    <Button color="component" variant="outlined">
       Click Me
     </Button>
-    <Button color="primary" variant="outlined-soft">
+    <Button color="component" variant="outlined-soft">
       Click Me
     </Button>
-    <Button color="primary" variant="soft">
+    <Button color="component" variant="soft">
       Click Me
     </Button>
-    <Button color="primary" variant="neumorph">
+    <Button color="component" variant="neumorph">
       Click Me
     </Button>
-    <Button color="primary" disabled>
+    <Button color="component" disabled>
       Click Me
     </Button>
   </div>
 );
-const TEXT_1 = `<Button color="primary" variant="contained"> Click Me </Button>
-<Button color="primary" variant="outlined"> Click Me </Button>
-<Button color="primary" variant="outlined-soft"> Click Me </Button>
-<Button color="primary" variant="soft"> Click Me </Button>
-<Button color="primary" variant="neumorph"> Click Me </Button>
-<Button color="primary" disabled>Click Me</Button>`;
+const TEXT_1 = `<Button variant="contained"> Click Me </Button>
+<Button variant="outlined"> Click Me </Button>
+<Button variant="outlined-soft"> Click Me </Button>
+<Button variant="soft"> Click Me </Button>
+<Button variant="neumorph"> Click Me </Button>
+<Button disabled>Click Me</Button>`;
 
 const CODE_2 = (
   <div style={{ display: "flex", gap: "2rem" }}>
-    <Button color="primary" size="small">
+    <Button color="component" size="small">
       Click Me
     </Button>
-    <Button color="primary" size="medium">
+    <Button color="component" size="medium">
       Click Me
     </Button>
-    <Button color="primary" size="large">
+    <Button color="component" size="large">
       Click Me
     </Button>
   </div>
 );
-const TEXT_2 = `<Button color="primary" size="small"> Click Me </Button>
-<Button color="primary" size="medium"> Click Me </Button>
-<Button color="primary" size="large"> Click Me </Button>`;
+const TEXT_2 = `<Button size="small"> Click Me </Button>
+<Button size="medium"> Click Me </Button>
+<Button size="large"> Click Me </Button>`;
 
 const CODE_3 = (
   <div style={{ display: "flex", gap: "2rem" }}>
-    <Button color="primary" leadingIcon={<IconHeartFilled />}>
+    <Button color="component" leadingIcon={<IconHeartFilled />}>
       Click Me
     </Button>
-    <Button color="primary" trailingIcon={<IconAwardFilled />}>
+    <Button color="component" trailingIcon={<IconAwardFilled />}>
       Click Me
     </Button>
     <Button
-      color="primary"
+      color="component"
       leadingIcon={<IconHeartFilled />}
       trailingIcon={<IconAwardFilled />}
     >
@@ -286,33 +286,33 @@ const CODE_3 = (
     </Button>
   </div>
 );
-const TEXT_3 = `<Button color="primary" leadingIcon={<IconHeartFilled />}> Click Me </Button>
-<Button color="primary" trailingIcon={<IconHeartFilled />}> Click Me </Button>
-<Button color="primary" leadingIcon={<IconHeartFilled />} trailingIcon={<IconTrophy/>}> Click Me </Button>`;
+const TEXT_3 = `<Button leadingIcon={<IconHeartFilled />}> Click Me </Button>
+<Button trailingIcon={<IconHeartFilled />}> Click Me </Button>
+<Button leadingIcon={<IconHeartFilled />} trailingIcon={<IconTrophy/>}> Click Me </Button>`;
 
 const CODE_4 = (
   <div style={{ display: "flex", gap: "2rem" }}>
-    <Button color="primary" rounded>
+    <Button color="component" rounded>
       Click Me
     </Button>
   </div>
 );
-const TEXT_4 = `<Button color="primary" rounded> Click Me </Button>`;
+const TEXT_4 = `<Button rounded> Click Me </Button>`;
 
 const CODE_5 = (
   <div style={{ display: "flex", gap: "2rem" }}>
-    <Button color="primary" disabled>
+    <Button color="component" disabled>
       Click Me
     </Button>
   </div>
 );
-const TEXT_5 = `<Button color="primary" disabled> Click Me </Button>`;
+const TEXT_5 = `<Button disabled> Click Me </Button>`;
 
 const CODE_6 = (
   <div style={{ display: "flex", gap: "2rem", width: "100%" }}>
-    <Button color="primary" isFullWidth>
+    <Button color="component" isFullWidth>
       Click Me
     </Button>
   </div>
 );
-const TEXT_6 = `<Button color="primary" isFullWidth> Click Me </Button>`;
+const TEXT_6 = `<Button isFullWidth> Click Me </Button>`;
