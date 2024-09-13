@@ -31,6 +31,7 @@ const CheckboxDisplay = renderLazyComponent("CheckboxDisplay");
 const RadioDisplay = renderLazyComponent("RadioDisplay");
 const SwitchDisplay = renderLazyComponent("SwitchDisplay");
 const AvatarDisplay = renderLazyComponent("AvatarDisplay");
+const TagDisplay = renderLazyComponent("TagDisplay");
 
 const ListContainer: React.FunctionComponent = () => {
   const theme = useTheme().theme;
@@ -67,6 +68,8 @@ const ListContainer: React.FunctionComponent = () => {
         return <SwitchDisplay />;
       case "avatar":
         return <AvatarDisplay />;
+      case "tag":
+        return <TagDisplay />;
       default:
         return <ButtonDisplay />;
     }

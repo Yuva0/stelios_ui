@@ -91,7 +91,7 @@ export const RenderProps: React.FC<{
   );
   return (
     <>
-      <Tag color="component" variant="outlined" style={{ marginTop: marginTop }}>
+      <Tag disableClick color="component" variant="outlined" style={{ marginTop: marginTop }}>
         {propName}
       </Tag>
       {line}

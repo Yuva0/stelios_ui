@@ -74,7 +74,7 @@ const Topics: TopicsProps = {
       avatar: {
         title: "Avatar"
       },
-      badge: {
+      tag: {
         title: "Tag"
       },
       banner: {
