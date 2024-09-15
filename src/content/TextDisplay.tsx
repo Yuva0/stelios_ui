@@ -97,7 +97,6 @@ const TextDisplay = () => {
                   defaultValue={
                     TEXT.props.size.default
                   }
-                  marginTop="1rem"
                 />
                 <RenderProps
                   propName={TEXT.props.color.name}

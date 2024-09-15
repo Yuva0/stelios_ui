@@ -1461,5 +1461,35 @@
         "default": "1.5"
       }
     }
+  },
+  "navigation-bar": {
+    "title": "Navigation Bar",
+    "path": "navigation-bar",
+    "description": "Navigation Bar is a container that contains navigation items.",
+    "usage": {
+      "installation": {
+        "label": "Installation Guide",
+        "description": "import { NavigationBar, NavigationItem } from \"stelios\""
+      },
+      "group": {
+        "label": "Group",
+        "description": "Navigation Bar can have a group of navigation items."
+      }
+    },
+    "props": {
+      "_label": "Navigation Bar Props",
+      "children": {
+        "name": "children",
+        "description": "the content of the navigation bar",
+        "type": "React.ReactNode | React.ReactNode[]",
+        "default": "undefined"
+      },
+      "color": {
+        "name": "color",
+        "description": "the color of the navigation bar created using the color palette",
+        "type": "string",
+        "default": "#00b4d8"
+      }
+    }
   }
 }

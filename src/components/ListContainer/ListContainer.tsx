@@ -3,6 +3,7 @@ import { useTheme } from "stelios";
 import NavigationBar from "../../components/NavigationBar/NavigationBar";
 import styled from "styled-components";
 import { useParams } from "react-router-dom";
+import NavigationBarDisplay from "../../content/NavigationBarDisplay";
 
 interface ListContainerStyleProps {
   $colorPalette: any;
@@ -88,6 +89,8 @@ const ListContainer: React.FunctionComponent = () => {
         return <LinkDisplay />;
       case "text":
         return <TextDisplay />;
+      case "navigation-bar":
+        return <NavigationBarDisplay />;
       default:
         return <ButtonDisplay />;
     }
