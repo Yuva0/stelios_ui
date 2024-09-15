@@ -36,6 +36,7 @@ const BannerDisplay = renderLazyComponent("BannerDisplay");
 const CapsuleDisplay = renderLazyComponent("CapsuleDisplay");
 const CardDisplay = renderLazyComponent("CardDisplay");
 const ListDisplay = renderLazyComponent("ListDisplay");
+const LinkDisplay = renderLazyComponent("LinkDisplay");
 
 const ListContainer: React.FunctionComponent = () => {
   const theme = useTheme().theme;
@@ -82,6 +83,8 @@ const ListContainer: React.FunctionComponent = () => {
         return <CardDisplay />;
       case "list":
         return <ListDisplay />;
+      case "link":
+        return <LinkDisplay />;
       default:
         return <ButtonDisplay />;
     }
