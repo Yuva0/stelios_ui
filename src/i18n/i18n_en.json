@@ -1385,5 +1385,81 @@
         "default": "#00b4d8"
       }
     }
+  },
+  "text": {
+    "title": "Text",
+    "path": "text",
+    "description": "Text is a container that contains text.",
+    "usage": {
+      "installation": {
+        "label": "Installation Guide",
+        "description": "import { Text } from \"stelios\""
+      },
+      "variants": {
+        "label": "Variants",
+        "description": "Link comes in multiple variants: h1, h2, h3, h4, h5, h6, div, paragraph, label and span."
+      },
+      "sizes": {
+        "label": "Sizes",
+        "description": "Link comes in multiple sizes: small, medium & large."
+      }
+    },
+    "props": {
+      "_label": "Text Props",
+      "variant": {
+        "name": "variant",
+        "description": "the variant of the text",
+        "type": "h1 | h2 | h3 | h4 | h5 | h6 | div | paragraph | label | span",
+        "default": "paragraph"
+      },
+      "size": {
+        "name": "size",
+        "description": "the size of the text",
+        "type": "small | medium | large",
+        "default": "medium"
+      },
+      "align": {
+        "name": "align",
+        "description": "the alignment of the text",
+        "type": "left | center | right | justify",
+        "default": "left"
+      },
+      "children": {
+        "name": "children",
+        "description": "the content of the text",
+        "type": "React.ReactNode",
+        "default": "undefined"
+      },
+      "color": {
+        "name": "color",
+        "description": "the color of the text created using the color palette",
+        "type": "string",
+        "default": "#00b4d8"
+      },
+      "preciseColor": {
+        "name": "preciseColor",
+        "description": "the precise color of the text",
+        "type": "string",
+        "default": "undefined"
+      },
+      "wrap": {
+        "name": "wrap",
+        "description": "the wrap of the text",
+        "type": "boolean",
+        "default": "false"
+      },
+      "disableColor": {
+        "name": "disableColor",
+        "description": "Is the color disabled or not?",
+        "type": "boolean",
+        "default": "false"
+      },
+      "lineHeight": {
+        "name": "lineHeight",
+        "description": "the line height of the text",
+        "type": "string",
+        "default": "1.5"
+      }
+    }
   }
 }
