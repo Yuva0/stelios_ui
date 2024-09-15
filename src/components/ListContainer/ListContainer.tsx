@@ -40,6 +40,9 @@ const ListDisplay = renderLazyComponent("ListDisplay");
 const LinkDisplay = renderLazyComponent("LinkDisplay");
 const TextDisplay = renderLazyComponent("TextDisplay");
 const SideBarDisplay = renderLazyComponent("SideBarDisplay");
+const DrawerDisplay = renderLazyComponent("DrawerDisplay");
+const TabDisplay = renderLazyComponent("TabDisplay");
+const BreadcrumbsDisplay = renderLazyComponent("BreadcrumbsDisplay");
 
 const ListContainer: React.FunctionComponent = () => {
   const theme = useTheme().theme;
@@ -94,6 +97,12 @@ const ListContainer: React.FunctionComponent = () => {
         return <NavigationBarDisplay />;
       case "sidebar":
         return <SideBarDisplay />;
+      case "drawer":
+        return <DrawerDisplay />;
+      case "tabs":
+        return <TabDisplay />;
+      case "breadcrumbs":
+        return <BreadcrumbsDisplay />;
       default:
         return <ButtonDisplay />;
     }

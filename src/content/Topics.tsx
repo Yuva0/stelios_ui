@@ -7,8 +7,8 @@ export interface TopicsProps {
         content?: {
           [key: string]: {
             title: string;
-          }
-        }
+          };
+        };
       };
     };
   };
@@ -22,101 +22,127 @@ const Topics: TopicsProps = {
         title: "Input Base",
         content: {
           input: {
-            title: "Input"
+            title: "Input",
           },
           password: {
-            title: "Password"
+            title: "Password",
           },
           select: {
-            title: "Select"
+            title: "Select",
           },
           autocomplete: {
-            title: "Autocomplete"
+            title: "Autocomplete",
           },
           "number-input": {
-            title: "Number Input"
-          }
-        }
+            title: "Number Input",
+          },
+        },
       },
       formControl: {
         title: "Form Control",
         content: {
           checkbox: {
-            title: "Checkbox"
+            title: "Checkbox",
           },
           radio: {
-            title: "Radio"
+            title: "Radio",
           },
           switch: {
-            title: "Switch"
+            title: "Switch",
           },
-        }
+        },
       },
       buttonBase: {
         title: "Button Base",
         content: {
           button: {
-            title: "Button"
+            title: "Button",
           },
           "icon-button": {
-            title: "Icon Button"
+            title: "Icon Button",
           },
           "toggle-button": {
-            title: "Toggle Button"
-          }
-        }
+            title: "Toggle Button",
+          },
+        },
       },
-    }
+    },
   },
   display: {
     title: "Display",
     content: {
-      avatar: {
-        title: "Avatar"
+      imageBase: {
+        title: "Image Base",
+        content: {
+          avatar: {
+            title: "Avatar",
+          },
+          tag: {
+            title: "Tag",
+          },
+        }
       },
-      tag: {
-        title: "Tag"
+      "container-base": {
+        title: "Container Base",
+        content: {
+          banner: {
+            title: "Banner",
+          },
+          capsule: {
+            title: "Capsule",
+          },
+          card: {
+            title: "Card",
+          },
+        }
       },
-      banner: {
-        title: "Banner"
+      "text-base": {
+        title: "Text Base",
+        content: {
+          list: {
+            title: "List",
+          },
+          link: {
+            title: "Link",
+          },
+          text: {
+            title: "Text",
+          },
+        },
       },
-      capsule: {
-        title: "Capsule"
-      },
-      card: {
-        title: "Card"
-      },
-      list: {
-        title: "List"
-      },
-      link: {
-        title: "Link"
-      },
-      text: {
-        title: "Text"
+      "focus-base": {
+        "title": "Focus Base",
+        content: {
+          "accordion": {
+            title: "Accordion",
+          },
+          "collapsible": {
+            title: "Collapsible",
+          },
+        }
       }
-    }
+    },
   },
   navigation: {
     title: "Navigation",
     content: {
-      "navigation-bar":{
-        title: "Navigation Bar"
+      "navigation-bar": {
+        title: "Navigation Bar",
       },
       sidebar: {
-        title: "Side Bar"
+        title: "Side Bar",
       },
       drawer: {
-        title: "Drawer"
+        title: "Drawer",
       },
       tabs: {
-        title: "Tabs"
+        title: "Tabs",
       },
       breadcrumbs: {
-        title: "Breadcrumbs"
+        title: "Breadcrumbs",
       },
-    }
-  }
+    },
+  },
 };
 
 export default Topics;

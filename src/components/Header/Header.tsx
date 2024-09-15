@@ -10,6 +10,7 @@ import {
 import {
   IconBrandGithub,
   IconBrandLinkedin,
+  IconBrandStorybook,
 } from "@tabler/icons-react";
 
 import Settings from "./Settings";
@@ -47,6 +48,16 @@ const Header = () => {
             alt="github"
             icon={<IconBrandGithub />}
             onClick={() => window.open("https://github.com/yuva0/stelios")}
+          />
+        </HeaderItem>
+        <HeaderItem>
+          <IconButton
+            size="small"
+            variant="soft"
+            color="primary"
+            alt="storybook"
+            icon={<IconBrandStorybook/>}
+            onClick={() => window.open("https://yuva0.github.io/stelios/storybook")}
           />
         </HeaderItem>
         <HeaderItem>
