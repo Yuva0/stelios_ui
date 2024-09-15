@@ -183,7 +183,6 @@ const TagDisplay = () => {
 }
 export default TagDisplay;
 
-const IMG_SRC = `https://img.freepik.com/free-psd/3d-illustration-human-avatar-profile_23-2150671116.jpg`;
 const CODE_1 = (
   <div
     style={{

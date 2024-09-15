@@ -32,6 +32,9 @@ const RadioDisplay = renderLazyComponent("RadioDisplay");
 const SwitchDisplay = renderLazyComponent("SwitchDisplay");
 const AvatarDisplay = renderLazyComponent("AvatarDisplay");
 const TagDisplay = renderLazyComponent("TagDisplay");
+const BannerDisplay = renderLazyComponent("BannerDisplay");
+const CapsuleDisplay = renderLazyComponent("CapsuleDisplay");
+const CardDisplay = renderLazyComponent("CardDisplay");
 
 const ListContainer: React.FunctionComponent = () => {
   const theme = useTheme().theme;
@@ -70,6 +73,12 @@ const ListContainer: React.FunctionComponent = () => {
         return <AvatarDisplay />;
       case "tag":
         return <TagDisplay />;
+      case "banner":
+        return <BannerDisplay />;
+      case "capsule":
+        return <CapsuleDisplay />;
+      case "card":
+        return <CardDisplay />;
       default:
         return <ButtonDisplay />;
     }

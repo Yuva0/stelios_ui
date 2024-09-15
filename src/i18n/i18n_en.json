@@ -1050,5 +1050,222 @@
         "default": "undefined"
       }
     }
+  },
+  "banner": {
+    "title": "Banner",
+    "path": "banner",
+    "description": "Banner is a large message that is displayed to the user.",
+    "usage": {
+      "installation": {
+        "label": "Installation Guide",
+        "description": "import { Banner } from \"stelios\""
+      },
+      "variants": {
+        "label": "Variants",
+        "description": "Banner comes in multiple variants: contained, outlined and soft."
+      },
+      "title": {
+        "label": "Title, Title Icon and Leading Icon",
+        "description": "Banner can have a title, title icon and a leading icon."
+      },
+      "width": {
+        "label": "Width",
+        "description": "Banner has a customizable width."
+      }
+    },
+    "props": {
+      "_label": "Banner Props",
+      "variant": {
+        "name": "variant",
+        "description": "the variant of the banner",
+        "type": "contained | outlined | soft",
+        "default": "contained"
+      },
+      "title": {
+        "name": "title",
+        "description": "the title of the banner",
+        "type": "string",
+        "default": "undefined"
+      },
+      "description": {
+        "name": "description",
+        "description": "the description of the banner",
+        "type": "string",
+        "default": "undefined"
+      },
+      "titleIcon": {
+        "name": "titleIcon",
+        "description": "the title icon of the banner",
+        "type": "React.ReactNode",
+        "default": "undefined"
+      },
+      "leadingIcon": {
+        "name": "leadingIcon",
+        "description": "the leading icon of the banner",
+        "type": "React.ReactNode",
+        "default": "undefined"
+      },
+      "width": {
+        "name": "width",
+        "description": "the width of the banner",
+        "type": "string",
+        "default": "100%"
+      },
+      "color": {
+        "name": "color",
+        "description": "the color of the banner created using the color palette",
+        "type": "string",
+        "default": "#00b4d8"
+      }
+    }
+  },
+  "capsule": {
+    "title": "Capsule",
+    "path": "capsule",
+    "description": "Capsule is a small piece of information that represents a category or a label.",
+    "usage": {
+      "installation": {
+        "label": "Installation Guide",
+        "description": "import { Capsule } from \"stelios\""
+      },
+      "variants": {
+        "label": "Variants",
+        "description": "Capsule comes in multiple variants: contained, outlined, soft and outlined-soft."
+      },
+      "width_height": {
+        "label": "Width and Height",
+        "description": "Capsule has customizable width and height."
+      },
+      "image": {
+        "label": "Image",
+        "description": "Capsule can be an image."
+      }
+    },
+    "props": {
+      "_label": "Capsule Props",
+      "variant": {
+        "name": "variant",
+        "description": "the variant of the capsule",
+        "type": "contained | outlined | soft | outlined-soft",
+        "default": "contained"
+      },
+      "color": {
+        "name": "color",
+        "description": "the color of the capsule created using the color palette",
+        "type": "string",
+        "default": "#00b4d8"
+      },
+      "width": {
+        "name": "width",
+        "description": "the width of the capsule",
+        "type": "string",
+        "default": "fit-content"
+      },
+      "height": {
+        "name": "height",
+        "description": "the height of the capsule",
+        "type": "string",
+        "default": "fit-content"
+      },
+      "image": {
+        "name": "image",
+        "description": "the image of the capsule",
+        "type": "string",
+        "default": "undefined"
+      },
+      "imageAlt": {
+        "name": "imageAlt",
+        "description": "the alt text of the image",
+        "type": "string",
+        "default": "undefined"
+      },
+      "imagePosition": {
+        "name": "imagePosition",
+        "description": "the position of the image",
+        "type": "top | bottom | left | right",
+        "default": "left"
+      },
+      "title": {
+        "name": "title",
+        "description": "the title of the capsule",
+        "type": "string",
+        "default": "undefined"
+      },
+      "description": {
+        "name": "description",
+        "description": "the description of the capsule",
+        "type": "string",
+        "default": "undefined"
+      },
+      "onClick": {
+        "name": "onClick",
+        "description": "the function to be called when the capsule is clicked",
+        "type": "(e: React.MouseEvent<HTMLButtonElement>) => void;",
+        "default": "undefined"
+      }
+    }
+  },
+  "card": {
+    "title": "Card",
+    "path": "card",
+    "description": "Card is a container that groups related information in a box.",
+    "usage": {
+      "installation": {
+        "label": "Installation Guide",
+        "description": "import { Card } from \"stelios\""
+      },
+      "variants": {
+        "label": "Variants",
+        "description": "Card comes in multiple variants: contained, outlined, soft, outlined-soft and neumorph."
+      },
+      "header-footer": {
+        "label": "Header and Footer",
+        "description": "Card can have a header and a footer."
+      }
+    },
+    "props": {
+      "_label": "Card Props",
+      "variant": {
+        "name": "variant",
+        "description": "the variant of the card",
+        "type": "contained | outlined | soft | outlined-soft | neumorph",
+        "default": "contained"
+      },
+      "width": {
+        "name": "width",
+        "description": "the width of the card",
+        "type": "string",
+        "default": "100%"
+      },
+      "header": {
+        "name": "header",
+        "description": "the header of the card",
+        "type": "React.ReactNode",
+        "default": "undefined"
+      },
+      "footer": {
+        "name": "footer",
+        "description": "the footer of the card",
+        "type": "React.ReactNode",
+        "default": "undefined"
+      },
+      "children": {
+        "name": "children",
+        "description": "the content of the card",
+        "type": "React.ReactNode | React.ReactNode[]",
+        "default": "undefined"
+      },
+      "color": {
+        "name": "color",
+        "description": "the color of the card created using the color palette",
+        "type": "string",
+        "default": "#00b4d8"
+      }
+    },
+    "code": {
+      "header": "I Know Why the Caged Bird Sings",
+      "content": "\"You may encounter many defeats, but you must not be defeated. In fact, it may be necessary to encounter the defeats, so you can know who you are, what you can rise from, how you can still come out of it.\"",
+      "footer": "~ Maya Angelou"
+    }
   }
 }
