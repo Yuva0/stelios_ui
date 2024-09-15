@@ -6,7 +6,6 @@ import {
   Tabs,
   TabPanels,
   TabPanel,
-  Capsule,
   Card
 } from "stelios";
 import {

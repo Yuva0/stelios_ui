@@ -1267,5 +1267,65 @@
       "content": "\"You may encounter many defeats, but you must not be defeated. In fact, it may be necessary to encounter the defeats, so you can know who you are, what you can rise from, how you can still come out of it.\"",
       "footer": "~ Maya Angelou"
     }
+  },
+  "list": {
+    "title": "List",
+    "path": "list",
+    "description": "List is a container that groups related information in a list.",
+    "usage": {
+      "installation": {
+        "label": "Installation Guide",
+        "description": "import { List, ListItem } from \"stelios\""
+      },
+      "variants": {
+        "label": "Variants",
+        "description": "List comes in multiple variants: ordered, unordered and none."
+      },
+      "sizes": {
+        "label": "Sizes",
+        "description": "List comes in multiple sizes: small, medium & large."
+      }
+    },
+    "props": {
+      "_label": "List Props",
+      "variant": {
+        "name": "variant",
+        "description": "the variant of the list",
+        "type": "ordered | unordered | none",
+        "default": "none"
+      },
+      "size": {
+        "name": "size",
+        "description": "the size of the list",
+        "type": "small | medium | large",
+        "default": "medium"
+      },
+      "children": {
+        "name": "children",
+        "description": "the content of the list",
+        "type": "React.ReactNode | React.ReactNode[]",
+        "default": "undefined"
+      },
+      "color": {
+        "name": "color",
+        "description": "the color of the list created using the color palette",
+        "type": "string",
+        "default": "#00b4d8"
+      },
+      "title": {
+        "name": "title",
+        "description": "the title of the list",
+        "type": "React.ReactNode",
+        "default": "undefined"
+      }
+    },
+    "code": {
+      "title": "Famous quotes by Albert Einstein",
+      "items": [
+        "\"Imagination is more important than knowledge.\"",
+        "\"The only source of knowledge is experience.\"",
+        "\"Try not to become a man of success, but rather try to become a man of value.\""
+      ]
+    }
   }
 }
