@@ -43,6 +43,8 @@ const SideBarDisplay = renderLazyComponent("SideBarDisplay");
 const DrawerDisplay = renderLazyComponent("DrawerDisplay");
 const TabDisplay = renderLazyComponent("TabDisplay");
 const BreadcrumbsDisplay = renderLazyComponent("BreadcrumbsDisplay");
+const AccordionDisplay = renderLazyComponent("AccordionDisplay");
+const CollapsibleDisplay = renderLazyComponent("CollapsibleDisplay");
 
 const ListContainer: React.FunctionComponent = () => {
   const theme = useTheme().theme;
@@ -103,6 +105,10 @@ const ListContainer: React.FunctionComponent = () => {
         return <TabDisplay />;
       case "breadcrumbs":
         return <BreadcrumbsDisplay />;
+      case "accordion":
+        return <AccordionDisplay />;
+      case "collapsible":
+        return <CollapsibleDisplay />;
       default:
         return <ButtonDisplay />;
     }

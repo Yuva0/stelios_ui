@@ -180,14 +180,14 @@ const CODE_1 = (
       alignItems: "center",
     }}
   >
-    <NumberInput color="component" variant="contained" placeholder="Search here" />
-    <NumberInput color="component" variant="outlined" placeholder="Search here" />
-    <NumberInput color="component" variant="soft" placeholder="Search here" />
+    <NumberInput color="component" variant="contained"/>
+    <NumberInput color="component" variant="outlined"/>
+    <NumberInput color="component" variant="soft"/>
   </div>
 );
-const TEXT_1 = `<NumberInput variant="contained" placeholder="Search here" />
-<NumberInput variant="outlined" placeholder="Search here" />
-<NumberInput variant="soft" placeholder="Search here" />
+const TEXT_1 = `<NumberInput variant="contained"/>
+<NumberInput variant="outlined"/>
+<NumberInput variant="soft"/>
 `;
 
 const CODE_2 = (
@@ -200,12 +200,12 @@ const CODE_2 = (
       alignItems: "center",
     }}
   >
-    <NumberInput color="component" size="small" placeholder="Search here" />
-    <NumberInput color="component" size="medium" placeholder="Search here" />
-    <NumberInput color="component" size="large" placeholder="Search here" />
+    <NumberInput color="component" size="small"/>
+    <NumberInput color="component" size="medium"/>
+    <NumberInput color="component" size="large"/>
   </div>
 );
-const TEXT_2 = `<NumberInput size="small" placeholder="Search here" />
-<NumberInput size="medium" placeholder="Search here" />
-<NumberInput size="large" placeholder="Search here" />
+const TEXT_2 = `<NumberInput size="small"/>
+<NumberInput size="medium"/>
+<NumberInput size="large"/>
 `;

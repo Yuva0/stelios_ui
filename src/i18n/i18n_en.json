@@ -1603,5 +1603,57 @@
         "default": "contained"
       }
     }
+  },
+  "accordion": {
+    "title": "Accordion",
+    "path": "accordion",
+    "description": "Accordion is a container that contains accordion items.",
+    "usage": {
+      "installation": {
+        "label": "Installation Guide",
+        "description": "import { Accordion, AccordionItem } from \"stelios\""
+      },
+      "variants": {
+        "label": "Variant",
+        "description": "Accordion comes in multiple variants: contained, outlined and soft."
+      },
+      "sizes": {
+        "label": "Sizes",
+        "description": "Accordion comes in multiple sizes: small, medium & large."
+      }
+    },
+    "props": {
+      "_label": "Accordion Props",
+      "variant": {
+        "name": "variant",
+        "description": "the variant of the accordion",
+        "type": "contained | outlined | soft",
+        "default": "contained"
+      }
+    }
+  },
+  "collapsible": {
+    "title": "Collapsible",
+    "path": "collapsible",
+    "description": "Collapsible is a container that contains collapsible items.",
+    "usage": {
+      "installation": {
+        "label": "Installation Guide",
+        "description": "import { Collapsible, CollapsibleItem } from \"stelios\""
+      },
+      "variants": {
+        "label": "Variant",
+        "description": "Collapsible comes in multiple variants: contained, outlined, soft and transparent."
+      }
+    },
+    "props": {
+      "_label": "Collapsible Props",
+      "variant": {
+        "name": "variant",
+        "description": "the variant of the collapsible",
+        "type": "contained | outlined | soft | transparent",
+        "default": "contained"
+      }
+    }
   }
 }

@@ -143,6 +143,17 @@ const Topics: TopicsProps = {
       },
     },
   },
+  code: {
+    title: "Code",
+    content: {
+      "codepreview": {
+        title: "Code Preview",
+      },
+      "codedisplay": {
+        title: "Code Display",
+      },
+    }
+  }
 };
 
 export default Topics;
