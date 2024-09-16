@@ -1655,5 +1655,53 @@
         "default": "contained"
       }
     }
+  },
+  "codepreview": {
+    "title": "Code Preview",
+    "path": "code-preview",
+    "description": "Code Preview is a container that contains code preview items.",
+    "usage": {
+      "installation": {
+        "label": "Installation Guide",
+        "description": "import { CodePreview, CodePreviewItem } from \"stelios\""
+      },
+      "default": {
+        "label": "Default",
+        "description": "Default Code Preview Component"
+      }
+    },
+    "props": {
+      "_label": "Code Preview Props",
+      "code": {
+        "name": "code",
+        "description": "the code to be displayed",
+        "type": "React.ReactNode | React.ReactNode[]",
+        "default": "undefined"
+      }
+    }
+  },
+  "codedisplay": {
+    "title": "Code Display",
+    "path": "code-display",
+    "description": "Code Display is a container to display code.",
+    "usage": {
+      "installation": {
+        "label": "Installation Guide",
+        "description": "import { CodeDisplay } from \"stelios\""
+      },
+      "default": {
+        "label": "Default",
+        "description": "Default Code Display Component"
+      }
+    },
+    "props": {
+      "_label": "Code Display Props",
+      "code": {
+        "name": "code",
+        "description": "the code to be displayed",
+        "type": "React.ReactNode | React.ReactNode[]",
+        "default": "undefined"
+      }
+    }
   }
 }

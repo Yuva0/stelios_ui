@@ -6,8 +6,6 @@ import {
   Tabs,
   TabPanels,
   TabPanel,
-  Accordion,
-  AccordionItem,
   Collapsible,
 } from "stelios";
 import {

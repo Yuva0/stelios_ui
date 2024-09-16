@@ -66,6 +66,14 @@ const Topics: TopicsProps = {
           },
         },
       },
+      rangeBase: {
+        title:"Range Base",
+        content: {
+          slider: {
+            title: "Slider",
+          },
+        }
+      }
     },
   },
   display: {
@@ -146,10 +154,10 @@ const Topics: TopicsProps = {
   code: {
     title: "Code",
     content: {
-      "codepreview": {
+      "code-preview": {
         title: "Code Preview",
       },
-      "codedisplay": {
+      "code-display": {
         title: "Code Display",
       },
     }
