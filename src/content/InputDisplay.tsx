@@ -211,8 +211,7 @@ const CODE_1 = (
     <Input color="component" variant="soft" placeholder="Search here" />
   </div>
 );
-const TEXT_1 = `
-<Input variant="contained" placeholder="Search here" />
+const TEXT_1 = `<Input variant="contained" placeholder="Search here" />
 <Input variant="outlined" placeholder="Search here" />
 <Input variant="soft" placeholder="Search here" />
 `;
@@ -232,8 +231,7 @@ const CODE_2 = (
     <Input color="component" size="large" placeholder="Search here" />
   </div>
 );
-const TEXT_2 = `
-<Input size="small" placeholder="Search here" />
+const TEXT_2 = `<Input size="small" placeholder="Search here" />
 <Input size="medium" placeholder="Search here" />
 <Input size="large" placeholder="Search here" />
 `;

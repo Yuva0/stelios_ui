@@ -213,14 +213,13 @@ const CODE_1 = (
     />
   </div>
 );
-const TEXT_1 = `
-    <IconButton icon={<IconAwardFilled/>} alt="${i18n.iconButton.code.alt}" variant="contained"/>
-    <IconButton icon={<IconAwardFilled/>} alt="${i18n.iconButton.code.alt}" variant="outlined"/>
-    <IconButton icon={<IconAwardFilled/>} alt="${i18n.iconButton.code.alt}" variant="outlined-soft"/>
-    <IconButton icon={<IconAwardFilled/>} alt="${i18n.iconButton.code.alt}" variant="soft"/>
-    <IconButton icon={<IconAwardFilled/>} alt="${i18n.iconButton.code.alt}" variant="neumorph"/>
-    <IconButton icon={<IconAwardFilled/>} alt="${i18n.iconButton.code.alt}" variant="neumorph-contained"/>
-    <IconButton icon={<IconAwardFilled/>} alt="${i18n.iconButton.code.alt}" disabled/>`;
+const TEXT_1 = `<IconButton icon={<IconAwardFilled/>} alt="${i18n.iconButton.code.alt}" variant="contained"/>
+<IconButton icon={<IconAwardFilled/>} alt="${i18n.iconButton.code.alt}" variant="outlined"/>
+<IconButton icon={<IconAwardFilled/>} alt="${i18n.iconButton.code.alt}" variant="outlined-soft"/>
+<IconButton icon={<IconAwardFilled/>} alt="${i18n.iconButton.code.alt}" variant="soft"/>
+<IconButton icon={<IconAwardFilled/>} alt="${i18n.iconButton.code.alt}" variant="neumorph"/>
+<IconButton icon={<IconAwardFilled/>} alt="${i18n.iconButton.code.alt}" variant="neumorph-contained"/>
+<IconButton icon={<IconAwardFilled/>} alt="${i18n.iconButton.code.alt}" disabled/>`;
 
 const CODE_2 = (
   <div
@@ -254,15 +253,13 @@ const CODE_2 = (
     />
   </div>
 );
-const TEXT_2 = `
-    <IconButton icon={<IconAwardFilled/>} alt="${i18n.iconButton.code.alt}" size="small"/>
-    <IconButton icon={<IconAwardFilled/>} alt="${i18n.iconButton.code.alt}" size="medium"/>
-    <IconButton icon={<IconAwardFilled/>} alt="${i18n.iconButton.code.alt}" size="large"/>`;
+const TEXT_2 = `<IconButton icon={<IconAwardFilled/>} alt="${i18n.iconButton.code.alt}" size="small"/>
+<IconButton icon={<IconAwardFilled/>} alt="${i18n.iconButton.code.alt}" size="medium"/>
+<IconButton icon={<IconAwardFilled/>} alt="${i18n.iconButton.code.alt}" size="large"/>`;
 
 const CODE_3 = (
   <div style={{ display: "flex", gap: "2rem" }}>
     <IconButton icon={<IconAwardFilled />} alt="Award" color="component" disabled/>
   </div>
 );
-const TEXT_3 = `
-    <IconButton disabled/> `;
+const TEXT_3 = `<IconButton disabled/>`;
