@@ -6,7 +6,7 @@ import {
   Tabs,
   TabPanels,
   TabPanel,
-  CodeDisplay,
+  Loader,
 } from "stelios";
 import i18n from "../i18n/i18n_en.json";
 import {
@@ -17,8 +17,8 @@ import {
   RenderVariations,
 } from "../helpers/helpers";
 
-const CODEDISPLAY = i18n.codedisplay;
-const CodeDisplayDisplay = () => {
+const LOADER = i18n.loader;
+const LoaderDisplay = () => {
   const theme = useTheme().theme!;
   const colorPalette = theme.colorPalette;
 
@@ -27,14 +27,11 @@ const CodeDisplayDisplay = () => {
 
   return (
     <div style={{ margin: "1.5rem 0 4rem 0", width: "calc(100% - 22rem)" }}>
-      <RenderBreadcrumbsForComponent
-        name={CODEDISPLAY.title}
-        path={CODEDISPLAY.path}
-      />
+      <RenderBreadcrumbsForComponent name={LOADER.title} path={LOADER.path} />
       <div style={{ padding: "1rem" }}>
         <RenderComponentHeading
-          title={CODEDISPLAY.title}
-          description={CODEDISPLAY.description}
+          title={LOADER.title}
+          description={LOADER.description}
         />
         <Tabs color="primary" style={{ marginTop: "2rem" }} value="usage">
           {RenderTabsList()}
@@ -50,14 +47,15 @@ const CodeDisplayDisplay = () => {
             />
             <TabPanel value="usage">
               <RenderVariations
-                label={CODEDISPLAY.usage.installation.label}
-                text={CODEDISPLAY.usage.installation.description}
+                label={LOADER.usage.installation.label}
+                text={LOADER.usage.installation.description}
               />
               <RenderVariations
-                label={CODEDISPLAY.usage.default.label}
-                description={CODEDISPLAY.usage.default.description}
+                label={LOADER.usage.sizes.label}
+                description={LOADER.usage.sizes.description}
                 code={CODE_1}
                 text={TEXT_1}
+                language="javascript"
               />
 
               <SideBar style={{ width: "10rem", top: "5rem" }}>
@@ -73,14 +71,28 @@ const CodeDisplayDisplay = () => {
                 size="large"
                 style={{ marginTop: "2rem" }}
               >
-                {CODEDISPLAY.props._label}
+                {LOADER.props._label}
               </Text>
 
               <RenderProps
-                propName={CODEDISPLAY.props.code.name}
-                description={CODEDISPLAY.props.code.description}
-                type={CODEDISPLAY.props.code.type}
-                defaultValue={CODEDISPLAY.props.code.default}
+                propName={LOADER.props.shape.name}
+                description={LOADER.props.shape.description}
+                type={LOADER.props.shape.type}
+                defaultValue={LOADER.props.shape.default}
+              />
+
+              <RenderProps
+                propName={LOADER.props.height.name}
+                description={LOADER.props.height.description}
+                type={LOADER.props.height.type}
+                defaultValue={LOADER.props.height.default}
+              />
+
+              <RenderProps
+                propName={LOADER.props.width.name}
+                description={LOADER.props.width.description}
+                type={LOADER.props.width.type}
+                defaultValue={LOADER.props.width.default}
               />
 
               <SideBar style={{ width: "10rem", top: "5rem" }}>
@@ -97,11 +109,7 @@ const CodeDisplayDisplay = () => {
     </div>
   );
 };
-export default CodeDisplayDisplay;
-
-const TEXT_DEMO_1 = `<FormControlLabel control={<Checkbox />} label="Option 1" />
-<FormControlLabel control={<Checkbox />} label="Option 2" />
-<FormControlLabel control={<Checkbox />} label="Option 3" />`;
+export default LoaderDisplay;
 
 const CODE_1 = (
   <div
@@ -113,9 +121,12 @@ const CODE_1 = (
       alignItems: "center",
     }}
   >
-    <CodeDisplay color="component" text={TEXT_DEMO_1} language="jsx"/>
+    <Loader shape="circle" width="100px" height="100px"/>
+    <Loader shape="rectangle" width="200px" height="100px"/>
+    <Loader shape="square" width="100px" height="100px"/>
   </div>
 );
-const TEXT_1 = `const TEXT_DEMO_1 = \`<FormControlLabel control={<Checkbox />} label="Option 1" />\n<FormControlLabel control={<Checkbox />} label="Option 2" />\n<FormControlLabel control={<Checkbox />} label="Option 3" />\`;
-<CodeDisplay color="component" text={TEXT_DEMO_1} language="jsx"/>`;
-
+const TEXT_1 = `
+  <Loader shape="circle" width="100px" height="100px"/>
+  <Loader shape="rectangle" width="200px" height="100px"/>
+  <Loader shape="square" width="100px" height="100px"/>`;

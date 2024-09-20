@@ -118,6 +118,9 @@
         "type": "(e: React.MouseEvent<HTMLButtonElement>) => void;",
         "default": "undefined"
       }
+    },
+    "code": {
+      "content": "Click Me"
     }
   },
   "iconButton": {
@@ -186,6 +189,9 @@
         "type": "(e: React.MouseEvent<HTMLButtonElement>) => void;",
         "default": "undefined"
       }
+    },
+    "code": {
+      "alt": "Award"
     }
   },
   "toggleButton": {
@@ -1701,6 +1707,78 @@
         "description": "the code to be displayed",
         "type": "React.ReactNode | React.ReactNode[]",
         "default": "undefined"
+      }
+    }
+  },
+  "slider": {
+    "title": "Slider",
+    "path": "slider",
+    "description": "Slider is a container that allows users to select a value from a range.",
+    "usage": {
+      "installation": {
+        "label": "Installation Guide",
+        "description": "import { Slider, SliderItem } from \"stelios\""
+      },
+      "default": {
+        "label": "Default",
+        "description": "Default Slider Component"
+      }
+    },
+    "props": {
+      "_label": "Slider Props",
+      "min": {
+        "name": "min",
+        "description": "the minimum value of the slider",
+        "type": "number",
+        "default": "0"
+      },
+      "max": {
+        "name": "max",
+        "description": "the maximum value of the slider",
+        "type": "number",
+        "default": "100"
+      },
+      "value": {
+        "name": "value",
+        "description": "the value of the slider",
+        "type": "number",
+        "default": "0"
+      }
+    }
+  },
+  "loader": {
+    "title": "Loader",
+    "path": "loader",
+    "description": "Loader is a container that displays a loading spinner.",
+    "usage": {
+      "installation": {
+        "label": "Installation Guide",
+        "description": "import { Loader } from \"stelios\""
+      },
+      "sizes": {
+        "label": "Shapes",
+        "description": "Loader comes in multiple shapes: circle square and rectangle."
+      }
+    },
+    "props": {
+      "_label": "Loader Props",
+      "shape": {
+        "name": "shape",
+        "description": "the shape of the loader",
+        "type": "circle | square | rectangle",
+        "default": "circle"
+      },
+      "height": {
+        "name": "height",
+        "description": "the height of the loader",
+        "type": "string",
+        "default": "2rem"
+      },
+      "width": {
+        "name": "width",
+        "description": "the width of the loader",
+        "type": "string",
+        "default": "2rem"
       }
     }
   }

@@ -47,6 +47,8 @@ const AccordionDisplay = renderLazyComponent("AccordionDisplay");
 const CollapsibleDisplay = renderLazyComponent("CollapsibleDisplay");
 const CodePreviewDisplay = renderLazyComponent("CodePreviewDisplay");
 const CodeDisplayDisplay = renderLazyComponent("CodeDisplayDisplay");
+const SliderDisplay = renderLazyComponent("SliderDisplay");
+const LoaderDisplay = renderLazyComponent("LoaderDisplay");
 
 const ListContainer: React.FunctionComponent = () => {
   const theme = useTheme().theme;
@@ -115,6 +117,10 @@ const ListContainer: React.FunctionComponent = () => {
         return <CodePreviewDisplay />;
       case "code-display":
         return <CodeDisplayDisplay />;
+      case "slider":
+        return <SliderDisplay />;
+      case "loader":
+        return <LoaderDisplay />;
       default:
         return <ButtonDisplay />;
     }

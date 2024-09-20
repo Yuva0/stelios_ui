@@ -79,7 +79,7 @@ const Topics: TopicsProps = {
   display: {
     title: "Display",
     content: {
-      imageBase: {
+      "image-base": {
         title: "Image Base",
         content: {
           avatar: {
@@ -126,6 +126,14 @@ const Topics: TopicsProps = {
           },
           "collapsible": {
             title: "Collapsible",
+          },
+        }
+      },
+      "misc": {
+        title: "Misc",
+        content: {
+          "loader": {
+            title: "Loader"
           },
         }
       }

@@ -6,7 +6,7 @@ import {
   Tabs,
   TabPanels,
   TabPanel,
-  CodeDisplay,
+  Slider,
 } from "stelios";
 import i18n from "../i18n/i18n_en.json";
 import {
@@ -17,8 +17,8 @@ import {
   RenderVariations,
 } from "../helpers/helpers";
 
-const CODEDISPLAY = i18n.codedisplay;
-const CodeDisplayDisplay = () => {
+const SLIDER = i18n.slider;
+const SliderDisplay = () => {
   const theme = useTheme().theme!;
   const colorPalette = theme.colorPalette;
 
@@ -27,14 +27,11 @@ const CodeDisplayDisplay = () => {
 
   return (
     <div style={{ margin: "1.5rem 0 4rem 0", width: "calc(100% - 22rem)" }}>
-      <RenderBreadcrumbsForComponent
-        name={CODEDISPLAY.title}
-        path={CODEDISPLAY.path}
-      />
+      <RenderBreadcrumbsForComponent name={SLIDER.title} path={SLIDER.path} />
       <div style={{ padding: "1rem" }}>
         <RenderComponentHeading
-          title={CODEDISPLAY.title}
-          description={CODEDISPLAY.description}
+          title={SLIDER.title}
+          description={SLIDER.description}
         />
         <Tabs color="primary" style={{ marginTop: "2rem" }} value="usage">
           {RenderTabsList()}
@@ -50,12 +47,12 @@ const CodeDisplayDisplay = () => {
             />
             <TabPanel value="usage">
               <RenderVariations
-                label={CODEDISPLAY.usage.installation.label}
-                text={CODEDISPLAY.usage.installation.description}
+                label={SLIDER.usage.installation.label}
+                text={SLIDER.usage.installation.description}
               />
               <RenderVariations
-                label={CODEDISPLAY.usage.default.label}
-                description={CODEDISPLAY.usage.default.description}
+                label={SLIDER.usage.default.label}
+                description={SLIDER.usage.default.description}
                 code={CODE_1}
                 text={TEXT_1}
               />
@@ -73,14 +70,28 @@ const CodeDisplayDisplay = () => {
                 size="large"
                 style={{ marginTop: "2rem" }}
               >
-                {CODEDISPLAY.props._label}
+                {SLIDER.props._label}
               </Text>
 
               <RenderProps
-                propName={CODEDISPLAY.props.code.name}
-                description={CODEDISPLAY.props.code.description}
-                type={CODEDISPLAY.props.code.type}
-                defaultValue={CODEDISPLAY.props.code.default}
+                propName={SLIDER.props.min.name}
+                description={SLIDER.props.min.description}
+                type={SLIDER.props.min.type}
+                defaultValue={SLIDER.props.min.default}
+              />
+
+              <RenderProps
+                propName={SLIDER.props.max.name}
+                description={SLIDER.props.max.description}
+                type={SLIDER.props.max.type}
+                defaultValue={SLIDER.props.max.default}
+              />
+
+              <RenderProps
+                propName={SLIDER.props.value.name}
+                description={SLIDER.props.value.description}
+                type={SLIDER.props.value.type}
+                defaultValue={SLIDER.props.value.default}
               />
 
               <SideBar style={{ width: "10rem", top: "5rem" }}>
@@ -97,11 +108,7 @@ const CodeDisplayDisplay = () => {
     </div>
   );
 };
-export default CodeDisplayDisplay;
-
-const TEXT_DEMO_1 = `<FormControlLabel control={<Checkbox />} label="Option 1" />
-<FormControlLabel control={<Checkbox />} label="Option 2" />
-<FormControlLabel control={<Checkbox />} label="Option 3" />`;
+export default SliderDisplay;
 
 const CODE_1 = (
   <div
@@ -113,9 +120,7 @@ const CODE_1 = (
       alignItems: "center",
     }}
   >
-    <CodeDisplay color="component" text={TEXT_DEMO_1} language="jsx"/>
+    <Slider min={0} max={100} value={40} color="component" />
   </div>
 );
-const TEXT_1 = `const TEXT_DEMO_1 = \`<FormControlLabel control={<Checkbox />} label="Option 1" />\n<FormControlLabel control={<Checkbox />} label="Option 2" />\n<FormControlLabel control={<Checkbox />} label="Option 3" />\`;
-<CodeDisplay color="component" text={TEXT_DEMO_1} language="jsx"/>`;
-
+const TEXT_1 = `<Slider min={0} max={100} value={40} />`;

@@ -94,14 +94,14 @@ const ButtonDisplay = () => {
               {/* Usage Variations Sidebar */}
               <SideBar style={{ width: "10rem", top: "5rem" }}>
                 <SideBarItem color="primary" selected>
-                  Installation
+                  {i18n.button.usage.installation.label}
                 </SideBarItem>
-                <SideBarItem color="primary">Variants</SideBarItem>
-                <SideBarItem color="primary">Sizes</SideBarItem>
-                <SideBarItem color="primary">Icons</SideBarItem>
-                <SideBarItem color="primary">Rounded</SideBarItem>
-                <SideBarItem color="primary">Disabled</SideBarItem>
-                <SideBarItem color="primary">Full Width</SideBarItem>
+                <SideBarItem color="primary">{i18n.button.usage.variants.label}</SideBarItem>
+                <SideBarItem color="primary">{i18n.button.usage.sizes.label}</SideBarItem>
+                <SideBarItem color="primary">{i18n.button.usage.icons.label}</SideBarItem>
+                <SideBarItem color="primary">{i18n.button.usage.rounded.label}</SideBarItem>
+                <SideBarItem color="primary">{i18n.button.usage.disabled.label}</SideBarItem>
+                <SideBarItem color="primary">{i18n.button.usage.fullWidth.label}</SideBarItem>
               </SideBar>
             </TabPanel>
             <TabPanel value="props">
@@ -187,31 +187,34 @@ const ButtonDisplay = () => {
 
               <SideBar style={{ width: "10rem", top: "5rem" }}>
                 <SideBarItem color="primary" selected size="small">
-                  variant
+                  {i18n.button.props.variant.name}
                 </SideBarItem>
                 <SideBarItem color="primary" size="small">
-                  size
+                  {i18n.button.props.size.name}
                 </SideBarItem>
                 <SideBarItem color="primary" size="small">
-                  rounded
+                  {i18n.button.props.rounded.name}
                 </SideBarItem>
                 <SideBarItem color="primary" size="small">
-                  disabled
+                  {i18n.button.props.disabled.name}
                 </SideBarItem>
                 <SideBarItem color="primary" size="small">
-                  isFullWidth
+                  {i18n.button.props.isFullWidth.name}
                 </SideBarItem>
                 <SideBarItem color="primary" size="small">
-                  color
+                  {i18n.button.props.color.name}
                 </SideBarItem>
                 <SideBarItem color="primary" size="small">
-                  leadingIcon
+                  {i18n.button.props.leadingIcon.name}
                 </SideBarItem>
                 <SideBarItem color="primary" size="small">
-                  trailingIcon
+                  {i18n.button.props.trailingIcon.name}
                 </SideBarItem>
                 <SideBarItem color="primary" size="small">
-                  onClick
+                  {i18n.button.props.children.name}
+                </SideBarItem>
+                <SideBarItem color="primary" size="small">
+                  {i18n.button.props.onClick.name}
                 </SideBarItem>
               </SideBar>
             </TabPanel>
@@ -226,93 +229,93 @@ export default ButtonDisplay;
 const CODE_1 = (
   <div style={{ display: "flex", gap: "2rem" }}>
     <Button color="component" variant="contained">
-      Click Me
+      {i18n.button.code.content}
     </Button>
     <Button color="component" variant="outlined">
-      Click Me
+      {i18n.button.code.content}
     </Button>
     <Button color="component" variant="outlined-soft">
-      Click Me
+      {i18n.button.code.content}
     </Button>
     <Button color="component" variant="soft">
-      Click Me
+      {i18n.button.code.content}
     </Button>
     <Button color="component" variant="neumorph">
-      Click Me
+      {i18n.button.code.content}
     </Button>
     <Button color="component" disabled>
-      Click Me
+      {i18n.button.code.content}
     </Button>
   </div>
 );
-const TEXT_1 = `<Button variant="contained"> Click Me </Button>
-<Button variant="outlined"> Click Me </Button>
-<Button variant="outlined-soft"> Click Me </Button>
-<Button variant="soft"> Click Me </Button>
-<Button variant="neumorph"> Click Me </Button>
-<Button disabled>Click Me</Button>`;
+const TEXT_1 = `<Button variant="contained"> ${i18n.button.code.content} </Button>
+<Button variant="outlined"> ${i18n.button.code.content} </Button>
+<Button variant="outlined-soft"> ${i18n.button.code.content} </Button>
+<Button variant="soft">  ${i18n.button.code.content}</Button>
+<Button variant="neumorph"> ${i18n.button.code.content} </Button>
+<Button disabled> ${i18n.button.code.content} </Button>`;
 
 const CODE_2 = (
   <div style={{ display: "flex", gap: "2rem" }}>
     <Button color="component" size="small">
-      Click Me
+      {i18n.button.code.content}
     </Button>
     <Button color="component" size="medium">
-      Click Me
+      {i18n.button.code.content}
     </Button>
     <Button color="component" size="large">
-      Click Me
+      {i18n.button.code.content}
     </Button>
   </div>
 );
-const TEXT_2 = `<Button size="small"> Click Me </Button>
-<Button size="medium"> Click Me </Button>
-<Button size="large"> Click Me </Button>`;
+const TEXT_2 = `<Button size="small"> ${i18n.button.code.content} </Button>
+<Button size="medium"> ${i18n.button.code.content} </Button>
+<Button size="large"> ${i18n.button.code.content} </Button>`;
 
 const CODE_3 = (
   <div style={{ display: "flex", gap: "2rem" }}>
     <Button color="component" leadingIcon={<IconHeartFilled />}>
-      Click Me
+      {i18n.button.code.content}
     </Button>
     <Button color="component" trailingIcon={<IconAwardFilled />}>
-      Click Me
+      {i18n.button.code.content}
     </Button>
     <Button
       color="component"
       leadingIcon={<IconHeartFilled />}
       trailingIcon={<IconAwardFilled />}
     >
-      Click Me
+      {i18n.button.code.content}
     </Button>
   </div>
 );
-const TEXT_3 = `<Button leadingIcon={<IconHeartFilled />}> Click Me </Button>
-<Button trailingIcon={<IconHeartFilled />}> Click Me </Button>
-<Button leadingIcon={<IconHeartFilled />} trailingIcon={<IconTrophy/>}> Click Me </Button>`;
+const TEXT_3 = `<Button leadingIcon={<IconHeartFilled />}> ${i18n.button.code.content} </Button>
+<Button trailingIcon={<IconHeartFilled />}> ${i18n.button.code.content} </Button>
+<Button leadingIcon={<IconHeartFilled />} trailingIcon={<IconTrophy/>}> ${i18n.button.code.content} </Button>`;
 
 const CODE_4 = (
   <div style={{ display: "flex", gap: "2rem" }}>
     <Button color="component" rounded>
-      Click Me
+      {i18n.button.code.content}
     </Button>
   </div>
 );
-const TEXT_4 = `<Button rounded> Click Me </Button>`;
+const TEXT_4 = `<Button rounded> ${i18n.button.code.content}} </Button>`;
 
 const CODE_5 = (
   <div style={{ display: "flex", gap: "2rem" }}>
     <Button color="component" disabled>
-      Click Me
+      {i18n.button.code.content}
     </Button>
   </div>
 );
-const TEXT_5 = `<Button disabled> Click Me </Button>`;
+const TEXT_5 = `<Button disabled> ${i18n.button.code.content}} </Button>`;
 
 const CODE_6 = (
   <div style={{ display: "flex", gap: "2rem", width: "100%" }}>
     <Button color="component" isFullWidth>
-      Click Me
+      {i18n.button.code.content}
     </Button>
   </div>
 );
-const TEXT_6 = `<Button isFullWidth> Click Me </Button>`;
+const TEXT_6 = `<Button isFullWidth> ${i18n.button.code.content}} </Button>`;
