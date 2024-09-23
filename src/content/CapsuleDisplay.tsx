@@ -2,8 +2,6 @@ import React from "react";
 import {
   Text,
   useTheme,
-  SideBar,
-  SideBarItem,
   Tabs,
   TabPanels,
   TabPanel,
@@ -13,6 +11,7 @@ import {
   RenderBreadcrumbsForComponent,
   RenderComponentHeading,
   RenderProps,
+  renderSideBarItem,
   RenderTabsList,
   RenderVariations,
 } from "../helpers/helpers";
@@ -23,8 +22,8 @@ const CapsuleDisplay = () => {
   const theme = useTheme().theme!;
   const colorPalette = theme.colorPalette;
   
-  const variationRefs = Array.from({ length: 4 }, () => React.createRef<HTMLDivElement>());
-  const propsRef = Array.from({ length: 7 }, () => React.createRef<HTMLDivElement>());
+  const variationRefs = Array.from({ length: 2 }, () => React.createRef<HTMLDivElement>());
+  const propsRef = Array.from({ length: 10 }, () => React.createRef<HTMLDivElement>());
   const [selectedTab, setSelectedTab] = React.useState("usage");
   const [selectedVariationSideBarItem, setSelectedVariationSideBarItem] = React.useState(0);
   const [selectedPropsSideBarItem, setSeletedPropsSideBarItem] = React.useState(0);
@@ -81,34 +80,18 @@ const CapsuleDisplay = () => {
             />
             <TabPanel value="usage">
               <RenderVariations
+                ref={variationRefs[0]}
                 label={CAPSULE.usage.installation.label}
                 text={CAPSULE.usage.installation.description}
               />
               <RenderVariations
+                ref={variationRefs[1]}
                 label={CAPSULE.usage.variants.label}
                 description={CAPSULE.usage.variants.description}
                 code={CODE_1}
                 text={TEXT_1}
               />
-              {/* <RenderVariations
-                label={CAPSULE.usage.width_height.label}
-                description={CAPSULE.usage.width_height.description}
-                code={CODE_2}
-                text={TEXT_2}
-              />
-              <RenderVariations
-                label={CAPSULE.usage.image.label}
-                description={CAPSULE.usage.image.description}
-                code={CODE_3}
-                text={TEXT_3}
-              />
-  */}
-              <SideBar style={{ width: "10rem", top: "5rem" }}>
-                <SideBarItem color="primary" selected>
-                  Installation
-                </SideBarItem>
-                <SideBarItem color="primary">Sizes</SideBarItem>
-              </SideBar>
+              {renderSideBarItem([CAPSULE.usage.installation.label, CAPSULE.usage.variants.label], selectedVariationSideBarItem, variationRefs)}
             </TabPanel>
             <TabPanel value="props">
               <Text
@@ -119,6 +102,7 @@ const CapsuleDisplay = () => {
                 {CAPSULE.props._label}
               </Text>
               <RenderProps
+                ref={propsRef[0]}
                 propName={CAPSULE.props.variant.name}
                 description={
                   CAPSULE.props.variant.description
@@ -130,6 +114,7 @@ const CapsuleDisplay = () => {
                 marginTop="1rem"
               />
               <RenderProps
+                ref={propsRef[1]}
                 propName={CAPSULE.props.color.name}
                 description={
                   CAPSULE.props.color.description
@@ -140,6 +125,7 @@ const CapsuleDisplay = () => {
                 }
               />
               <RenderProps
+                ref={propsRef[2]}
                 propName={CAPSULE.props.width.name}
                 description={
                   CAPSULE.props.width.description
@@ -150,6 +136,7 @@ const CapsuleDisplay = () => {
                 }
               />
               <RenderProps
+                ref={propsRef[3]}
                 propName={CAPSULE.props.height.name}
                 description={
                   CAPSULE.props.height.description
@@ -160,6 +147,7 @@ const CapsuleDisplay = () => {
                 }
               />
               <RenderProps
+                ref={propsRef[4]}
                 propName={CAPSULE.props.image.name}
                 description={
                   CAPSULE.props.image.description
@@ -170,6 +158,7 @@ const CapsuleDisplay = () => {
                 }
               />
               <RenderProps
+                ref={propsRef[5]}
                 propName={CAPSULE.props.imageAlt.name}
                 description={
                   CAPSULE.props.imageAlt.description
@@ -180,6 +169,7 @@ const CapsuleDisplay = () => {
                 }
               />
               <RenderProps
+                ref={propsRef[6]}
                 propName={CAPSULE.props.imagePosition.name}
                 description={
                   CAPSULE.props.imagePosition.description
@@ -190,6 +180,7 @@ const CapsuleDisplay = () => {
                 }
               />
               <RenderProps
+                ref={propsRef[7]} 
                 propName={CAPSULE.props.title.name}
                 description={
                   CAPSULE.props.title.description
@@ -200,6 +191,7 @@ const CapsuleDisplay = () => {
                 }
               />
               <RenderProps
+                ref={propsRef[8]}
                 propName={CAPSULE.props.description.name}
                 description={
                   CAPSULE.props.description.description
@@ -210,6 +202,7 @@ const CapsuleDisplay = () => {
                 }
               />
               <RenderProps
+                ref={propsRef[9]}
                 propName={CAPSULE.props.onClick.name}
                 description={
                   CAPSULE.props.onClick.description
@@ -220,13 +213,18 @@ const CapsuleDisplay = () => {
                 }
               />
 
-              <SideBar style={{ width: "10rem", top: "5rem" }}>
-                <SideBarItem color="primary">size</SideBarItem>
-                <SideBarItem color="primary">width</SideBarItem>
-                <SideBarItem color="primary">value</SideBarItem>
-                <SideBarItem color="primary">children</SideBarItem>
-                <SideBarItem color="primary">onClick</SideBarItem>
-              </SideBar>
+              {renderSideBarItem([
+                CAPSULE.props.variant.name,
+                CAPSULE.props.color.name,
+                CAPSULE.props.width.name,
+                CAPSULE.props.height.name,
+                CAPSULE.props.image.name,
+                CAPSULE.props.imageAlt.name,
+                CAPSULE.props.imagePosition.name,
+                CAPSULE.props.title.name,
+                CAPSULE.props.description.name,
+                CAPSULE.props.onClick.name,
+              ], selectedPropsSideBarItem, propsRef)}
             </TabPanel>
           </TabPanels>
         </Tabs>
