@@ -246,7 +246,11 @@ export const RenderComponentHeading = ({
 
 export const renderSideBarItem = (values: string[], selectedIndex: number, ref: React.RefObject<HTMLDivElement>[]) => {
   const _onClick = (index: number) => {
-    ref[index].current?.scrollIntoView({ behavior: "smooth" });
+    const element = ref[index].current;
+    if (element) {
+      const topOffset = element.getBoundingClientRect().top + window.scrollY - 100; // Adjust the marginTop value as needed
+      window.scrollTo({ top: topOffset, behavior: "smooth" });
+    }
   }
   return (
     <SideBar style={{width: "10rem", top: "5rem"}} color="primary">

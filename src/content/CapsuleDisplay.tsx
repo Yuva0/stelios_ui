@@ -1,3 +1,4 @@
+import React from "react";
 import {
   Text,
   useTheme,
@@ -21,185 +22,217 @@ const CAPSULE = i18n.capsule;
 const CapsuleDisplay = () => {
   const theme = useTheme().theme!;
   const colorPalette = theme.colorPalette;
+  
+  const variationRefs = Array.from({ length: 4 }, () => React.createRef<HTMLDivElement>());
+  const propsRef = Array.from({ length: 7 }, () => React.createRef<HTMLDivElement>());
+  const [selectedTab, setSelectedTab] = React.useState("usage");
+  const [selectedVariationSideBarItem, setSelectedVariationSideBarItem] = React.useState(0);
+  const [selectedPropsSideBarItem, setSeletedPropsSideBarItem] = React.useState(0);
 
   const textColor =
     colorPalette.primary.appearance === "light" ? "black" : "white";
 
-    return (
-      <div style={{ margin: "1.5rem 0 4rem 0", width: "calc(100% - 22rem)" }}>
-        <RenderBreadcrumbsForComponent name={CAPSULE.title} path={CAPSULE.path}/>
-  
-        <div style={{ padding: "1rem" }}>
-          <RenderComponentHeading
-            title={CAPSULE.title}
-            description={CAPSULE.description}
-          />
-  
-          <Tabs color="primary" style={{ marginTop: "2rem" }} value="usage">
-            {RenderTabsList()}
-            <TabPanels>
-              <div
-                style={{
-                  height: "1px",
-                  width: "100%",
-                  backgroundColor: colorPalette.primary.accentScale[9],
-                  marginTop: "1rem",
-                }}
+  React.useEffect(() => {
+    const handleScroll = () => {
+      if(selectedTab === "usage"){
+      for(let i=0; i<variationRefs.length; i++){
+        if(variationRefs[i].current?.getBoundingClientRect().top! > 0){
+          setSelectedVariationSideBarItem(i);
+          return;
+        }
+      }}
+      else if(selectedTab === "props"){
+        for(let i=0; i<propsRef.length; i++){
+          if(propsRef[i].current?.getBoundingClientRect().top! > 0){
+            setSeletedPropsSideBarItem(i);
+            return;
+          }
+        }
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  },[variationRefs, propsRef, selectedTab]);
+
+  return (
+    <div style={{ margin: "1.5rem 0 4rem 0", width: "calc(100% - 22rem)" }}>
+      <RenderBreadcrumbsForComponent name={CAPSULE.title} path={CAPSULE.path}/>
+
+      <div style={{ padding: "1rem" }}>
+        <RenderComponentHeading
+          title={CAPSULE.title}
+          description={CAPSULE.description}
+        />
+
+        <Tabs color="primary" style={{ marginTop: "2rem" }} value={selectedTab} onChange={(value) => setSelectedTab(value)}>
+          {RenderTabsList()}
+          <TabPanels>
+            <div
+              style={{
+                height: "1px",
+                width: "100%",
+                backgroundColor: colorPalette.primary.accentScale[9],
+                marginTop: "1rem",
+              }}
+            />
+            <TabPanel value="usage">
+              <RenderVariations
+                label={CAPSULE.usage.installation.label}
+                text={CAPSULE.usage.installation.description}
               />
-              <TabPanel value="usage">
-                <RenderVariations
-                  label={CAPSULE.usage.installation.label}
-                  text={CAPSULE.usage.installation.description}
-                />
-                <RenderVariations
-                  label={CAPSULE.usage.variants.label}
-                  description={CAPSULE.usage.variants.description}
-                  code={CODE_1}
-                  text={TEXT_1}
-                />
-                {/* <RenderVariations
-                  label={CAPSULE.usage.width_height.label}
-                  description={CAPSULE.usage.width_height.description}
-                  code={CODE_2}
-                  text={TEXT_2}
-                />
-                <RenderVariations
-                  label={CAPSULE.usage.image.label}
-                  description={CAPSULE.usage.image.description}
-                  code={CODE_3}
-                  text={TEXT_3}
-                />
-   */}
-                <SideBar style={{ width: "10rem", top: "5rem" }}>
-                  <SideBarItem color="primary" selected>
-                    Installation
-                  </SideBarItem>
-                  <SideBarItem color="primary">Sizes</SideBarItem>
-                </SideBar>
-              </TabPanel>
-              <TabPanel value="props">
-                <Text
-                  preciseColor={textColor}
-                  size="large"
-                  style={{ marginTop: "2rem" }}
-                >
-                  {CAPSULE.props._label}
-                </Text>
-                <RenderProps
-                  propName={CAPSULE.props.variant.name}
-                  description={
-                    CAPSULE.props.variant.description
-                  }
-                  type={CAPSULE.props.variant.type}
-                  defaultValue={
-                    CAPSULE.props.variant.default
-                  }
-                  marginTop="1rem"
-                />
-                <RenderProps
-                  propName={CAPSULE.props.color.name}
-                  description={
-                    CAPSULE.props.color.description
-                  }
-                  type={CAPSULE.props.color.type}
-                  defaultValue={
-                    CAPSULE.props.color.default
-                  }
-                />
-                <RenderProps
-                  propName={CAPSULE.props.width.name}
-                  description={
-                    CAPSULE.props.width.description
-                  }
-                  type={CAPSULE.props.width.type}
-                  defaultValue={
-                    CAPSULE.props.width.default
-                  }
-                />
-                <RenderProps
-                  propName={CAPSULE.props.height.name}
-                  description={
-                    CAPSULE.props.height.description
-                  }
-                  type={CAPSULE.props.height.type}
-                  defaultValue={
-                    CAPSULE.props.height.default
-                  }
-                />
-                <RenderProps
-                  propName={CAPSULE.props.image.name}
-                  description={
-                    CAPSULE.props.image.description
-                  }
-                  type={CAPSULE.props.image.type}
-                  defaultValue={
-                    CAPSULE.props.image.default
-                  }
-                />
-                <RenderProps
-                  propName={CAPSULE.props.imageAlt.name}
-                  description={
-                    CAPSULE.props.imageAlt.description
-                  }
-                  type={CAPSULE.props.imageAlt.type}
-                  defaultValue={
-                    CAPSULE.props.imageAlt.default
-                  }
-                />
-                <RenderProps
-                  propName={CAPSULE.props.imagePosition.name}
-                  description={
-                    CAPSULE.props.imagePosition.description
-                  }
-                  type={CAPSULE.props.imagePosition.type}
-                  defaultValue={
-                    CAPSULE.props.imagePosition.default
-                  }
-                />
-                <RenderProps
-                  propName={CAPSULE.props.title.name}
-                  description={
-                    CAPSULE.props.title.description
-                  }
-                  type={CAPSULE.props.title.type}
-                  defaultValue={
-                    CAPSULE.props.title.default
-                  }
-                />
-                <RenderProps
-                  propName={CAPSULE.props.description.name}
-                  description={
-                    CAPSULE.props.description.description
-                  }
-                  type={CAPSULE.props.description.type}
-                  defaultValue={
-                    CAPSULE.props.description.default
-                  }
-                />
-                <RenderProps
-                  propName={CAPSULE.props.onClick.name}
-                  description={
-                    CAPSULE.props.onClick.description
-                  }
-                  type={CAPSULE.props.onClick.type}
-                  defaultValue={
-                    CAPSULE.props.onClick.default
-                  }
-                />
-  
-                <SideBar style={{ width: "10rem", top: "5rem" }}>
-                  <SideBarItem color="primary">size</SideBarItem>
-                  <SideBarItem color="primary">width</SideBarItem>
-                  <SideBarItem color="primary">value</SideBarItem>
-                  <SideBarItem color="primary">children</SideBarItem>
-                  <SideBarItem color="primary">onClick</SideBarItem>
-                </SideBar>
-              </TabPanel>
-            </TabPanels>
-          </Tabs>
-        </div>
+              <RenderVariations
+                label={CAPSULE.usage.variants.label}
+                description={CAPSULE.usage.variants.description}
+                code={CODE_1}
+                text={TEXT_1}
+              />
+              {/* <RenderVariations
+                label={CAPSULE.usage.width_height.label}
+                description={CAPSULE.usage.width_height.description}
+                code={CODE_2}
+                text={TEXT_2}
+              />
+              <RenderVariations
+                label={CAPSULE.usage.image.label}
+                description={CAPSULE.usage.image.description}
+                code={CODE_3}
+                text={TEXT_3}
+              />
+  */}
+              <SideBar style={{ width: "10rem", top: "5rem" }}>
+                <SideBarItem color="primary" selected>
+                  Installation
+                </SideBarItem>
+                <SideBarItem color="primary">Sizes</SideBarItem>
+              </SideBar>
+            </TabPanel>
+            <TabPanel value="props">
+              <Text
+                preciseColor={textColor}
+                size="large"
+                style={{ marginTop: "2rem" }}
+              >
+                {CAPSULE.props._label}
+              </Text>
+              <RenderProps
+                propName={CAPSULE.props.variant.name}
+                description={
+                  CAPSULE.props.variant.description
+                }
+                type={CAPSULE.props.variant.type}
+                defaultValue={
+                  CAPSULE.props.variant.default
+                }
+                marginTop="1rem"
+              />
+              <RenderProps
+                propName={CAPSULE.props.color.name}
+                description={
+                  CAPSULE.props.color.description
+                }
+                type={CAPSULE.props.color.type}
+                defaultValue={
+                  CAPSULE.props.color.default
+                }
+              />
+              <RenderProps
+                propName={CAPSULE.props.width.name}
+                description={
+                  CAPSULE.props.width.description
+                }
+                type={CAPSULE.props.width.type}
+                defaultValue={
+                  CAPSULE.props.width.default
+                }
+              />
+              <RenderProps
+                propName={CAPSULE.props.height.name}
+                description={
+                  CAPSULE.props.height.description
+                }
+                type={CAPSULE.props.height.type}
+                defaultValue={
+                  CAPSULE.props.height.default
+                }
+              />
+              <RenderProps
+                propName={CAPSULE.props.image.name}
+                description={
+                  CAPSULE.props.image.description
+                }
+                type={CAPSULE.props.image.type}
+                defaultValue={
+                  CAPSULE.props.image.default
+                }
+              />
+              <RenderProps
+                propName={CAPSULE.props.imageAlt.name}
+                description={
+                  CAPSULE.props.imageAlt.description
+                }
+                type={CAPSULE.props.imageAlt.type}
+                defaultValue={
+                  CAPSULE.props.imageAlt.default
+                }
+              />
+              <RenderProps
+                propName={CAPSULE.props.imagePosition.name}
+                description={
+                  CAPSULE.props.imagePosition.description
+                }
+                type={CAPSULE.props.imagePosition.type}
+                defaultValue={
+                  CAPSULE.props.imagePosition.default
+                }
+              />
+              <RenderProps
+                propName={CAPSULE.props.title.name}
+                description={
+                  CAPSULE.props.title.description
+                }
+                type={CAPSULE.props.title.type}
+                defaultValue={
+                  CAPSULE.props.title.default
+                }
+              />
+              <RenderProps
+                propName={CAPSULE.props.description.name}
+                description={
+                  CAPSULE.props.description.description
+                }
+                type={CAPSULE.props.description.type}
+                defaultValue={
+                  CAPSULE.props.description.default
+                }
+              />
+              <RenderProps
+                propName={CAPSULE.props.onClick.name}
+                description={
+                  CAPSULE.props.onClick.description
+                }
+                type={CAPSULE.props.onClick.type}
+                defaultValue={
+                  CAPSULE.props.onClick.default
+                }
+              />
+
+              <SideBar style={{ width: "10rem", top: "5rem" }}>
+                <SideBarItem color="primary">size</SideBarItem>
+                <SideBarItem color="primary">width</SideBarItem>
+                <SideBarItem color="primary">value</SideBarItem>
+                <SideBarItem color="primary">children</SideBarItem>
+                <SideBarItem color="primary">onClick</SideBarItem>
+              </SideBar>
+            </TabPanel>
+          </TabPanels>
+        </Tabs>
       </div>
-    );
+    </div>
+  );
 }
 export default CapsuleDisplay;
 

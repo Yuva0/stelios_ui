@@ -2,8 +2,6 @@ import * as React from "react";
 import {
   Text,
   useTheme,
-  SideBar,
-  SideBarItem,
   Tabs,
   TabPanels,
   TabPanel,
@@ -25,7 +23,6 @@ const ICONBUTTON = i18n.iconButton;
 const IconButtonDisplay = () => {
   const theme = useTheme().theme!;
   const colorPalette = theme.colorPalette;
-
   const variationRefs = Array.from({ length: 4 }, () => React.createRef<HTMLDivElement>());
   const propsRef = Array.from({ length: 7 }, () => React.createRef<HTMLDivElement>());
   const [selectedTab, setSelectedTab] = React.useState("usage");
@@ -63,7 +60,7 @@ const IconButtonDisplay = () => {
 
   return (
     <div style={{ margin: "1.5rem 0 4rem 0", width: "calc(100% - 22rem)" }}>
-      <RenderBreadcrumbsForComponent name={i18n.iconButton.title} />
+      <RenderBreadcrumbsForComponent name={ICONBUTTON.title} />
 
       <div style={{ padding: "1rem" }}>
         <RenderComponentHeading
@@ -111,10 +108,10 @@ const IconButtonDisplay = () => {
               />
 
               {renderSideBarItem([
-                i18n.iconButton.usage.installation.label,
-                i18n.iconButton.usage.variants.label,
-                i18n.iconButton.usage.sizes.label,
-                i18n.iconButton.usage.disabled.label,
+                ICONBUTTON.usage.installation.label,
+                ICONBUTTON.usage.variants.label,
+                ICONBUTTON.usage.sizes.label,
+                ICONBUTTON.usage.disabled.label,
               ], selectedVariationSideBarItem, variationRefs)}
             </TabPanel>
             <TabPanel value="props">
@@ -179,13 +176,13 @@ const IconButtonDisplay = () => {
               />
 
               {renderSideBarItem([
-                  i18n.iconButton.props.variant.name,
-                  i18n.iconButton.props.size.name,
-                  i18n.iconButton.props.disabled.name,
-                  i18n.iconButton.props.color.name,
-                  i18n.iconButton.props.icon.name,
-                  i18n.iconButton.props.alt.name,
-                  i18n.iconButton.props.onClick.name,
+                  ICONBUTTON.props.variant.name,
+                  ICONBUTTON.props.size.name,
+                  ICONBUTTON.props.disabled.name,
+                  ICONBUTTON.props.color.name,
+                  ICONBUTTON.props.icon.name,
+                  ICONBUTTON.props.alt.name,
+                  ICONBUTTON.props.onClick.name,
                 ], selectedPropsSideBarItem, propsRef
               )}
             </TabPanel>
@@ -201,55 +198,55 @@ const CODE_1 = (
   <div style={{ display: "flex", gap: "2rem" }}>
     <IconButton
       icon={<IconAwardFilled />}
-      alt={i18n.iconButton.code.alt}
+      alt={ICONBUTTON.code.alt}
       color="component"
       variant="contained"
     />
     <IconButton
       icon={<IconAwardFilled />}
-      alt={i18n.iconButton.code.alt}
+      alt={ICONBUTTON.code.alt}
       color="component"
       variant="outlined"
     />
     <IconButton
       icon={<IconAwardFilled />}
-      alt={i18n.iconButton.code.alt}
+      alt={ICONBUTTON.code.alt}
       color="component"
       variant="outlined-soft"
     />
     <IconButton
       icon={<IconAwardFilled />}
-      alt={i18n.iconButton.code.alt}
+      alt={ICONBUTTON.code.alt}
       color="component"
       variant="soft"
     />
     <IconButton
       icon={<IconAwardFilled />}
-      alt={i18n.iconButton.code.alt}
+      alt={ICONBUTTON.code.alt}
       color="component"
       variant="neumorph"
     />
     <IconButton
       icon={<IconAwardFilled />}
-      alt={i18n.iconButton.code.alt}
+      alt={ICONBUTTON.code.alt}
       color="component"
       variant="neumorph-contained"
     />
     <IconButton
       icon={<IconAwardFilled />}
-      alt={i18n.iconButton.code.alt}
+      alt={ICONBUTTON.code.alt}
       color="component"
       disabled
     />
   </div>
 );
-const TEXT_1 = `<IconButton icon={<IconAwardFilled/>} alt="${i18n.iconButton.code.alt}" variant="contained"/>
-<IconButton icon={<IconAwardFilled/>} alt="${i18n.iconButton.code.alt}" variant="outlined"/>
-<IconButton icon={<IconAwardFilled/>} alt="${i18n.iconButton.code.alt}" variant="outlined-soft"/>
-<IconButton icon={<IconAwardFilled/>} alt="${i18n.iconButton.code.alt}" variant="soft"/>
-<IconButton icon={<IconAwardFilled/>} alt="${i18n.iconButton.code.alt}" variant="neumorph"/>
-<IconButton icon={<IconAwardFilled/>} alt="${i18n.iconButton.code.alt}" variant="neumorph-contained"/>
-<IconButton icon={<IconAwardFilled/>} alt="${i18n.iconButton.code.alt}" disabled/>`;
+const TEXT_1 = `<IconButton icon={<IconAwardFilled/>} alt="${ICONBUTTON.code.alt}" variant="contained"/>
+<IconButton icon={<IconAwardFilled/>} alt="${ICONBUTTON.code.alt}" variant="outlined"/>
+<IconButton icon={<IconAwardFilled/>} alt="${ICONBUTTON.code.alt}" variant="outlined-soft"/>
+<IconButton icon={<IconAwardFilled/>} alt="${ICONBUTTON.code.alt}" variant="soft"/>
+<IconButton icon={<IconAwardFilled/>} alt="${ICONBUTTON.code.alt}" variant="neumorph"/>
+<IconButton icon={<IconAwardFilled/>} alt="${ICONBUTTON.code.alt}" variant="neumorph-contained"/>
+<IconButton icon={<IconAwardFilled/>} alt="${ICONBUTTON.code.alt}" disabled/>`;
 
 const CODE_2 = (
   <div
@@ -262,30 +259,30 @@ const CODE_2 = (
   >
     <IconButton
       icon={<IconAwardFilled />}
-      alt={i18n.iconButton.code.alt}
+      alt={ICONBUTTON.code.alt}
       color="component"
       size="small"
       style={{ height: "fit-content" }}
     />
     <IconButton
       icon={<IconAwardFilled />}
-      alt={i18n.iconButton.code.alt}
+      alt={ICONBUTTON.code.alt}
       color="component"
       size="medium"
       style={{ height: "fit-content" }}
     />
     <IconButton
       icon={<IconAwardFilled />}
-      alt={i18n.iconButton.code.alt}
+      alt={ICONBUTTON.code.alt}
       color="component"
       size="large"
       style={{ height: "fit-content" }}
     />
   </div>
 );
-const TEXT_2 = `<IconButton icon={<IconAwardFilled/>} alt="${i18n.iconButton.code.alt}" size="small"/>
-<IconButton icon={<IconAwardFilled/>} alt="${i18n.iconButton.code.alt}" size="medium"/>
-<IconButton icon={<IconAwardFilled/>} alt="${i18n.iconButton.code.alt}" size="large"/>`;
+const TEXT_2 = `<IconButton icon={<IconAwardFilled/>} alt="${ICONBUTTON.code.alt}" size="small"/>
+<IconButton icon={<IconAwardFilled/>} alt="${ICONBUTTON.code.alt}" size="medium"/>
+<IconButton icon={<IconAwardFilled/>} alt="${ICONBUTTON.code.alt}" size="large"/>`;
 
 const CODE_3 = (
   <div style={{ display: "flex", gap: "2rem" }}>

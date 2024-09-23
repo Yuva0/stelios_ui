@@ -1,8 +1,7 @@
+import React from "react";
 import {
   Text,
   useTheme,
-  SideBar,
-  SideBarItem,
   Tabs,
   TabPanels,
   TabPanel,
@@ -13,6 +12,7 @@ import {
   RenderBreadcrumbsForComponent,
   RenderComponentHeading,
   RenderProps,
+  renderSideBarItem,
   RenderTabsList,
   RenderVariations,
 } from "../helpers/helpers";
@@ -22,9 +22,41 @@ const ACCORDION = i18n.accordion;
 const AccordionDisplay = () => {
   const theme = useTheme().theme!;
   const colorPalette = theme.colorPalette;
+  const variationRefs = Array.from({ length: 2 }, () => React.createRef<HTMLDivElement>());
+  const propsRef = Array.from({ length: 1 }, () => React.createRef<HTMLDivElement>());
+
+  const [selectedTab, setSelectedTab] = React.useState("usage");
+  const [selectedVariationSideBarItem, setSelectedVariationSideBarItem] = React.useState(0);
+  const [selectedPropsSideBarItem, setSelectedPropsSideBarItem] = React.useState(0);
 
   const textColor =
     colorPalette.primary.appearance === "light" ? "black" : "white";
+
+  React.useEffect(() => {
+    const handleScroll = () => {
+      if(selectedTab === "usage"){
+      for(let i=0; i<variationRefs.length; i++){
+        if(variationRefs[i].current?.getBoundingClientRect().top! > 0){
+          setSelectedVariationSideBarItem(i);
+          return;
+        }
+      }}
+      else if(selectedTab === "props"){
+        for(let i=0; i<propsRef.length; i++){
+          if(propsRef[i].current?.getBoundingClientRect().top! > 0){
+            setSelectedPropsSideBarItem(i);
+            return;
+          }
+        }
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  },[variationRefs, propsRef, selectedTab]);
 
   return (
     <div style={{ margin: "1.5rem 0 4rem 0", width: "calc(100% - 22rem)" }}>
@@ -39,7 +71,7 @@ const AccordionDisplay = () => {
           description={ACCORDION.description}
         />
 
-        <Tabs color="primary" style={{ marginTop: "2rem" }} value="usage">
+        <Tabs color="primary" style={{ marginTop: "2rem" }} value={selectedTab} onChange={(value) => setSelectedTab(value)}>
           {RenderTabsList()}
           <TabPanels>
             <div
@@ -52,10 +84,12 @@ const AccordionDisplay = () => {
             />
             <TabPanel value="usage">
               <RenderVariations
+                ref={variationRefs[0]}
                 label={ACCORDION.usage.installation.label}
                 text={ACCORDION.usage.installation.description}
               />
               <RenderVariations
+                ref={variationRefs[1]}
                 label={ACCORDION.usage.variants.label}
                 description={ACCORDION.usage.variants.description}
                 code={CODE_1}
@@ -63,12 +97,10 @@ const AccordionDisplay = () => {
                 language="javascript"
               />
 
-              <SideBar style={{ width: "10rem", top: "5rem" }}>
-                <SideBarItem color="primary" selected>
-                  Installation
-                </SideBarItem>
-                <SideBarItem color="primary">Sizes</SideBarItem>
-              </SideBar>
+              {renderSideBarItem([
+                ACCORDION.usage.installation.label,
+                ACCORDION.usage.variants.label,
+              ], selectedVariationSideBarItem, variationRefs)}
             </TabPanel>
             <TabPanel value="props">
               <Text
@@ -79,6 +111,7 @@ const AccordionDisplay = () => {
                 {ACCORDION.props._label}
               </Text>
               <RenderProps
+                ref={propsRef[0]}
                 propName={ACCORDION.props.variant.name}
                 description={ACCORDION.props.variant.description}
                 type={ACCORDION.props.variant.type}
@@ -86,13 +119,9 @@ const AccordionDisplay = () => {
                 marginTop="1rem"
               />
 
-              <SideBar style={{ width: "10rem", top: "5rem" }}>
-                <SideBarItem color="primary">size</SideBarItem>
-                <SideBarItem color="primary">width</SideBarItem>
-                <SideBarItem color="primary">value</SideBarItem>
-                <SideBarItem color="primary">children</SideBarItem>
-                <SideBarItem color="primary">onClick</SideBarItem>
-              </SideBar>
+              {renderSideBarItem([
+                ACCORDION.props.variant.name,
+              ], selectedPropsSideBarItem, propsRef)}
             </TabPanel>
           </TabPanels>
         </Tabs>

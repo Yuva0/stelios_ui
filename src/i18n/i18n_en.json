@@ -1607,6 +1607,12 @@
         "description": "the variant of the breadcrumbs",
         "type": "contained | outlined | soft | text",
         "default": "contained"
+      },
+      "size": {
+        "name": "size",
+        "description": "the size of the breadcrumbs",
+        "type": "small | medium | large",
+        "default": "medium"
       }
     }
   },

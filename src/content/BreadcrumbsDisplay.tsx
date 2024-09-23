@@ -1,8 +1,7 @@
+import React from "react";
 import {
   Text,
   useTheme,
-  SideBar,
-  SideBarItem,
   Tabs,
   TabPanels,
   TabPanel,
@@ -13,6 +12,7 @@ import {
   RenderBreadcrumbsForComponent,
   RenderComponentHeading,
   RenderProps,
+  renderSideBarItem,
   RenderTabsList,
   RenderVariations,
 } from "../helpers/helpers";
@@ -22,9 +22,40 @@ const BREADCRUMBS = i18n.breadcrumbs;
 const BreadcrumbsDisplay = () => {
   const theme = useTheme().theme!;
   const colorPalette = theme.colorPalette;
+  const variationRefs = Array.from({ length: 4 }, () => React.createRef<HTMLDivElement>());
+  const propsRef = Array.from({ length: 7 }, () => React.createRef<HTMLDivElement>());
+  const [selectedTab, setSelectedTab] = React.useState("usage");
+  const [selectedVariationSideBarItem, setSelectedVariationSideBarItem] = React.useState(0);
+  const [selectedPropsSideBarItem, setSeletedPropsSideBarItem] = React.useState(0);
 
   const textColor =
     colorPalette.primary.appearance === "light" ? "black" : "white";
+
+  React.useEffect(() => {
+    const handleScroll = () => {
+      if(selectedTab === "usage"){
+      for(let i=0; i<variationRefs.length; i++){
+        if(variationRefs[i].current?.getBoundingClientRect().top! > 0){
+          setSelectedVariationSideBarItem(i);
+          return;
+        }
+      }}
+      else if(selectedTab === "props"){
+        for(let i=0; i<propsRef.length; i++){
+          if(propsRef[i].current?.getBoundingClientRect().top! > 0){
+            setSeletedPropsSideBarItem(i);
+            return;
+          }
+        }
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  },[variationRefs, propsRef, selectedTab]);
 
     return (
       <div style={{ margin: "1.5rem 0 4rem 0", width: "calc(100% - 22rem)" }}>
@@ -36,7 +67,7 @@ const BreadcrumbsDisplay = () => {
             description={BREADCRUMBS.description}
           />
   
-          <Tabs color="primary" style={{ marginTop: "2rem" }} value="usage">
+          <Tabs color="primary" style={{ marginTop: "2rem" }} value={selectedTab} onChange={(value) => setSelectedTab(value)}>
             {RenderTabsList()}
             <TabPanels>
               <div
@@ -49,27 +80,29 @@ const BreadcrumbsDisplay = () => {
               />
               <TabPanel value="usage">
                 <RenderVariations
+                  ref={variationRefs[0]}
                   label={BREADCRUMBS.usage.installation.label}
                   text={BREADCRUMBS.usage.installation.description}
                 />
                 <RenderVariations
+                  ref={variationRefs[1]}
                   label={BREADCRUMBS.usage.variants.label}
                   description={BREADCRUMBS.usage.variants.description}
                   code={CODE_1}
                   text={TEXT_1}
                 />
                 <RenderVariations
+                  ref={variationRefs[2]}
                   label={BREADCRUMBS.usage.sizes.label}
                   description={BREADCRUMBS.usage.sizes.description}
                   code={CODE_2}
                   text={TEXT_2}
                 />
-                <SideBar style={{ width: "10rem", top: "5rem" }}>
-                  <SideBarItem color="primary" selected>
-                    Installation
-                  </SideBarItem>
-                  <SideBarItem color="primary">Sizes</SideBarItem>
-                </SideBar>
+                {renderSideBarItem([
+                  BREADCRUMBS.usage.installation.label,
+                  BREADCRUMBS.usage.variants.label,
+                  BREADCRUMBS.usage.sizes.label,
+                ], selectedVariationSideBarItem, variationRefs)}
               </TabPanel>
               <TabPanel value="props">
                 <Text
@@ -80,6 +113,7 @@ const BreadcrumbsDisplay = () => {
                   {BREADCRUMBS.props._label}
                 </Text>
                 <RenderProps
+                  ref={propsRef[0]}
                   propName={BREADCRUMBS.props.variant.name}
                   description={
                     BREADCRUMBS.props.variant.description
@@ -90,13 +124,22 @@ const BreadcrumbsDisplay = () => {
                   }
                   marginTop="1rem"
                 />
-                <SideBar style={{ width: "10rem", top: "5rem" }}>
-                  <SideBarItem color="primary">size</SideBarItem>
-                  <SideBarItem color="primary">width</SideBarItem>
-                  <SideBarItem color="primary">value</SideBarItem>
-                  <SideBarItem color="primary">children</SideBarItem>
-                  <SideBarItem color="primary">onClick</SideBarItem>
-                </SideBar>
+                <RenderProps
+                  ref={propsRef[1]}
+                  propName={BREADCRUMBS.props.size.name}
+                  description={
+                    BREADCRUMBS.props.size.description
+                  }
+                  type={BREADCRUMBS.props.size.type}
+                  defaultValue={
+                    BREADCRUMBS.props.size.default
+                  }
+                  marginTop="1rem"
+                />
+                {renderSideBarItem([
+                  BREADCRUMBS.props.variant.name,
+                  BREADCRUMBS.props.size.name,
+                ], selectedPropsSideBarItem, propsRef)}
               </TabPanel>
             </TabPanels>
           </Tabs>

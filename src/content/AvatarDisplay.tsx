@@ -1,8 +1,7 @@
+import React from "react";
 import {
   Text,
   useTheme,
-  SideBar,
-  SideBarItem,
   Tabs,
   TabPanels,
   TabPanel,
@@ -12,6 +11,7 @@ import {
   RenderBreadcrumbsForComponent,
   RenderComponentHeading,
   RenderProps,
+  renderSideBarItem,
   RenderTabsList,
   RenderVariations,
 } from "../helpers/helpers";
@@ -21,9 +21,40 @@ const AVATAR = i18n.avatar;
 const AvatarDisplay = () => {
   const theme = useTheme().theme!;
   const colorPalette = theme.colorPalette;
+  const variationRefs = Array.from({ length: 5 }, () => React.createRef<HTMLDivElement>());
+  const propsRef = Array.from({ length: 5 }, () => React.createRef<HTMLDivElement>());
+  const [selectedTab, setSelectedTab] = React.useState("usage");
+  const [selectedVariationSideBarItem, setSelectedVariationSideBarItem] = React.useState(0);
+  const [selectedPropsSideBarItem, setSeletedPropsSideBarItem] = React.useState(0);
 
   const textColor =
     colorPalette.primary.appearance === "light" ? "black" : "white";
+
+  React.useEffect(() => {
+    const handleScroll = () => {
+      if(selectedTab === "usage"){
+      for(let i=0; i<variationRefs.length; i++){
+        if(variationRefs[i].current?.getBoundingClientRect().top! > 0){
+          setSelectedVariationSideBarItem(i);
+          return;
+        }
+      }}
+      else if(selectedTab === "props"){
+        for(let i=0; i<propsRef.length; i++){
+          if(propsRef[i].current?.getBoundingClientRect().top! > 0){
+            setSeletedPropsSideBarItem(i);
+            return;
+          }
+        }
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  },[variationRefs, propsRef, selectedTab]);
 
     return (
       <div style={{ margin: "1.5rem 0 4rem 0", width: "calc(100% - 22rem)" }}>
@@ -35,7 +66,7 @@ const AvatarDisplay = () => {
             description={AVATAR.description}
           />
   
-          <Tabs color="primary" style={{ marginTop: "2rem" }} value="usage">
+          <Tabs color="primary" style={{ marginTop: "2rem" }} value={selectedTab} onChange={(value) => setSelectedTab(value)}>
             {RenderTabsList()}
             <TabPanels>
               <div
@@ -48,40 +79,46 @@ const AvatarDisplay = () => {
               />
               <TabPanel value="usage">
                 <RenderVariations
+                  ref={variationRefs[0]}
                   label={AVATAR.usage.installation.label}
                   text={AVATAR.usage.installation.description}
                 />
                 <RenderVariations
+                  ref={variationRefs[1]}
                   label={AVATAR.usage.sizes.label}
                   description={AVATAR.usage.sizes.description}
                   code={CODE_1}
                   text={TEXT_1}
                 />
                 <RenderVariations
+                  ref={variationRefs[2]}
                   label={AVATAR.usage.shape.label}
                   description={AVATAR.usage.shape.description}
                   code={CODE_2}
                   text={TEXT_2}
                 />
                 <RenderVariations
+                  ref={variationRefs[3]}
                   label={AVATAR.usage.initials.label}
                   description={AVATAR.usage.initials.description}
                   code={CODE_3}
                   text={TEXT_3}
                 />
                 <RenderVariations
+                  ref={variationRefs[4]}
                   label={AVATAR.usage.variant.label}
                   description={AVATAR.usage.variant.description}
                   code={CODE_4}
                   text={TEXT_4}
                 />
   
-                <SideBar style={{ width: "10rem", top: "5rem" }}>
-                  <SideBarItem color="primary" selected>
-                    Installation
-                  </SideBarItem>
-                  <SideBarItem color="primary">Sizes</SideBarItem>
-                </SideBar>
+                {renderSideBarItem([
+                  AVATAR.usage.installation.label,
+                  AVATAR.usage.sizes.label,
+                  AVATAR.usage.shape.label,
+                  AVATAR.usage.initials.label,
+                  AVATAR.usage.variant.label,
+                ], selectedVariationSideBarItem, variationRefs)}
               </TabPanel>
               <TabPanel value="props">
                 <Text
@@ -92,6 +129,7 @@ const AvatarDisplay = () => {
                   {AVATAR.props._label}
                 </Text>
                 <RenderProps
+                  ref={propsRef[0]}
                   propName={AVATAR.props.src.name}
                   description={
                     AVATAR.props.src.description
@@ -103,6 +141,7 @@ const AvatarDisplay = () => {
                   marginTop="1rem"
                 />
                 <RenderProps
+                  ref={propsRef[1]}
                   propName={AVATAR.props.alt.name}
                   description={
                     AVATAR.props.alt.description
@@ -114,6 +153,7 @@ const AvatarDisplay = () => {
                   marginTop="1rem"
                 />
                 <RenderProps
+                  ref={propsRef[2]}
                   propName={AVATAR.props.type.name}
                   description={
                     AVATAR.props.type.description
@@ -125,6 +165,7 @@ const AvatarDisplay = () => {
                   marginTop="1rem"
                 />
                 <RenderProps
+                  ref={propsRef[3]}
                   propName={AVATAR.props.variant.name}
                   description={
                     AVATAR.props.variant.description
@@ -136,6 +177,7 @@ const AvatarDisplay = () => {
                   marginTop="1rem"
                 />
                 <RenderProps
+                  ref={propsRef[4]}
                   propName={AVATAR.props.size.name}
                   description={
                     AVATAR.props.size.description
@@ -146,13 +188,13 @@ const AvatarDisplay = () => {
                   }
                 />
   
-                <SideBar style={{ width: "10rem", top: "5rem" }}>
-                  <SideBarItem color="primary">size</SideBarItem>
-                  <SideBarItem color="primary">width</SideBarItem>
-                  <SideBarItem color="primary">value</SideBarItem>
-                  <SideBarItem color="primary">children</SideBarItem>
-                  <SideBarItem color="primary">onClick</SideBarItem>
-                </SideBar>
+                {renderSideBarItem([
+                  AVATAR.props.src.name,
+                  AVATAR.props.alt.name,
+                  AVATAR.props.type.name,
+                  AVATAR.props.variant.name,
+                  AVATAR.props.size.name,
+                ], selectedPropsSideBarItem, propsRef)}
               </TabPanel>
             </TabPanels>
           </Tabs>

@@ -3,8 +3,6 @@ import {
   Text,
   useTheme,
   Button,
-  SideBar,
-  SideBarItem,
   Tabs,
   TabPanels,
   TabPanel,
@@ -14,6 +12,7 @@ import {
   RenderBreadcrumbsForComponent,
   RenderComponentHeading,
   RenderProps,
+  renderSideBarItem,
   RenderTabsList,
   RenderVariations,
 } from "../helpers/helpers";
@@ -131,18 +130,15 @@ const ButtonDisplay = () => {
                 text={TEXT_6}
               />
 
-              {/* Usage Variations Sidebar */}
-              <SideBar style={{ width: "10rem", top: "5rem" }}>
-                <SideBarItem color="primary" selected={selectedVariationSideBarItem === 0}>
-                  {i18n.button.usage.installation.label}
-                </SideBarItem>
-                <SideBarItem color="primary" selected={selectedVariationSideBarItem === 1}>{i18n.button.usage.variants.label}</SideBarItem>
-                <SideBarItem color="primary" selected={selectedVariationSideBarItem === 2}>{i18n.button.usage.sizes.label}</SideBarItem>
-                <SideBarItem color="primary" selected={selectedVariationSideBarItem === 3}>{i18n.button.usage.icons.label}</SideBarItem>
-                <SideBarItem color="primary" selected={selectedVariationSideBarItem === 4}>{i18n.button.usage.rounded.label}</SideBarItem>
-                <SideBarItem color="primary" selected={selectedVariationSideBarItem === 5}>{i18n.button.usage.disabled.label}</SideBarItem>
-                <SideBarItem color="primary" selected={selectedVariationSideBarItem === 6}>{i18n.button.usage.fullWidth.label}</SideBarItem>
-              </SideBar>
+              {renderSideBarItem([
+                BUTTONTEXT.usage.installation.label,
+                BUTTONTEXT.usage.variants.label,
+                BUTTONTEXT.usage.sizes.label,
+                BUTTONTEXT.usage.icons.label,
+                BUTTONTEXT.usage.rounded.label,
+                BUTTONTEXT.usage.disabled.label,
+                BUTTONTEXT.usage.fullWidth.label,
+              ], selectedVariationSideBarItem, variationRefs)}
             </TabPanel>
             <TabPanel value="props">
               <Text
@@ -235,38 +231,18 @@ const ButtonDisplay = () => {
                 defaultValue={BUTTONTEXT.props.onClick.default}
               />
 
-              <SideBar style={{ width: "10rem", top: "5rem" }}>
-                <SideBarItem color="primary" selected={selectedPropsSideBarItem === 0} size="small">
-                  {i18n.button.props.variant.name}
-                </SideBarItem>
-                <SideBarItem color="primary" selected={selectedPropsSideBarItem === 1} size="small">
-                  {i18n.button.props.size.name}
-                </SideBarItem>
-                <SideBarItem color="primary" selected={selectedPropsSideBarItem === 2} size="small">
-                  {i18n.button.props.rounded.name}
-                </SideBarItem>
-                <SideBarItem color="primary" selected={selectedPropsSideBarItem === 3} size="small">
-                  {i18n.button.props.disabled.name}
-                </SideBarItem>
-                <SideBarItem color="primary" selected={selectedPropsSideBarItem === 4} size="small">
-                  {i18n.button.props.isFullWidth.name}
-                </SideBarItem>
-                <SideBarItem color="primary" selected={selectedPropsSideBarItem === 5} size="small">
-                  {i18n.button.props.color.name}
-                </SideBarItem>
-                <SideBarItem color="primary" selected={selectedPropsSideBarItem === 6} size="small">
-                  {i18n.button.props.leadingIcon.name}
-                </SideBarItem>
-                <SideBarItem color="primary" selected={selectedPropsSideBarItem === 7} size="small">
-                  {i18n.button.props.trailingIcon.name}
-                </SideBarItem>
-                <SideBarItem color="primary" selected={selectedPropsSideBarItem === 8} size="small">
-                  {i18n.button.props.children.name}
-                </SideBarItem>
-                <SideBarItem color="primary" selected={selectedPropsSideBarItem === 9} size="small">
-                  {i18n.button.props.onClick.name}
-                </SideBarItem>
-              </SideBar>
+              {renderSideBarItem([
+                BUTTONTEXT.props.variant.name,
+                BUTTONTEXT.props.size.name,
+                BUTTONTEXT.props.rounded.name,
+                BUTTONTEXT.props.disabled.name,
+                BUTTONTEXT.props.isFullWidth.name,
+                BUTTONTEXT.props.color.name,
+                BUTTONTEXT.props.leadingIcon.name,
+                BUTTONTEXT.props.trailingIcon.name,
+                BUTTONTEXT.props.children.name,
+                BUTTONTEXT.props.onClick.name,
+              ], selectedPropsSideBarItem, propsRef)}
             </TabPanel>
           </TabPanels>
         </Tabs>
