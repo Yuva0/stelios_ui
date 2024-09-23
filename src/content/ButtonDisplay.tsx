@@ -1,3 +1,4 @@
+import React from "react";
 import {
   Text,
   useTheme,
@@ -23,9 +24,41 @@ const BUTTONTEXT = i18n.button;
 const ButtonDisplay = () => {
   const theme = useTheme().theme!;
   const colorPalette = theme.colorPalette;
+  const variationRefs = Array.from({ length: 7 }, () => React.createRef<HTMLDivElement>());
+  const propsRef = Array.from({ length: 10 }, () => React.createRef<HTMLDivElement>());
+
+  const [selectedTab, setSelectedTab] = React.useState("usage");
+  const [selectedVariationSideBarItem, setSelectedVariationSideBarItem] = React.useState(0);
+  const [selectedPropsSideBarItem, setSelectedPropsSideBarItem] = React.useState(0);
 
   const textColor =
     colorPalette.primary.appearance === "light" ? "black" : "white";
+
+  React.useEffect(() => {
+    const handleScroll = () => {
+      if(selectedTab === "usage"){
+      for(let i=0; i<variationRefs.length; i++){
+        if(variationRefs[i].current?.getBoundingClientRect().top! > 0){
+          setSelectedVariationSideBarItem(i);
+          return;
+        }
+      }}
+      else if(selectedTab === "props"){
+        for(let i=0; i<propsRef.length; i++){
+          if(propsRef[i].current?.getBoundingClientRect().top! > 0){
+            setSelectedPropsSideBarItem(i);
+            return;
+          }
+        }
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  },[variationRefs, propsRef, selectedTab]);
 
   return (
     <div style={{ margin: "1.5rem 0 4rem 0", width: "calc(100% - 22rem)" }}>
@@ -36,7 +69,7 @@ const ButtonDisplay = () => {
           description={BUTTONTEXT.description}
         />
 
-        <Tabs color="primary" style={{ marginTop: "2rem" }} value="usage">
+        <Tabs color="primary" style={{ marginTop: "2rem" }} value={selectedTab} onChange={(value) => setSelectedTab(value)}>
           {RenderTabsList()}
 
           <TabPanels>
@@ -51,40 +84,47 @@ const ButtonDisplay = () => {
             <TabPanel value="usage">
               {/* Usage Variations */}
               <RenderVariations
+                ref={variationRefs[0]}
                 label={BUTTONTEXT.usage.installation.label}
                 text={BUTTONTEXT.usage.installation.description}
               />
               <RenderVariations
+                ref={variationRefs[1]}
                 label={BUTTONTEXT.usage.variants.label}
                 description={BUTTONTEXT.usage.variants.description}
                 code={CODE_1}
                 text={TEXT_1}
               />
               <RenderVariations
+                ref={variationRefs[2]}
                 label={BUTTONTEXT.usage.sizes.label}
                 description={BUTTONTEXT.usage.sizes.description}
                 code={CODE_2}
                 text={TEXT_2}
               />
               <RenderVariations
+                ref={variationRefs[3]}
                 label={BUTTONTEXT.usage.icons.label}
                 description={BUTTONTEXT.usage.icons.description}
                 code={CODE_3}
                 text={TEXT_3}
               />
               <RenderVariations
+                ref={variationRefs[4]}
                 label={BUTTONTEXT.usage.rounded.label}
                 description={BUTTONTEXT.usage.rounded.description}
                 code={CODE_4}
                 text={TEXT_4}
               />
               <RenderVariations
+                ref={variationRefs[5]}
                 label={BUTTONTEXT.usage.disabled.label}
                 description={BUTTONTEXT.usage.disabled.description}
                 code={CODE_5}
                 text={TEXT_5}
               />
               <RenderVariations
+                ref={variationRefs[6]}
                 label={BUTTONTEXT.usage.fullWidth.label}
                 description={BUTTONTEXT.usage.fullWidth.description}
                 code={CODE_6}
@@ -93,15 +133,15 @@ const ButtonDisplay = () => {
 
               {/* Usage Variations Sidebar */}
               <SideBar style={{ width: "10rem", top: "5rem" }}>
-                <SideBarItem color="primary" selected>
+                <SideBarItem color="primary" selected={selectedVariationSideBarItem === 0}>
                   {i18n.button.usage.installation.label}
                 </SideBarItem>
-                <SideBarItem color="primary">{i18n.button.usage.variants.label}</SideBarItem>
-                <SideBarItem color="primary">{i18n.button.usage.sizes.label}</SideBarItem>
-                <SideBarItem color="primary">{i18n.button.usage.icons.label}</SideBarItem>
-                <SideBarItem color="primary">{i18n.button.usage.rounded.label}</SideBarItem>
-                <SideBarItem color="primary">{i18n.button.usage.disabled.label}</SideBarItem>
-                <SideBarItem color="primary">{i18n.button.usage.fullWidth.label}</SideBarItem>
+                <SideBarItem color="primary" selected={selectedVariationSideBarItem === 1}>{i18n.button.usage.variants.label}</SideBarItem>
+                <SideBarItem color="primary" selected={selectedVariationSideBarItem === 2}>{i18n.button.usage.sizes.label}</SideBarItem>
+                <SideBarItem color="primary" selected={selectedVariationSideBarItem === 3}>{i18n.button.usage.icons.label}</SideBarItem>
+                <SideBarItem color="primary" selected={selectedVariationSideBarItem === 4}>{i18n.button.usage.rounded.label}</SideBarItem>
+                <SideBarItem color="primary" selected={selectedVariationSideBarItem === 5}>{i18n.button.usage.disabled.label}</SideBarItem>
+                <SideBarItem color="primary" selected={selectedVariationSideBarItem === 6}>{i18n.button.usage.fullWidth.label}</SideBarItem>
               </SideBar>
             </TabPanel>
             <TabPanel value="props">
@@ -115,6 +155,7 @@ const ButtonDisplay = () => {
 
               {/* Variant */}
               <RenderProps
+                ref={propsRef[0]}
                 propName={BUTTONTEXT.props.variant.name}
                 description={BUTTONTEXT.props.variant.description}
                 type={BUTTONTEXT.props.variant.type}
@@ -123,6 +164,7 @@ const ButtonDisplay = () => {
               />
               {/* Size */}
               <RenderProps
+                ref={propsRef[1]}
                 propName={BUTTONTEXT.props.size.name}
                 description={BUTTONTEXT.props.size.description}
                 type={BUTTONTEXT.props.size.type}
@@ -130,6 +172,7 @@ const ButtonDisplay = () => {
               />
               {/* Rounded */}
               <RenderProps
+                ref={propsRef[2]}
                 propName={BUTTONTEXT.props.rounded.name}
                 description={BUTTONTEXT.props.rounded.description}
                 type={BUTTONTEXT.props.rounded.type}
@@ -137,6 +180,7 @@ const ButtonDisplay = () => {
               />
               {/* Disabled */}
               <RenderProps
+                ref={propsRef[3]}
                 propName={BUTTONTEXT.props.disabled.name}
                 description={BUTTONTEXT.props.disabled.description}
                 type={BUTTONTEXT.props.disabled.type}
@@ -144,6 +188,7 @@ const ButtonDisplay = () => {
               />
               {/* isFullWidth */}
               <RenderProps
+                ref={propsRef[4]}
                 propName={BUTTONTEXT.props.isFullWidth.name}
                 description={BUTTONTEXT.props.isFullWidth.description}
                 type={BUTTONTEXT.props.isFullWidth.type}
@@ -151,6 +196,7 @@ const ButtonDisplay = () => {
               />
               {/* Color */}
               <RenderProps
+                ref={propsRef[5]}
                 propName={BUTTONTEXT.props.color.name}
                 description={BUTTONTEXT.props.color.description}
                 type={BUTTONTEXT.props.color.type}
@@ -158,6 +204,7 @@ const ButtonDisplay = () => {
               />
               {/* Leading Icon */}
               <RenderProps
+                ref={propsRef[6]}
                 propName={BUTTONTEXT.props.leadingIcon.name}
                 description={BUTTONTEXT.props.leadingIcon.description}
                 type={BUTTONTEXT.props.leadingIcon.type}
@@ -165,6 +212,7 @@ const ButtonDisplay = () => {
               />
               {/* Trailing Icon */}
               <RenderProps
+                ref={propsRef[7]}
                 propName={BUTTONTEXT.props.trailingIcon.name}
                 description={BUTTONTEXT.props.trailingIcon.description}
                 type={BUTTONTEXT.props.trailingIcon.type}
@@ -172,6 +220,7 @@ const ButtonDisplay = () => {
               />
               {/* Children */}
               <RenderProps
+                ref={propsRef[8]}
                 propName={BUTTONTEXT.props.children.name}
                 description={BUTTONTEXT.props.children.description}
                 type={BUTTONTEXT.props.children.type}
@@ -179,6 +228,7 @@ const ButtonDisplay = () => {
               />
               {/* onClick */}
               <RenderProps
+                ref={propsRef[9]}
                 propName={BUTTONTEXT.props.onClick.name}
                 description={BUTTONTEXT.props.onClick.description}
                 type={BUTTONTEXT.props.onClick.type}
@@ -186,34 +236,34 @@ const ButtonDisplay = () => {
               />
 
               <SideBar style={{ width: "10rem", top: "5rem" }}>
-                <SideBarItem color="primary" selected size="small">
+                <SideBarItem color="primary" selected={selectedPropsSideBarItem === 0} size="small">
                   {i18n.button.props.variant.name}
                 </SideBarItem>
-                <SideBarItem color="primary" size="small">
+                <SideBarItem color="primary" selected={selectedPropsSideBarItem === 1} size="small">
                   {i18n.button.props.size.name}
                 </SideBarItem>
-                <SideBarItem color="primary" size="small">
+                <SideBarItem color="primary" selected={selectedPropsSideBarItem === 2} size="small">
                   {i18n.button.props.rounded.name}
                 </SideBarItem>
-                <SideBarItem color="primary" size="small">
+                <SideBarItem color="primary" selected={selectedPropsSideBarItem === 3} size="small">
                   {i18n.button.props.disabled.name}
                 </SideBarItem>
-                <SideBarItem color="primary" size="small">
+                <SideBarItem color="primary" selected={selectedPropsSideBarItem === 4} size="small">
                   {i18n.button.props.isFullWidth.name}
                 </SideBarItem>
-                <SideBarItem color="primary" size="small">
+                <SideBarItem color="primary" selected={selectedPropsSideBarItem === 5} size="small">
                   {i18n.button.props.color.name}
                 </SideBarItem>
-                <SideBarItem color="primary" size="small">
+                <SideBarItem color="primary" selected={selectedPropsSideBarItem === 6} size="small">
                   {i18n.button.props.leadingIcon.name}
                 </SideBarItem>
-                <SideBarItem color="primary" size="small">
+                <SideBarItem color="primary" selected={selectedPropsSideBarItem === 7} size="small">
                   {i18n.button.props.trailingIcon.name}
                 </SideBarItem>
-                <SideBarItem color="primary" size="small">
+                <SideBarItem color="primary" selected={selectedPropsSideBarItem === 8} size="small">
                   {i18n.button.props.children.name}
                 </SideBarItem>
-                <SideBarItem color="primary" size="small">
+                <SideBarItem color="primary" selected={selectedPropsSideBarItem === 9} size="small">
                   {i18n.button.props.onClick.name}
                 </SideBarItem>
               </SideBar>

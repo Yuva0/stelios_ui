@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, forwardRef } from "react";
 import { useLocation } from "react-router-dom";
 import {
   Banner,
@@ -7,6 +7,8 @@ import {
   CodeDisplay,
   CodePreview,
   Link,
+  SideBar,
+  SideBarItem,
   Tab,
   TabList,
   Tag,
@@ -51,28 +53,14 @@ export function useWindowSize() {
   return windowSize;
 }
 
-export const RenderProps: React.FC<{
-  propName: string;
-  description: string;
-  type: string;
-  defaultValue: string;
-  marginTop?: string;
-  wordSpacing?: string
-}> = ({
+export const RenderProps = forwardRef<HTMLDivElement, {propName: string, description: string; type: string, defaultValue: string, marginTop?: string, wordSpacing?: string}>(({
   propName,
   description,
   type,
   defaultValue,
   marginTop = "3rem",
   wordSpacing = "1rem"
-}: {
-  propName: string;
-  description: string;
-  type: string;
-  defaultValue: string;
-  marginTop?: string;
-  wordSpacing?: string
-}) => {
+}, ref) => {
   const theme = useTheme().theme!;
   const colorPalette = theme.colorPalette;
 
@@ -90,7 +78,7 @@ export const RenderProps: React.FC<{
     />
   );
   return (
-    <>
+    <div ref={ref}>
       <Tag disableClick color="component" variant="outlined" style={{ marginTop: marginTop }}>
         {propName}
       </Tag>
@@ -117,9 +105,9 @@ export const RenderProps: React.FC<{
           {defaultValue}
         </Text>
       </div>
-    </>
+    </div>
   );
-};
+});
 
 export const RenderTabsList = () => {
   return (
@@ -130,19 +118,14 @@ export const RenderTabsList = () => {
   );
 };
 
-export const RenderVariations = ({
+
+export const RenderVariations = forwardRef<HTMLDivElement,{label?: string, description?: string, code?: React.ReactNode, text?: string, language?: string}>(({
   label,
   description,
   code,
   text,
   language = "jsx",
-}: {
-  label: string;
-  description?: string;
-  code?: React.ReactNode | React.ReactNode[];
-  text?: string;
-  language?: string;
-}) => {
+}, ref) => {
   const theme = useTheme().theme!;
   const colorPalette = theme.colorPalette;
   const textColor =
@@ -151,7 +134,7 @@ export const RenderVariations = ({
     colorPalette.primary.appearance === "light" ? "white" : "black";
 
   return (
-    <>
+    <div ref={ref}>
       {label && (
         <Text
           preciseColor={textColor}
@@ -189,9 +172,9 @@ export const RenderVariations = ({
           language={language}
         />
       )}
-    </>
+    </div>
   );
-};
+});
 
 export const RenderBreadcrumbsForComponent = ({ name, path }: { name: string, path?: string }) => {
   return (
@@ -260,3 +243,16 @@ export const RenderComponentHeading = ({
     </>
   );
 };
+
+export const renderSideBarItem = (values: string[], selectedIndex: number, ref: React.RefObject<HTMLDivElement>[]) => {
+  const _onClick = (index: number) => {
+    ref[index].current?.scrollIntoView({ behavior: "smooth" });
+  }
+  return (
+    <SideBar style={{width: "10rem", top: "5rem"}} color="primary">
+      {values.map((value, index) => (
+        <SideBarItem key={value} size="small" selected={index === selectedIndex} onClick={() => _onClick(index)}>{value}</SideBarItem>
+      ))}
+    </SideBar>
+  )
+}
