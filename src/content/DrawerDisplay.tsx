@@ -2,8 +2,6 @@ import React from "react";
 import {
   Text,
   useTheme,
-  SideBar,
-  SideBarItem,
   Tabs,
   TabPanels,
   TabPanel,
@@ -14,6 +12,7 @@ import {
   RenderBreadcrumbsForComponent,
   RenderComponentHeading,
   RenderProps,
+  renderSideBarItem,
   RenderTabsList,
   RenderVariations,
 } from "../helpers/helpers";
@@ -21,14 +20,52 @@ import i18n from "../i18n/i18n_en.json";
 import { useRef, useState } from "react";
 
 const DRAWER = i18n.drawer;
-const SelectDisplay = () => {
+const DrawerDisplay = () => {
   const btnRef = useRef(null);
   const [open, setOpen] = useState(false);
   const theme = useTheme().theme!;
   const colorPalette = theme.colorPalette;
 
+  const variationRefs = Array.from({ length: 2 }, () =>
+    React.createRef<HTMLDivElement>()
+  );
+  const propsRef = Array.from({ length: 10 }, () =>
+    React.createRef<HTMLDivElement>()
+  );
+  const [selectedTab, setSelectedTab] = React.useState("usage");
+  const [selectedVariationSideBarItem, setSelectedVariationSideBarItem] =
+    React.useState(0);
+  const [selectedPropsSideBarItem, setSeletedPropsSideBarItem] =
+    React.useState(0);
+
   const textColor =
     colorPalette.primary.appearance === "light" ? "black" : "white";
+
+  React.useEffect(() => {
+    const handleScroll = () => {
+      if (selectedTab === "usage") {
+        for (let i = 0; i < variationRefs.length; i++) {
+          if (variationRefs[i].current?.getBoundingClientRect().top! > 0) {
+            setSelectedVariationSideBarItem(i);
+            return;
+          }
+        }
+      } else if (selectedTab === "props") {
+        for (let i = 0; i < propsRef.length; i++) {
+          if (propsRef[i].current?.getBoundingClientRect().top! > 0) {
+            setSeletedPropsSideBarItem(i);
+            return;
+          }
+        }
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, [variationRefs, propsRef, selectedTab]);
 
   const CODE_1 = (
     <div
@@ -60,7 +97,7 @@ const SelectDisplay = () => {
           description={DRAWER.description}
         />
 
-        <Tabs color="primary" style={{ marginTop: "2rem" }} value="usage">
+        <Tabs color="primary" style={{ marginTop: "2rem" }} value={selectedTab} onChange={(value) => setSelectedTab(value)}>
           {RenderTabsList()}
           <TabPanels>
             <div
@@ -73,22 +110,19 @@ const SelectDisplay = () => {
             />
             <TabPanel value="usage">
               <RenderVariations
+                ref={variationRefs[0]}
                 label={DRAWER.usage.installation.label}
                 text={DRAWER.usage.installation.description}
               />
               <RenderVariations
+                ref={variationRefs[1]}
                 label={DRAWER.usage.default.label}
                 description={DRAWER.usage.default.description}
                 code={CODE_1}
                 text={TEXT_1}
               />
 
-              <SideBar style={{ width: "10rem", top: "5rem" }}>
-                <SideBarItem color="primary" selected>
-                  Installation
-                </SideBarItem>
-                <SideBarItem color="primary">Sizes</SideBarItem>
-              </SideBar>
+              {renderSideBarItem([DRAWER.usage.installation.label, DRAWER.usage.default.label], selectedVariationSideBarItem, variationRefs)}
             </TabPanel>
             <TabPanel value="props">
               <Text
@@ -99,6 +133,7 @@ const SelectDisplay = () => {
                 {DRAWER.props._label}
               </Text>
               <RenderProps
+                ref={propsRef[0]}
                 propName={DRAWER.props.children.name}
                 description={DRAWER.props.children.description}
                 type={DRAWER.props.children.type}
@@ -106,19 +141,14 @@ const SelectDisplay = () => {
                 marginTop="1rem"
               />
               <RenderProps
+                ref={propsRef[1]}
                 propName={DRAWER.props.color.name}
                 description={DRAWER.props.color.description}
                 type={DRAWER.props.color.type}
                 defaultValue={DRAWER.props.color.default}
               />
 
-              <SideBar style={{ width: "10rem", top: "5rem" }}>
-                <SideBarItem color="primary">size</SideBarItem>
-                <SideBarItem color="primary">width</SideBarItem>
-                <SideBarItem color="primary">value</SideBarItem>
-                <SideBarItem color="primary">children</SideBarItem>
-                <SideBarItem color="primary">onClick</SideBarItem>
-              </SideBar>
+              {renderSideBarItem([DRAWER.props.children.name, DRAWER.props.color.name], selectedPropsSideBarItem, propsRef)}
             </TabPanel>
           </TabPanels>
         </Tabs>
@@ -126,4 +156,4 @@ const SelectDisplay = () => {
     </div>
   );
 };
-export default SelectDisplay;
+export default DrawerDisplay;

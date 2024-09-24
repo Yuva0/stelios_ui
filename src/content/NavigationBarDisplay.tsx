@@ -2,8 +2,6 @@ import React from "react";
 import {
   Text,
   useTheme,
-  SideBar,
-  SideBarItem,
   Tabs,
   TabPanels,
   TabPanel,
@@ -17,6 +15,7 @@ import {
   RenderBreadcrumbsForComponent,
   RenderComponentHeading,
   RenderProps,
+  renderSideBarItem,
   RenderTabsList,
   RenderVariations,
 } from "../helpers/helpers";
@@ -27,8 +26,46 @@ const NavigationBarDisplay = () => {
   const theme = useTheme().theme!;
   const colorPalette = theme.colorPalette;
 
+  const variationRefs = Array.from({ length: 3 }, () =>
+    React.createRef<HTMLDivElement>()
+  );
+  const propsRef = Array.from({ length: 16 }, () =>
+    React.createRef<HTMLDivElement>()
+  );
+  const [selectedTab, setSelectedTab] = React.useState("usage");
+  const [selectedVariationSideBarItem, setSelectedVariationSideBarItem] =
+    React.useState(0);
+  const [selectedPropsSideBarItem, setSeletedPropsSideBarItem] =
+    React.useState(0);
+
   const textColor =
     colorPalette.primary.appearance === "light" ? "black" : "white";
+
+  React.useEffect(() => {
+    const handleScroll = () => {
+      if (selectedTab === "usage") {
+        for (let i = 0; i < variationRefs.length; i++) {
+          if (variationRefs[i].current?.getBoundingClientRect().top! > 0) {
+            setSelectedVariationSideBarItem(i);
+            return;
+          }
+        }
+      } else if (selectedTab === "props") {
+        for (let i = 0; i < propsRef.length; i++) {
+          if (propsRef[i].current?.getBoundingClientRect().top! > 0) {
+            setSeletedPropsSideBarItem(i);
+            return;
+          }
+        }
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, [variationRefs, propsRef, selectedTab]);
 
     return (
       <div style={{ margin: "1.5rem 0 4rem 0", width: "calc(100% - 22rem)" }}>
@@ -40,7 +77,7 @@ const NavigationBarDisplay = () => {
             description={NAVIGATIONBAR.description}
           />
   
-          <Tabs color="primary" style={{ marginTop: "2rem" }} value="usage">
+          <Tabs color="primary" style={{ marginTop: "2rem" }} value={selectedTab} onChange={(value) => setSelectedTab(value)}>
             {RenderTabsList()}
             <TabPanels>
               <div
@@ -53,21 +90,18 @@ const NavigationBarDisplay = () => {
               />
               <TabPanel value="usage">
                 <RenderVariations
+                  ref={variationRefs[0]}
                   label={NAVIGATIONBAR.usage.installation.label}
                   text={NAVIGATIONBAR.usage.installation.description}
                 />
                 <RenderVariations
+                  ref={variationRefs[1]}
                   label={NAVIGATIONBAR.usage.group.label}
                   description={NAVIGATIONBAR.usage.group.description}
                   code={CODE_1}
                   text={TEXT_1}
                 />
-                <SideBar style={{ width: "10rem", top: "5rem" }}>
-                  <SideBarItem color="primary" selected>
-                    Installation
-                  </SideBarItem>
-                  <SideBarItem color="primary">Sizes</SideBarItem>
-                </SideBar>
+                {renderSideBarItem([NAVIGATIONBAR.usage.installation.label, NAVIGATIONBAR.usage.group.label], selectedVariationSideBarItem, variationRefs)}
               </TabPanel>
               <TabPanel value="props">
                 <Text
@@ -78,6 +112,7 @@ const NavigationBarDisplay = () => {
                   {NAVIGATIONBAR.props._label}
                 </Text>
                 <RenderProps
+                  ref={propsRef[0]}
                   propName={NAVIGATIONBAR.props.children.name}
                   description={
                     NAVIGATIONBAR.props.children.description
@@ -89,6 +124,7 @@ const NavigationBarDisplay = () => {
                   marginTop="1rem"
                 />
                 <RenderProps
+                  ref={propsRef[1]}
                   propName={NAVIGATIONBAR.props.color.name}
                   description={
                     NAVIGATIONBAR.props.color.description
@@ -98,13 +134,7 @@ const NavigationBarDisplay = () => {
                     NAVIGATIONBAR.props.color.default
                   }
                 />
-                <SideBar style={{ width: "10rem", top: "5rem" }}>
-                  <SideBarItem color="primary">size</SideBarItem>
-                  <SideBarItem color="primary">width</SideBarItem>
-                  <SideBarItem color="primary">value</SideBarItem>
-                  <SideBarItem color="primary">children</SideBarItem>
-                  <SideBarItem color="primary">onClick</SideBarItem>
-                </SideBar>
+                {renderSideBarItem([NAVIGATIONBAR.props.children.name, NAVIGATIONBAR.props.color.name], selectedPropsSideBarItem, propsRef)}
               </TabPanel>
             </TabPanels>
           </Tabs>

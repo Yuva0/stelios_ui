@@ -74,11 +74,8 @@ const CodeDisplayDisplay = () => {
           title={CODEDISPLAY.title}
           description={CODEDISPLAY.description}
         />
-        <Tabs color="primary" style={{ marginTop: "2rem" }} 
-          value={selectedTab}
-          onChange={(value) => setSelectedTab(value)}>
+        <Tabs color="primary" style={{ marginTop: "2rem" }} value={selectedTab} onChange={(value) => setSelectedTab(value)}>
           {RenderTabsList()}
-
           <TabPanels>
             <div
               style={{
