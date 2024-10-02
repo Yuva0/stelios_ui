@@ -2,8 +2,6 @@ import React from "react";
 import {
   Text,
   useTheme,
-  SideBar,
-  SideBarItem,
   Tabs,
   TabPanels,
   TabPanel,
@@ -13,6 +11,7 @@ import {
   RenderBreadcrumbsForComponent,
   RenderComponentHeading,
   RenderProps,
+  renderSideBarItem,
   RenderTabsList,
   RenderVariations,
 } from "../helpers/helpers";
@@ -23,8 +22,46 @@ const SelectDisplay = () => {
   const theme = useTheme().theme!;
   const colorPalette = theme.colorPalette;
 
+  const variationRefs = Array.from({ length: 3 }, () =>
+    React.createRef<HTMLDivElement>()
+  );
+  const propsRef = Array.from({ length: 11 }, () =>
+    React.createRef<HTMLDivElement>()
+  );
+  const [selectedTab, setSelectedTab] = React.useState("usage");
+  const [selectedVariationSideBarItem, setSelectedVariationSideBarItem] =
+    React.useState(0);
+  const [selectedPropsSideBarItem, setSeletedPropsSideBarItem] =
+    React.useState(0);
+
   const textColor =
     colorPalette.primary.appearance === "light" ? "black" : "white";
+
+  React.useEffect(() => {
+    const handleScroll = () => {
+      if (selectedTab === "usage") {
+        for (let i = 0; i < variationRefs.length; i++) {
+          if (variationRefs[i].current?.getBoundingClientRect().top! > 0) {
+            setSelectedVariationSideBarItem(i);
+            return;
+          }
+        }
+      } else if (selectedTab === "props") {
+        for (let i = 0; i < propsRef.length; i++) {
+          if (propsRef[i].current?.getBoundingClientRect().top! > 0) {
+            setSeletedPropsSideBarItem(i);
+            return;
+          }
+        }
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, [variationRefs, propsRef, selectedTab]);
 
     return (
       <div style={{ margin: "1.5rem 0 4rem 0", width: "calc(100% - 22rem)" }}>
@@ -36,7 +73,9 @@ const SelectDisplay = () => {
             description={SELECT.description}
           />
   
-          <Tabs color="primary" style={{ marginTop: "2rem" }} value="usage">
+          <Tabs color="primary" style={{ marginTop: "2rem" }} 
+            value={selectedTab}
+            onChange={(value) => setSelectedTab(value)}>
             {RenderTabsList()}
             <TabPanels>
               <div
@@ -49,28 +88,26 @@ const SelectDisplay = () => {
               />
               <TabPanel value="usage">
                 <RenderVariations
+                  ref={variationRefs[0]}
                   label={SELECT.usage.installation.label}
                   text={SELECT.usage.installation.description}
                 />
                 <RenderVariations
+                  ref={variationRefs[1]}
                   label={SELECT.usage.variants.label}
                   description={SELECT.usage.variants.description}
                   code={CODE_1}
                   text={TEXT_1}
                 />
                 <RenderVariations
+                  ref={variationRefs[2]}
                   label={SELECT.usage.sizes.label}
                   description={SELECT.usage.sizes.description}
                   code={CODE_2}
                   text={TEXT_2}
                 />
   
-                <SideBar style={{ width: "10rem", top: "5rem" }}>
-                  <SideBarItem color="primary" selected>
-                    Installation
-                  </SideBarItem>
-                  <SideBarItem color="primary">Sizes</SideBarItem>
-                </SideBar>
+                {renderSideBarItem([SELECT.usage.installation.label, SELECT.usage.variants.label, SELECT.usage.sizes.label], selectedVariationSideBarItem, variationRefs)}
               </TabPanel>
               <TabPanel value="props">
                 <Text
@@ -81,6 +118,7 @@ const SelectDisplay = () => {
                   {SELECT.props._label}
                 </Text>
                 <RenderProps
+                  ref={propsRef[0]}
                   propName={SELECT.props.variant.name}
                   description={
                     SELECT.props.variant.description
@@ -92,6 +130,7 @@ const SelectDisplay = () => {
                   marginTop="1rem"
                 />
                 <RenderProps
+                  ref={propsRef[1]}
                   propName={SELECT.props.size.name}
                   description={
                     SELECT.props.size.description
@@ -102,6 +141,7 @@ const SelectDisplay = () => {
                   }
                 />
                 <RenderProps
+                  ref={propsRef[2]}
                   propName={SELECT.props.label.name}
                   description={
                     SELECT.props.label.description
@@ -112,6 +152,7 @@ const SelectDisplay = () => {
                   }
                 />
                 <RenderProps
+                  ref={propsRef[3]}
                   propName={SELECT.props.open.name}
                   description={
                     SELECT.props.open.description
@@ -120,6 +161,7 @@ const SelectDisplay = () => {
                   defaultValue={SELECT.props.open.default}
                 />
                 <RenderProps
+                  ref={propsRef[4]}
                   propName={SELECT.props.placeholder.name}
                   description={
                     SELECT.props.placeholder.description
@@ -130,6 +172,7 @@ const SelectDisplay = () => {
                   }
                 />
                 <RenderProps
+                  ref={propsRef[5]}
                   propName={SELECT.props.options.name}
                   description={
                     SELECT.props.options.description
@@ -142,6 +185,7 @@ const SelectDisplay = () => {
                 />
   
                 <RenderProps
+                  ref={propsRef[6]}
                   propName={SELECT.props.color.name}
                   description={SELECT.props.color.description}
                   type={SELECT.props.color.type}
@@ -149,19 +193,14 @@ const SelectDisplay = () => {
                   marginTop="1rem"
                 />
                 <RenderProps
+                  ref={propsRef[7]}
                   propName={SELECT.props.onClick.name}
                   description={SELECT.props.onClick.description}
                   type={SELECT.props.onClick.type}
                   defaultValue={SELECT.props.onClick.default}
                 />
   
-                <SideBar style={{ width: "10rem", top: "5rem" }}>
-                  <SideBarItem color="primary">size</SideBarItem>
-                  <SideBarItem color="primary">width</SideBarItem>
-                  <SideBarItem color="primary">value</SideBarItem>
-                  <SideBarItem color="primary">children</SideBarItem>
-                  <SideBarItem color="primary">onClick</SideBarItem>
-                </SideBar>
+                {renderSideBarItem([SELECT.props.variant.name, SELECT.props.size.name, SELECT.props.label.name, SELECT.props.open.name, SELECT.props.placeholder.name, SELECT.props.options.name, SELECT.props.color.name, SELECT.props.onClick.name], selectedPropsSideBarItem, propsRef)}
               </TabPanel>
             </TabPanels>
           </Tabs>

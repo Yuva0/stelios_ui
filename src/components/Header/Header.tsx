@@ -6,6 +6,7 @@ import {
   IconButton,
   useTheme,
   Input,
+  Text,
 } from "stelios";
 import {
   IconBrandGithub,
@@ -28,18 +29,13 @@ const Header = () => {
     >
       <HeaderGroup style={{ marginLeft: "4rem", height: "100%" }}>
         <HeaderItem style={{ height: "100%", display:"flex", justifyContent:"center", alignItems:"center" }}>
-          {/* <Text
-            variant="h4"
-            style={{ fontFamily: `"Playwrite HR Lijeva", cursive` }}
-          >
-            Stelios
-          </Text> */}
+          <Text fontFamily='"Caveat", cursive' variant="h3" color="primary" size="large">Stelios</Text>
         </HeaderItem>
       </HeaderGroup>
       <HeaderGroup style={{ marginRight: "1rem" }}>
-        <HeaderItem style={{marginRight:"rem"}}>
+        {/* <HeaderItem style={{marginRight:"rem"}}>
           <Input size="small" width="200px" color="primary" variant="soft" placeholder="Search" />
-        </HeaderItem>
+        </HeaderItem> */}
         <HeaderItem>
           <IconButton
             size="small"

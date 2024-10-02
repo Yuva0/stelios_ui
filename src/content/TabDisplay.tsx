@@ -2,12 +2,9 @@ import React from "react";
 import {
   Text,
   useTheme,
-  SideBar,
-  SideBarItem,
   Tabs,
   TabPanels,
   TabPanel,
-  Link,
   TabList,
   Tab
 } from "stelios";
@@ -15,6 +12,7 @@ import {
   RenderBreadcrumbsForComponent,
   RenderComponentHeading,
   RenderProps,
+  renderSideBarItem,
   RenderTabsList,
   RenderVariations,
 } from "../helpers/helpers";
@@ -25,8 +23,46 @@ const TabDisplay = () => {
   const theme = useTheme().theme!;
   const colorPalette = theme.colorPalette;
 
+  const variationRefs = Array.from({ length: 3 }, () =>
+    React.createRef<HTMLDivElement>()
+  );
+  const propsRef = Array.from({ length: 11 }, () =>
+    React.createRef<HTMLDivElement>()
+  );
+  const [selectedTab, setSelectedTab] = React.useState("usage");
+  const [selectedVariationSideBarItem, setSelectedVariationSideBarItem] =
+    React.useState(0);
+  const [selectedPropsSideBarItem, setSeletedPropsSideBarItem] =
+    React.useState(0);
+
   const textColor =
     colorPalette.primary.appearance === "light" ? "black" : "white";
+
+  React.useEffect(() => {
+    const handleScroll = () => {
+      if (selectedTab === "usage") {
+        for (let i = 0; i < variationRefs.length; i++) {
+          if (variationRefs[i].current?.getBoundingClientRect().top! > 0) {
+            setSelectedVariationSideBarItem(i);
+            return;
+          }
+        }
+      } else if (selectedTab === "props") {
+        for (let i = 0; i < propsRef.length; i++) {
+          if (propsRef[i].current?.getBoundingClientRect().top! > 0) {
+            setSeletedPropsSideBarItem(i);
+            return;
+          }
+        }
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, [variationRefs, propsRef, selectedTab]);
 
     return (
       <div style={{ margin: "1.5rem 0 4rem 0", width: "calc(100% - 22rem)" }}>
@@ -38,7 +74,9 @@ const TabDisplay = () => {
             description={TAB.description}
           />
   
-          <Tabs color="primary" style={{ marginTop: "2rem" }} value="usage">
+          <Tabs color="primary" style={{ marginTop: "2rem" }}
+            value={selectedTab}
+            onChange={(value) => setSelectedTab(value)}>
             {RenderTabsList()}
             <TabPanels>
               <div
@@ -51,21 +89,18 @@ const TabDisplay = () => {
               />
               <TabPanel value="usage">
                 <RenderVariations
+                  ref={variationRefs[0]}
                   label={TAB.usage.installation.label}
                   text={TAB.usage.installation.description}
                 />
                 <RenderVariations
+                  ref={variationRefs[1]}
                   label={TAB.usage.variants.label}
                   description={TAB.usage.variants.description}
                   code={CODE_1}
                   text={TEXT_1}
                 />
-                <SideBar style={{ width: "10rem", top: "5rem" }}>
-                  <SideBarItem color="primary" selected>
-                    Installation
-                  </SideBarItem>
-                  <SideBarItem color="primary">Sizes</SideBarItem>
-                </SideBar>
+                {renderSideBarItem([TAB.usage.installation.label, TAB.usage.variants.label], selectedVariationSideBarItem, variationRefs)}
               </TabPanel>
               <TabPanel value="props">
                 <Text
@@ -86,13 +121,7 @@ const TabDisplay = () => {
                   }
                   marginTop="1rem"
                 />
-                <SideBar style={{ width: "10rem", top: "5rem" }}>
-                  <SideBarItem color="primary">size</SideBarItem>
-                  <SideBarItem color="primary">width</SideBarItem>
-                  <SideBarItem color="primary">value</SideBarItem>
-                  <SideBarItem color="primary">children</SideBarItem>
-                  <SideBarItem color="primary">onClick</SideBarItem>
-                </SideBar>
+                {renderSideBarItem([TAB.props.variant.name], selectedPropsSideBarItem, propsRef)}
               </TabPanel>
             </TabPanels>
           </Tabs>

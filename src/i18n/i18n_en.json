@@ -1068,7 +1068,7 @@
       },
       "variants": {
         "label": "Variants",
-        "description": "Banner comes in multiple variants: contained, outlined and soft."
+        "description": "Banner comes in multiple variants: contained, outlined, outlined-soft and soft."
       },
       "title": {
         "label": "Title, Title Icon and Leading Icon",

@@ -150,7 +150,6 @@ const AvatarDisplay = () => {
                   defaultValue={
                     AVATAR.props.alt.default
                   }
-                  marginTop="1rem"
                 />
                 <RenderProps
                   ref={propsRef[2]}
@@ -162,7 +161,6 @@ const AvatarDisplay = () => {
                   defaultValue={
                     AVATAR.props.type.default
                   }
-                  marginTop="1rem"
                 />
                 <RenderProps
                   ref={propsRef[3]}
@@ -174,7 +172,6 @@ const AvatarDisplay = () => {
                   defaultValue={
                     AVATAR.props.variant.default
                   }
-                  marginTop="1rem"
                 />
                 <RenderProps
                   ref={propsRef[4]}
