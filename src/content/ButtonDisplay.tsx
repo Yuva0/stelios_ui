@@ -19,7 +19,7 @@ import {
 } from "../helpers/helpers";
 import i18n from "../i18n/i18n_en.json";
 
-const BUTTONTEXT = i18n.button;
+const BUTTON = i18n.button;
 
 const ButtonDisplay = () => {
   const windowSize = useWindowSize();
@@ -64,11 +64,11 @@ const ButtonDisplay = () => {
 
   return (
     <div style={{ margin: "1.5rem 0 4rem 0", width: mobile ? "calc(100% - 12rem)" : "calc(100% - 22rem)"}}>
-      <RenderBreadcrumbsForComponent name={BUTTONTEXT.title} path={BUTTONTEXT.path}/>
+      <RenderBreadcrumbsForComponent name={BUTTON.title} path={BUTTON.path}/>
       <div style={{ padding: "1rem" }}>
         <RenderComponentHeading
-          title={BUTTONTEXT.title}
-          description={BUTTONTEXT.description}
+          title={BUTTON.title}
+          description={BUTTON.description}
         />
 
         <Tabs color="primary" style={{ marginTop: "2rem" }} value={selectedTab} onChange={(value) => setSelectedTab(value)}>
@@ -87,60 +87,60 @@ const ButtonDisplay = () => {
               {/* Usage Variations */}
               <RenderVariations
                 ref={variationRefs[0]}
-                label={BUTTONTEXT.usage.installation.label}
-                text={BUTTONTEXT.usage.installation.description}
+                label={BUTTON.usage.installation.label}
+                text={BUTTON.usage.installation.description}
               />
               <RenderVariations
                 ref={variationRefs[1]}
-                label={BUTTONTEXT.usage.variants.label}
-                description={BUTTONTEXT.usage.variants.description}
+                label={BUTTON.usage.variants.label}
+                description={BUTTON.usage.variants.description}
                 code={CODE_1}
                 text={TEXT_1}
               />
               <RenderVariations
                 ref={variationRefs[2]}
-                label={BUTTONTEXT.usage.sizes.label}
-                description={BUTTONTEXT.usage.sizes.description}
+                label={BUTTON.usage.sizes.label}
+                description={BUTTON.usage.sizes.description}
                 code={CODE_2}
                 text={TEXT_2}
               />
               <RenderVariations
                 ref={variationRefs[3]}
-                label={BUTTONTEXT.usage.icons.label}
-                description={BUTTONTEXT.usage.icons.description}
+                label={BUTTON.usage.icons.label}
+                description={BUTTON.usage.icons.description}
                 code={CODE_3}
                 text={TEXT_3}
               />
               <RenderVariations
                 ref={variationRefs[4]}
-                label={BUTTONTEXT.usage.rounded.label}
-                description={BUTTONTEXT.usage.rounded.description}
+                label={BUTTON.usage.rounded.label}
+                description={BUTTON.usage.rounded.description}
                 code={CODE_4}
                 text={TEXT_4}
               />
               <RenderVariations
                 ref={variationRefs[5]}
-                label={BUTTONTEXT.usage.disabled.label}
-                description={BUTTONTEXT.usage.disabled.description}
+                label={BUTTON.usage.disabled.label}
+                description={BUTTON.usage.disabled.description}
                 code={CODE_5}
                 text={TEXT_5}
               />
               <RenderVariations
                 ref={variationRefs[6]}
-                label={BUTTONTEXT.usage.fullWidth.label}
-                description={BUTTONTEXT.usage.fullWidth.description}
+                label={BUTTON.usage.fullWidth.label}
+                description={BUTTON.usage.fullWidth.description}
                 code={CODE_6}
                 text={TEXT_6}
               />
 
               {!mobile && renderSideBarItem([
-                BUTTONTEXT.usage.installation.label,
-                BUTTONTEXT.usage.variants.label,
-                BUTTONTEXT.usage.sizes.label,
-                BUTTONTEXT.usage.icons.label,
-                BUTTONTEXT.usage.rounded.label,
-                BUTTONTEXT.usage.disabled.label,
-                BUTTONTEXT.usage.fullWidth.label,
+                BUTTON.usage.installation.label,
+                BUTTON.usage.variants.label,
+                BUTTON.usage.sizes.label,
+                BUTTON.usage.icons.label,
+                BUTTON.usage.rounded.label,
+                BUTTON.usage.disabled.label,
+                BUTTON.usage.fullWidth.label,
               ], selectedVariationSideBarItem, variationRefs)}
             </TabPanel>
             <TabPanel value="props">
@@ -149,102 +149,102 @@ const ButtonDisplay = () => {
                 size="large"
                 style={{ marginTop: "2rem" }}
               >
-                {BUTTONTEXT.props.label}
+                {BUTTON.props.label}
               </Text>
 
               {/* Variant */}
               <RenderProps
                 ref={propsRef[0]}
-                propName={BUTTONTEXT.props.variant.name}
-                description={BUTTONTEXT.props.variant.description}
-                type={BUTTONTEXT.props.variant.type}
-                defaultValue={BUTTONTEXT.props.variant.default}
+                propName={BUTTON.props.variant.name}
+                description={BUTTON.props.variant.description}
+                type={BUTTON.props.variant.type}
+                defaultValue={BUTTON.props.variant.default}
                 marginTop="1rem"
               />
               {/* Size */}
               <RenderProps
                 ref={propsRef[1]}
-                propName={BUTTONTEXT.props.size.name}
-                description={BUTTONTEXT.props.size.description}
-                type={BUTTONTEXT.props.size.type}
-                defaultValue={BUTTONTEXT.props.size.default}
+                propName={BUTTON.props.size.name}
+                description={BUTTON.props.size.description}
+                type={BUTTON.props.size.type}
+                defaultValue={BUTTON.props.size.default}
               />
               {/* Rounded */}
               <RenderProps
                 ref={propsRef[2]}
-                propName={BUTTONTEXT.props.rounded.name}
-                description={BUTTONTEXT.props.rounded.description}
-                type={BUTTONTEXT.props.rounded.type}
-                defaultValue={BUTTONTEXT.props.rounded.default}
+                propName={BUTTON.props.rounded.name}
+                description={BUTTON.props.rounded.description}
+                type={BUTTON.props.rounded.type}
+                defaultValue={BUTTON.props.rounded.default}
               />
               {/* Disabled */}
               <RenderProps
                 ref={propsRef[3]}
-                propName={BUTTONTEXT.props.disabled.name}
-                description={BUTTONTEXT.props.disabled.description}
-                type={BUTTONTEXT.props.disabled.type}
-                defaultValue={BUTTONTEXT.props.disabled.default}
+                propName={BUTTON.props.disabled.name}
+                description={BUTTON.props.disabled.description}
+                type={BUTTON.props.disabled.type}
+                defaultValue={BUTTON.props.disabled.default}
               />
               {/* isFullWidth */}
               <RenderProps
                 ref={propsRef[4]}
-                propName={BUTTONTEXT.props.isFullWidth.name}
-                description={BUTTONTEXT.props.isFullWidth.description}
-                type={BUTTONTEXT.props.isFullWidth.type}
-                defaultValue={BUTTONTEXT.props.isFullWidth.default}
+                propName={BUTTON.props.isFullWidth.name}
+                description={BUTTON.props.isFullWidth.description}
+                type={BUTTON.props.isFullWidth.type}
+                defaultValue={BUTTON.props.isFullWidth.default}
               />
               {/* Color */}
               <RenderProps
                 ref={propsRef[5]}
-                propName={BUTTONTEXT.props.color.name}
-                description={BUTTONTEXT.props.color.description}
-                type={BUTTONTEXT.props.color.type}
-                defaultValue={BUTTONTEXT.props.color.default}
+                propName={BUTTON.props.color.name}
+                description={BUTTON.props.color.description}
+                type={BUTTON.props.color.type}
+                defaultValue={BUTTON.props.color.default}
               />
               {/* Leading Icon */}
               <RenderProps
                 ref={propsRef[6]}
-                propName={BUTTONTEXT.props.leadingIcon.name}
-                description={BUTTONTEXT.props.leadingIcon.description}
-                type={BUTTONTEXT.props.leadingIcon.type}
-                defaultValue={BUTTONTEXT.props.leadingIcon.default}
+                propName={BUTTON.props.leadingIcon.name}
+                description={BUTTON.props.leadingIcon.description}
+                type={BUTTON.props.leadingIcon.type}
+                defaultValue={BUTTON.props.leadingIcon.default}
               />
               {/* Trailing Icon */}
               <RenderProps
                 ref={propsRef[7]}
-                propName={BUTTONTEXT.props.trailingIcon.name}
-                description={BUTTONTEXT.props.trailingIcon.description}
-                type={BUTTONTEXT.props.trailingIcon.type}
-                defaultValue={BUTTONTEXT.props.trailingIcon.default}
+                propName={BUTTON.props.trailingIcon.name}
+                description={BUTTON.props.trailingIcon.description}
+                type={BUTTON.props.trailingIcon.type}
+                defaultValue={BUTTON.props.trailingIcon.default}
               />
               {/* Children */}
               <RenderProps
                 ref={propsRef[8]}
-                propName={BUTTONTEXT.props.children.name}
-                description={BUTTONTEXT.props.children.description}
-                type={BUTTONTEXT.props.children.type}
-                defaultValue={BUTTONTEXT.props.children.default}
+                propName={BUTTON.props.children.name}
+                description={BUTTON.props.children.description}
+                type={BUTTON.props.children.type}
+                defaultValue={BUTTON.props.children.default}
               />
               {/* onClick */}
               <RenderProps
                 ref={propsRef[9]}
-                propName={BUTTONTEXT.props.onClick.name}
-                description={BUTTONTEXT.props.onClick.description}
-                type={BUTTONTEXT.props.onClick.type}
-                defaultValue={BUTTONTEXT.props.onClick.default}
+                propName={BUTTON.props.onClick.name}
+                description={BUTTON.props.onClick.description}
+                type={BUTTON.props.onClick.type}
+                defaultValue={BUTTON.props.onClick.default}
               />
 
               {!mobile && renderSideBarItem([
-                BUTTONTEXT.props.variant.name,
-                BUTTONTEXT.props.size.name,
-                BUTTONTEXT.props.rounded.name,
-                BUTTONTEXT.props.disabled.name,
-                BUTTONTEXT.props.isFullWidth.name,
-                BUTTONTEXT.props.color.name,
-                BUTTONTEXT.props.leadingIcon.name,
-                BUTTONTEXT.props.trailingIcon.name,
-                BUTTONTEXT.props.children.name,
-                BUTTONTEXT.props.onClick.name,
+                BUTTON.props.variant.name,
+                BUTTON.props.size.name,
+                BUTTON.props.rounded.name,
+                BUTTON.props.disabled.name,
+                BUTTON.props.isFullWidth.name,
+                BUTTON.props.color.name,
+                BUTTON.props.leadingIcon.name,
+                BUTTON.props.trailingIcon.name,
+                BUTTON.props.children.name,
+                BUTTON.props.onClick.name,
               ], selectedPropsSideBarItem, propsRef)}
             </TabPanel>
           </TabPanels>

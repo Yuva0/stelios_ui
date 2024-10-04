@@ -17,10 +17,13 @@ import {
   renderSideBarItem,
   RenderTabsList,
   RenderVariations,
+  useWindowSize,
 } from "../helpers/helpers";
 
 const CODEPREVIEW = i18n.codepreview;
 const CodePreviewDisplay = () => {
+  const windowSize = useWindowSize();
+  const mobile = windowSize.width < 768;
   const theme = useTheme().theme!;
   const colorPalette = theme.colorPalette;
 
@@ -66,7 +69,7 @@ const CodePreviewDisplay = () => {
   }, [variationRefs, propsRef, selectedTab]);
 
   return (
-    <div style={{ margin: "1.5rem 0 4rem 0", width: "calc(100% - 22rem)" }}>
+    <div style={{ margin: "1.5rem 0 4rem 0", width: mobile ? "calc(100% - 12rem)" : "calc(100% - 22rem)" }}>
       <RenderBreadcrumbsForComponent
         name={CODEPREVIEW.title}
         path={CODEPREVIEW.path}
@@ -102,7 +105,7 @@ const CodePreviewDisplay = () => {
                 text={TEXT_1}
               />
 
-              {renderSideBarItem([CODEPREVIEW.usage.installation.label, CODEPREVIEW.usage.default.label], selectedVariationSideBarItem, variationRefs)}
+              {!mobile && renderSideBarItem([CODEPREVIEW.usage.installation.label, CODEPREVIEW.usage.default.label], selectedVariationSideBarItem, variationRefs)}
             </TabPanel>
             <TabPanel value="props">
               <Text
@@ -121,7 +124,7 @@ const CodePreviewDisplay = () => {
                 defaultValue={CODEPREVIEW.props.code.default}
               />
 
-              {renderSideBarItem([CODEPREVIEW.props.code.name], selectedPropsSideBarItem, propsRef)}
+              {!mobile && renderSideBarItem([CODEPREVIEW.props.code.name], selectedPropsSideBarItem, propsRef)}
             </TabPanel>
           </TabPanels>
         </Tabs>

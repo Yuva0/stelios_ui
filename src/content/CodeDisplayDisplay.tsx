@@ -15,10 +15,13 @@ import {
   renderSideBarItem,
   RenderTabsList,
   RenderVariations,
+  useWindowSize,
 } from "../helpers/helpers";
 
 const CODEDISPLAY = i18n.codedisplay;
 const CodeDisplayDisplay = () => {
+  const windowSize = useWindowSize();
+  const mobile = windowSize.width < 768;
   const theme = useTheme().theme!;
   const colorPalette = theme.colorPalette;
 
@@ -64,7 +67,7 @@ const CodeDisplayDisplay = () => {
   }, [variationRefs, propsRef, selectedTab]);
 
   return (
-    <div style={{ margin: "1.5rem 0 4rem 0", width: "calc(100% - 22rem)" }}>
+    <div style={{ margin: "1.5rem 0 4rem 0", width: mobile ? "calc(100% - 12rem)" : "calc(100% - 22rem)" }}>
       <RenderBreadcrumbsForComponent
         name={CODEDISPLAY.title}
         path={CODEDISPLAY.path}
@@ -99,7 +102,7 @@ const CodeDisplayDisplay = () => {
                 text={TEXT_1}
               />
 
-              {renderSideBarItem([
+              {!mobile && renderSideBarItem([
                 CODEDISPLAY.usage.installation.label,
                 CODEDISPLAY.usage.default.label,
               ], selectedVariationSideBarItem, variationRefs)}
@@ -120,8 +123,7 @@ const CodeDisplayDisplay = () => {
                 type={CODEDISPLAY.props.code.type}
                 defaultValue={CODEDISPLAY.props.code.default}
               />
-
-              {renderSideBarItem([CODEDISPLAY.props.code.name], selectedPropsSideBarItem, propsRef)}
+              {!mobile && renderSideBarItem([CODEDISPLAY.props.code.name], selectedPropsSideBarItem, propsRef)}
             </TabPanel>
           </TabPanels>
         </Tabs>

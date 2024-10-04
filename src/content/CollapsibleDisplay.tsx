@@ -14,11 +14,14 @@ import {
   renderSideBarItem,
   RenderTabsList,
   RenderVariations,
+  useWindowSize,
 } from "../helpers/helpers";
 import i18n from "../i18n/i18n_en.json";
 
 const COLLAPSIBLE = i18n.collapsible;
 const CollapsibleDisplay = () => {
+  const windowSize = useWindowSize();
+  const mobile = windowSize.width < 768;
   const theme = useTheme().theme!;
   const colorPalette = theme.colorPalette;
 
@@ -64,7 +67,7 @@ const CollapsibleDisplay = () => {
   }, [variationRefs, propsRef, selectedTab]);
 
   return (
-    <div style={{ margin: "1.5rem 0 4rem 0", width: "calc(100% - 22rem)" }}>
+    <div style={{ margin: "1.5rem 0 4rem 0", width: mobile ? "calc(100% - 12rem)" : "calc(100% - 22rem)" }}>
       <RenderBreadcrumbsForComponent
         name={COLLAPSIBLE.title}
         path={COLLAPSIBLE.path}
@@ -102,7 +105,7 @@ const CollapsibleDisplay = () => {
                 language="javascript"
               />
 
-              {renderSideBarItem([COLLAPSIBLE.usage.installation.label, COLLAPSIBLE.usage.variants.label], selectedVariationSideBarItem, variationRefs)}
+              {!mobile && renderSideBarItem([COLLAPSIBLE.usage.installation.label, COLLAPSIBLE.usage.variants.label], selectedVariationSideBarItem, variationRefs)}
             </TabPanel>
             <TabPanel value="props">
               <Text
@@ -121,7 +124,7 @@ const CollapsibleDisplay = () => {
                 marginTop="1rem"
               />
 
-              {renderSideBarItem([COLLAPSIBLE.props.variant.name], selectedPropsSideBarItem, propsRef)}
+              {!mobile && renderSideBarItem([COLLAPSIBLE.props.variant.name], selectedPropsSideBarItem, propsRef)}
             </TabPanel>
           </TabPanels>
         </Tabs>
