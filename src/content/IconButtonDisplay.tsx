@@ -198,7 +198,7 @@ const IconButtonDisplay = () => {
 export default IconButtonDisplay;
 
 const CODE_1 = (
-  <div style={{ display: "flex", gap: "2rem" }}>
+  <div style={{ display: "flex", gap: "2rem", flexWrap: "wrap", justifyContent: "center", alignItems: "center" }}>
     <IconButton
       icon={<IconAwardFilled />}
       alt={ICONBUTTON.code.alt}
@@ -258,6 +258,7 @@ const CODE_2 = (
       gap: "2rem",
       justifyContent: "center",
       alignItems: "center",
+      flexWrap: "wrap",
     }}
   >
     <IconButton
@@ -288,7 +289,7 @@ const TEXT_2 = `<IconButton icon={<IconAwardFilled/>} alt="${ICONBUTTON.code.alt
 <IconButton icon={<IconAwardFilled/>} alt="${ICONBUTTON.code.alt}" size="large"/>`;
 
 const CODE_3 = (
-  <div style={{ display: "flex", gap: "2rem" }}>
+  <div style={{ display: "flex", gap: "2rem", flexWrap: "wrap", justifyContent: "center", alignItems: "center" }}>
     <IconButton icon={<IconAwardFilled />} alt="Award" color="component" disabled/>
   </div>
 );

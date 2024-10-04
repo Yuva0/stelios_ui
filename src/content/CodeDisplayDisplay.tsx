@@ -145,6 +145,8 @@ const CODE_1 = (
       flexWrap: "wrap",
       justifyContent: "center",
       alignItems: "center",
+      width: "100%",
+      overflow: "hidden",
     }}
   >
     <CodeDisplay color="component" text={TEXT_DEMO_1} language="jsx"/>

@@ -256,7 +256,7 @@ const ButtonDisplay = () => {
 export default ButtonDisplay;
 
 const CODE_1 = (
-  <div style={{ display: "flex", gap: "2rem" }}>
+  <div style={{ display: "flex", gap: "2rem", flexWrap: "wrap", justifyContent: "center", alignItems: "center" }}>
     <Button color="component" variant="contained">
       {i18n.button.code.content}
     </Button>
@@ -285,7 +285,7 @@ const TEXT_1 = `<Button variant="contained"> ${i18n.button.code.content} </Butto
 <Button disabled> ${i18n.button.code.content} </Button>`;
 
 const CODE_2 = (
-  <div style={{ display: "flex", gap: "2rem" }}>
+  <div style={{ display: "flex", gap: "2rem", flexWrap: "wrap", justifyContent: "center", alignItems: "center" }}>
     <Button color="component" size="small">
       {i18n.button.code.content}
     </Button>
@@ -302,7 +302,7 @@ const TEXT_2 = `<Button size="small"> ${i18n.button.code.content} </Button>
 <Button size="large"> ${i18n.button.code.content} </Button>`;
 
 const CODE_3 = (
-  <div style={{ display: "flex", gap: "2rem" }}>
+  <div style={{ display: "flex", gap: "2rem", flexWrap: "wrap", justifyContent: "center", alignItems: "center" }}>
     <Button color="component" leadingIcon={<IconHeartFilled />}>
       {i18n.button.code.content}
     </Button>

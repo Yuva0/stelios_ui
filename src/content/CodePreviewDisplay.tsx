@@ -174,6 +174,8 @@ const CODE_1 = (
       flexWrap: "wrap",
       justifyContent: "center",
       alignItems: "center",
+      width: "100%",
+      overflow: "hidden",
     }}
   >
     <CodePreview color="component" code={CODE_DEMO_1} text={TEXT_DEMO_1} language="jsx"/>

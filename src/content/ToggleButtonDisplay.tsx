@@ -224,9 +224,9 @@ const CODE_1 = (
       value="toggle1"
       size="small"
     >
-      <ToggleButton value="toggle1">Toggle 1</ToggleButton>
-      <ToggleButton value="toggle2">Toggle 2</ToggleButton>
-      <ToggleButton value="toggle3">Toggle 3</ToggleButton>
+      <ToggleButton value="toggle1"><Text disableColor>Toggle 1</Text></ToggleButton>
+      <ToggleButton value="toggle2"><Text disableColor>Toggle 2</Text></ToggleButton>
+      <ToggleButton value="toggle3"><Text disableColor>Toggle 3</Text></ToggleButton>
     </ToggleButtonGroup>
     <ToggleButtonGroup
       color="component"
@@ -234,9 +234,9 @@ const CODE_1 = (
       value="toggle1"
       size="medium"
     >
-      <ToggleButton value="toggle1">Toggle 1</ToggleButton>
-      <ToggleButton value="toggle2">Toggle 2</ToggleButton>
-      <ToggleButton value="toggle3">Toggle 3</ToggleButton>
+      <ToggleButton value="toggle1"><Text disableColor>Toggle 1</Text></ToggleButton>
+      <ToggleButton value="toggle2"><Text disableColor>Toggle 2</Text></ToggleButton>
+      <ToggleButton value="toggle3"><Text disableColor>Toggle 3</Text></ToggleButton>
     </ToggleButtonGroup>
     <ToggleButtonGroup
       color="component"
@@ -244,15 +244,15 @@ const CODE_1 = (
       value="toggle1"
       size="large"
     >
-      <ToggleButton value="toggle1">Toggle 1</ToggleButton>
-      <ToggleButton value="toggle2">Toggle 2</ToggleButton>
-      <ToggleButton value="toggle3">Toggle 3</ToggleButton>
+      <ToggleButton value="toggle1"><Text disableColor>Toggle 1</Text></ToggleButton>
+      <ToggleButton value="toggle2"><Text disableColor>Toggle 2</Text></ToggleButton>
+      <ToggleButton value="toggle3"><Text disableColor>Toggle 3</Text></ToggleButton>
     </ToggleButtonGroup>
   </div>
 );
 const TEXT_1 = `<ToggleButtonGroup value="toggle1">
-  <ToggleButton value="toggle1">Toggle 1</ToggleButton>
-  <ToggleButton value="toggle2">Toggle 2</ToggleButton>
-  <ToggleButton value="toggle3">Toggle 3</ToggleButton>
+  <ToggleButton value="toggle1"><Text disableColor>Toggle 1</Text></ToggleButton>
+  <ToggleButton value="toggle2"><Text disableColor>Toggle 2</Text></ToggleButton>
+  <ToggleButton value="toggle3"><Text disableColor>Toggle 3</Text></ToggleButton>
 </ToggleButtonGroup>
 `;

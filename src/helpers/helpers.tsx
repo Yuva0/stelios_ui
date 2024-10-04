@@ -157,7 +157,7 @@ export const RenderVariations = forwardRef<HTMLDivElement,{label?: string, descr
       {!code && text && (
         <CodeDisplay
           text={text}
-          style={{ marginTop: "1rem" }}
+          style={{ marginTop: "1rem", flexWrap: "wrap", width: "100%" }}
           color="primary"
           language={language}
         />
@@ -166,8 +166,9 @@ export const RenderVariations = forwardRef<HTMLDivElement,{label?: string, descr
         <CodePreview
           code={code}
           text={text}
-          codeStyle={{ backgroundColor: bgColor }}
-          style={{ marginTop: "1rem" }}
+          textStyle={{ width: "100%", boxSizing: "border-box" }}
+          codeStyle={{ backgroundColor: bgColor, width: "100%", boxSizing: "border-box", flexWrap: "wrap" }}
+          style={{ marginTop: "1rem", flexWrap: "wrap", width: "100%", boxSizing: "border-box" }}
           color="primary"
           language={language}
         />
