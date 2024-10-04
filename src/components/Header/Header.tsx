@@ -12,13 +12,18 @@ import {
   IconBrandGithub,
   IconBrandLinkedin,
   IconBrandStorybook,
+  IconMenu2
 } from "@tabler/icons-react";
 
 import Settings from "./Settings";
+import { useWindowSize } from "../../helpers/helpers";
+import NavigationBarMobile from "./NavigationBarMobile";
 
 const Header = () => {
   const theme = useTheme().theme!;
   const colorPalette = theme.colorPalette;
+  const windowSize = useWindowSize();
+  const mobile = windowSize.width < 480;
   return (
     <HeaderUI
       id="header"
@@ -27,7 +32,10 @@ const Header = () => {
       style={{ backgroundColor: colorPalette.primary.accentScale[1], outline: `2px solid ${colorPalette.primary.accentScale[2]}` }}
       color="primary"
     >
-      <HeaderGroup style={{ marginLeft: "4rem", height: "100%" }}>
+      <HeaderGroup style={{ marginLeft: mobile ? "0rem" : "4rem", height: "100%" }}>
+        {mobile && <HeaderItem>
+          <NavigationBarMobile/>
+        </HeaderItem>}
         <HeaderItem style={{ height: "100%", display:"flex", justifyContent:"center", alignItems:"center" }}>
           <Link href="/"><Text fontFamily='"Caveat", cursive' variant="h3" color="primary" size="large">Stelios</Text></Link>
         </HeaderItem>
