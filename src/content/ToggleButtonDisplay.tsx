@@ -2,8 +2,6 @@ import React from "react";
 import {
   Text,
   useTheme,
-  SideBar,
-  SideBarItem,
   Tabs,
   TabPanels,
   TabPanel,
@@ -14,21 +12,56 @@ import {
   RenderBreadcrumbsForComponent,
   RenderComponentHeading,
   RenderProps,
+  renderSideBarItem,
   RenderTabsList,
   RenderVariations,
+  useWindowSize,
 } from "../helpers/helpers";
 import i18n from "../i18n/i18n_en.json";
 
 const TOGGLEBUTTON = i18n.toggleButton;
 const ToggleButtonDisplay = () => {
+  const windowSize = useWindowSize();
+  const mobile = windowSize.width < 768;
   const theme = useTheme().theme!;
   const colorPalette = theme.colorPalette;
+  const variationRefs = Array.from({ length: 3 }, () => React.createRef<HTMLDivElement>());
+  const propsRef = Array.from({ length: 8 }, () => React.createRef<HTMLDivElement>());
+  const [selectedTab, setSelectedTab] = React.useState("usage");
+  const [selectedVariationSideBarItem, setSelectedVariationSideBarItem] = React.useState(0);
+  const [selectedPropsSideBarItem, setSeletedPropsSideBarItem] = React.useState(0);
 
   const textColor =
     colorPalette.primary.appearance === "light" ? "black" : "white";
 
+  React.useEffect(() => {
+    const handleScroll = () => {
+      if(selectedTab === "usage"){
+      for(let i=0; i<variationRefs.length; i++){
+        if(variationRefs[i].current?.getBoundingClientRect().top! > 0){
+          setSelectedVariationSideBarItem(i);
+          return;
+        }
+      }}
+      else if(selectedTab === "props"){
+        for(let i=0; i<propsRef.length; i++){
+          if(propsRef[i].current?.getBoundingClientRect().top! > 0){
+            setSeletedPropsSideBarItem(i);
+            return;
+          }
+        }
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  },[variationRefs, propsRef, selectedTab]);
+
   return (
-    <div style={{ margin: "1.5rem 0 4rem 0", width: "calc(100% - 22rem)" }}>
+    <div style={{ margin: "1.5rem 0 4rem 0", width: mobile ? "calc(100% - 12rem)" : "calc(100% - 22rem)"}}>
       <RenderBreadcrumbsForComponent name={TOGGLEBUTTON.title} path={TOGGLEBUTTON.path}/>
 
       <div style={{ padding: "1rem" }}>
@@ -37,7 +70,7 @@ const ToggleButtonDisplay = () => {
           description={TOGGLEBUTTON.description}
         />
 
-        <Tabs color="primary" style={{ marginTop: "2rem" }} value="usage">
+        <Tabs color="primary" style={{ marginTop: "2rem" }} value={selectedTab} onChange={(value) => setSelectedTab(value)}>
           {RenderTabsList()}
           <TabPanels>
             <div
@@ -59,13 +92,8 @@ const ToggleButtonDisplay = () => {
                 code={CODE_1}
                 text={TEXT_1}
               />
+              {!mobile && renderSideBarItem([TOGGLEBUTTON.usage.installation.label, TOGGLEBUTTON.usage.sizes.label], selectedVariationSideBarItem, variationRefs)}
 
-              <SideBar style={{ width: "10rem", top: "5rem" }}>
-                <SideBarItem color="primary" selected>
-                  Installation
-                </SideBarItem>
-                <SideBarItem color="primary">Sizes</SideBarItem>
-              </SideBar>
             </TabPanel>
             <TabPanel value="props">
               <Text
@@ -165,13 +193,12 @@ const ToggleButtonDisplay = () => {
                 defaultValue={TOGGLEBUTTON.props.toggleButton.children.default}
               />
 
-              <SideBar style={{ width: "10rem", top: "5rem" }}>
-                <SideBarItem color="primary">size</SideBarItem>
-                <SideBarItem color="primary">width</SideBarItem>
-                <SideBarItem color="primary">value</SideBarItem>
-                <SideBarItem color="primary">children</SideBarItem>
-                <SideBarItem color="primary">onClick</SideBarItem>
-              </SideBar>
+              {!mobile && renderSideBarItem(
+                [TOGGLEBUTTON.props.toggleButtonGroup.children.name,],
+                selectedPropsSideBarItem,
+                propsRef
+              )}
+
             </TabPanel>
           </TabPanels>
         </Tabs>

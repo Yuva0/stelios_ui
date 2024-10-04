@@ -15,10 +15,13 @@ import {
   renderSideBarItem,
   RenderTabsList,
   RenderVariations,
+  useWindowSize,
 } from "../helpers/helpers";
 
 const SLIDER = i18n.slider;
 const SliderDisplay = () => {
+  const windowSize = useWindowSize();
+  const mobile = windowSize.width < 768;
   const theme = useTheme().theme!;
   const colorPalette = theme.colorPalette;
 
@@ -64,7 +67,7 @@ const SliderDisplay = () => {
   }, [variationRefs, propsRef, selectedTab]);
 
   return (
-    <div style={{ margin: "1.5rem 0 4rem 0", width: "calc(100% - 22rem)" }}>
+    <div style={{ margin: "1.5rem 0 4rem 0", width: mobile ? "calc(100% - 12rem)" : "calc(100% - 22rem)"}}>
       <RenderBreadcrumbsForComponent name={SLIDER.title} path={SLIDER.path} />
       <div style={{ padding: "1rem" }}>
         <RenderComponentHeading
@@ -99,7 +102,7 @@ const SliderDisplay = () => {
                 text={TEXT_1}
               />
 
-              {renderSideBarItem([SLIDER.usage.installation.label, SLIDER.usage.default.label], selectedVariationSideBarItem, variationRefs)}
+              {!mobile && renderSideBarItem([SLIDER.usage.installation.label, SLIDER.usage.default.label], selectedVariationSideBarItem, variationRefs)}
             </TabPanel>
             <TabPanel value="props">
               <Text
@@ -134,7 +137,7 @@ const SliderDisplay = () => {
                 defaultValue={SLIDER.props.value.default}
               />
 
-              {renderSideBarItem([SLIDER.props.min.name, SLIDER.props.max.name, SLIDER.props.value.name], selectedPropsSideBarItem, propsRef)}
+              {!mobile && renderSideBarItem([SLIDER.props.min.name, SLIDER.props.max.name, SLIDER.props.value.name], selectedPropsSideBarItem, propsRef)}
             </TabPanel>
           </TabPanels>
         </Tabs>

@@ -14,6 +14,7 @@ import {
   renderSideBarItem,
   RenderTabsList,
   RenderVariations,
+  useWindowSize,
 } from "../helpers/helpers";
 import i18n from "../i18n/i18n_en.json";
 
@@ -21,6 +22,8 @@ const CARD = i18n.card;
 const CardDisplay = () => {
   const theme = useTheme().theme!;
   const colorPalette = theme.colorPalette;
+  const windowSize = useWindowSize();
+  const mobile = windowSize.width < 768;
 
   const variationRefs = Array.from({ length: 2 }, () =>
     React.createRef<HTMLDivElement>()
@@ -64,7 +67,7 @@ const CardDisplay = () => {
   }, [variationRefs, propsRef, selectedTab]);
 
   return (
-    <div style={{ margin: "1.5rem 0 4rem 0", width: "calc(100% - 22rem)" }}>
+    <div style={{ margin: "1.5rem 0 4rem 0", width: mobile ? "calc(100% - 12rem)" : "calc(100% - 22rem)"}}>
       <RenderBreadcrumbsForComponent name={CARD.title} path={CARD.path} />
 
       <div style={{ padding: "1rem" }}>
@@ -102,7 +105,7 @@ const CardDisplay = () => {
                 code={CODE_1}
                 text={TEXT_1}
               />
-              {renderSideBarItem(
+              {!mobile && renderSideBarItem(
                 [CARD.usage.installation.label, CARD.usage.variants.label],
                 selectedVariationSideBarItem,
                 variationRefs
@@ -159,7 +162,7 @@ const CardDisplay = () => {
                 type={CARD.props.children.type}
                 defaultValue={CARD.props.children.default}
               />
-              {renderSideBarItem(
+              {!mobile && renderSideBarItem(
                 [
                   CARD.props.variant.name,
                   CARD.props.color.name,
