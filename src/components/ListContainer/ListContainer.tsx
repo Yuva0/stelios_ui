@@ -1,9 +1,10 @@
-import React, { lazy, useEffect, useState } from "react";
-import { useTheme } from "stelios";
+import React, { lazy, Suspense, useEffect, useState } from "react";
+import { Text, useTheme } from "stelios";
 import NavigationBar from "../../components/NavigationBar/NavigationBar";
 import styled from "styled-components";
 import { useParams } from "react-router-dom";
 import NavigationBarDisplay from "../../content/NavigationBarDisplay";
+import Loading from "../Loading/Loading";
 
 interface ListContainerStyleProps {
   $colorPalette: any;
@@ -130,7 +131,9 @@ const ListContainer: React.FunctionComponent = () => {
   return (
     <StyledContainer $colorPalette={theme!.colorPalette}>
       <NavigationBar />
-      <RenderComponent />
+      <Suspense fallback={<Loading/>}>
+        <RenderComponent />
+      </Suspense>
     </StyledContainer>
   );
 };

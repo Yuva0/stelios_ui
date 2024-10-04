@@ -56,6 +56,7 @@ const Settings = () => {
       appearance: value,
       accents: {
         primary: primaryColor,
+        secondary: colors.accent.grey,
         component: componentColor,
       },
     });
@@ -67,6 +68,7 @@ const Settings = () => {
       appearance,
       accents: {
         primary: color,
+        secondary: colors.accent.grey,
         component: componentColor,
       },
     });
@@ -78,6 +80,7 @@ const Settings = () => {
       appearance,
       accents: {
         primary: primaryColor,
+        secondary: colors.accent.grey,
         component: color,
       },
     });
@@ -91,6 +94,7 @@ const Settings = () => {
       appearance: colors.appearance as "light" | "dark",
       accents: {
         primary: colors.accent.primary,
+        secondary: colors.accent.grey,
         component: colors.accent.component,
       },
     });

@@ -5,8 +5,8 @@ import {
   HeaderItem,
   IconButton,
   useTheme,
-  Input,
   Text,
+  Link,
 } from "stelios";
 import {
   IconBrandGithub,
@@ -29,7 +29,7 @@ const Header = () => {
     >
       <HeaderGroup style={{ marginLeft: "4rem", height: "100%" }}>
         <HeaderItem style={{ height: "100%", display:"flex", justifyContent:"center", alignItems:"center" }}>
-          <Text fontFamily='"Caveat", cursive' variant="h3" color="primary" size="large">Stelios</Text>
+          <Link href="/"><Text fontFamily='"Caveat", cursive' variant="h3" color="primary" size="large">Stelios</Text></Link>
         </HeaderItem>
       </HeaderGroup>
       <HeaderGroup style={{ marginRight: "1rem" }}>

@@ -1,7 +1,8 @@
 {
   "accent": {
     "primary": "#FED9B7",
-    "component": "#e21d5b"
+    "component": "#e21d5b",
+    "grey": "#F5F5F5"
   },
   "appearance": "light"
 }
