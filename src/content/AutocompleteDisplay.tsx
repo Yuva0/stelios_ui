@@ -14,11 +14,14 @@ import {
   renderSideBarItem,
   RenderTabsList,
   RenderVariations,
+  useWindowSize,
 } from "../helpers/helpers";
 import i18n from "../i18n/i18n_en.json";
 
 const AUTOCOMPLETE = i18n.autocomplete;
 const AutocompleteDisplay = () => {
+  const windowSize = useWindowSize();
+  const mobile = windowSize.width < 768;
   const theme = useTheme().theme!;
   const colorPalette = theme.colorPalette;
   const variationRefs = Array.from({ length: 3 }, () => React.createRef<HTMLDivElement>());
@@ -57,7 +60,7 @@ const AutocompleteDisplay = () => {
   },[variationRefs, propsRef, selectedTab]);
 
     return (
-      <div style={{ margin: "1.5rem 0 4rem 0", width: "calc(100% - 22rem)" }}>
+      <div style={{ margin: "1.5rem 0 4rem 0", width: mobile ? "calc(100% - 12rem)" : "calc(100% - 22rem)"}}>
         <RenderBreadcrumbsForComponent name={AUTOCOMPLETE.title} path={AUTOCOMPLETE.path}/>
   
         <div style={{ padding: "1rem" }}>
@@ -98,7 +101,7 @@ const AutocompleteDisplay = () => {
                   text={TEXT_2}
                 />
   
-                {renderSideBarItem([
+                {!mobile && renderSideBarItem([
                   AUTOCOMPLETE.usage.installation.label,
                   AUTOCOMPLETE.usage.variants.label,
                   AUTOCOMPLETE.usage.sizes.label,
@@ -194,8 +197,7 @@ const AutocompleteDisplay = () => {
                   type={AUTOCOMPLETE.props.onClick.type}
                   defaultValue={AUTOCOMPLETE.props.onClick.default}
                 />
-  
-                {renderSideBarItem([
+                {!mobile && renderSideBarItem([
                   AUTOCOMPLETE.props.variant.name,
                   AUTOCOMPLETE.props.size.name,
                   AUTOCOMPLETE.props.label.name,

@@ -16,10 +16,13 @@ import {
   renderSideBarItem,
   RenderTabsList,
   RenderVariations,
+  useWindowSize,
 } from "../helpers/helpers";
 
 const CHECKBOX = i18n.checkbox;
 const CheckboxDisplay = () => {
+  const windowSize = useWindowSize();
+  const mobile = windowSize.width < 768;
   const theme = useTheme().theme!;
   const colorPalette = theme.colorPalette;
   const variationRefs = Array.from({ length: 2 }, () =>
@@ -64,7 +67,7 @@ const CheckboxDisplay = () => {
   }, [variationRefs, propsRef, selectedTab]);
 
   return (
-    <div style={{ margin: "1.5rem 0 4rem 0", width: "calc(100% - 22rem)" }}>
+    <div style={{ margin: "1.5rem 0 4rem 0", width: mobile ? "calc(100% - 12rem)" : "calc(100% - 22rem)"}}>
       <RenderBreadcrumbsForComponent
         name={CHECKBOX.title}
         path={CHECKBOX.path}
@@ -102,7 +105,7 @@ const CheckboxDisplay = () => {
                 text={TEXT_1}
               />
 
-              {renderSideBarItem([
+              {!mobile && renderSideBarItem([
                 CHECKBOX.usage.installation.label,
                 CHECKBOX.usage.sizes.label,
               ], selectedVariationSideBarItem, variationRefs)}
@@ -152,7 +155,7 @@ const CheckboxDisplay = () => {
                 defaultValue={CHECKBOX.props.label.default}
               />
 
-              {renderSideBarItem(
+              {!mobile && renderSideBarItem(
                 [
                   CHECKBOX.props.size.name,
                   CHECKBOX.props.color.name,

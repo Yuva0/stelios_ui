@@ -15,12 +15,15 @@ import {
   renderSideBarItem,
   RenderTabsList,
   RenderVariations,
+  useWindowSize,
 } from "../helpers/helpers";
 import i18n from "../i18n/i18n_en.json";
 
 const ICONBUTTON = i18n.iconButton;
 
 const IconButtonDisplay = () => {
+  const windowSize = useWindowSize();
+  const mobile = windowSize.width < 768;
   const theme = useTheme().theme!;
   const colorPalette = theme.colorPalette;
   const variationRefs = Array.from({ length: 4 }, () => React.createRef<HTMLDivElement>());
@@ -59,7 +62,7 @@ const IconButtonDisplay = () => {
   },[variationRefs, propsRef, selectedTab]);
 
   return (
-    <div style={{ margin: "1.5rem 0 4rem 0", width: "calc(100% - 22rem)" }}>
+    <div style={{ margin: "1.5rem 0 4rem 0", width: mobile ? "calc(100% - 12rem)" : "calc(100% - 22rem)"}}>
       <RenderBreadcrumbsForComponent name={ICONBUTTON.title} />
 
       <div style={{ padding: "1rem" }}>
@@ -107,7 +110,7 @@ const IconButtonDisplay = () => {
                 text={TEXT_3}
               />
 
-              {renderSideBarItem([
+              {!mobile && renderSideBarItem([
                 ICONBUTTON.usage.installation.label,
                 ICONBUTTON.usage.variants.label,
                 ICONBUTTON.usage.sizes.label,
@@ -175,7 +178,7 @@ const IconButtonDisplay = () => {
                 wordSpacing="4px"
               />
 
-              {renderSideBarItem([
+              {!mobile && renderSideBarItem([
                   ICONBUTTON.props.variant.name,
                   ICONBUTTON.props.size.name,
                   ICONBUTTON.props.disabled.name,

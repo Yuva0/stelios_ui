@@ -81,7 +81,8 @@ const LandingPageThemeProvider = () => {
           width: "100%",
           justifyContent: "space-between",
           marginTop: "2rem",
-          flexWrap: "wrap"
+          flexWrap: "wrap",
+          gap: "1rem"
         }}
       >
         <Button variant="contained" color="primary" size="small">
@@ -109,7 +110,9 @@ const LandingPageThemeProvider = () => {
           width: "100%",
           justifyContent: "space-between",
           marginTop: "2rem",
-          alignItems:"center"
+          alignItems:"center",
+          gap: "1rem",
+          flexWrap: "wrap"
         }}
       >
         <Avatar
@@ -198,7 +201,8 @@ const LandingPageThemeProvider = () => {
         style={{
           marginTop: "2rem",
           display: "flex",
-          justifyContent: "space-between",
+          justifyContent: "center",
+          alignItems: "center",
           flexWrap: "wrap",
           flexDirection: "row",
           gap: "1rem"

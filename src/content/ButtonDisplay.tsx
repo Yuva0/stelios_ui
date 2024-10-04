@@ -15,12 +15,15 @@ import {
   renderSideBarItem,
   RenderTabsList,
   RenderVariations,
+  useWindowSize,
 } from "../helpers/helpers";
 import i18n from "../i18n/i18n_en.json";
 
 const BUTTONTEXT = i18n.button;
 
 const ButtonDisplay = () => {
+  const windowSize = useWindowSize();
+  const mobile = windowSize.width < 768;
   const theme = useTheme().theme!;
   const colorPalette = theme.colorPalette;
   const variationRefs = Array.from({ length: 7 }, () => React.createRef<HTMLDivElement>());
@@ -60,7 +63,7 @@ const ButtonDisplay = () => {
   },[variationRefs, propsRef, selectedTab]);
 
   return (
-    <div style={{ margin: "1.5rem 0 4rem 0", width: "calc(100% - 22rem)" }}>
+    <div style={{ margin: "1.5rem 0 4rem 0", width: mobile ? "calc(100% - 12rem)" : "calc(100% - 22rem)"}}>
       <RenderBreadcrumbsForComponent name={BUTTONTEXT.title} path={BUTTONTEXT.path}/>
       <div style={{ padding: "1rem" }}>
         <RenderComponentHeading
@@ -130,7 +133,7 @@ const ButtonDisplay = () => {
                 text={TEXT_6}
               />
 
-              {renderSideBarItem([
+              {!mobile && renderSideBarItem([
                 BUTTONTEXT.usage.installation.label,
                 BUTTONTEXT.usage.variants.label,
                 BUTTONTEXT.usage.sizes.label,
@@ -231,7 +234,7 @@ const ButtonDisplay = () => {
                 defaultValue={BUTTONTEXT.props.onClick.default}
               />
 
-              {renderSideBarItem([
+              {!mobile && renderSideBarItem([
                 BUTTONTEXT.props.variant.name,
                 BUTTONTEXT.props.size.name,
                 BUTTONTEXT.props.rounded.name,

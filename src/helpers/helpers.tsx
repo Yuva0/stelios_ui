@@ -244,7 +244,9 @@ export const RenderComponentHeading = ({
   );
 };
 
+
 export const renderSideBarItem = (values: string[], selectedIndex: number, ref: React.RefObject<HTMLDivElement>[]) => {
+  
   const _onClick = (index: number) => {
     const element = ref[index].current;
     if (element) {

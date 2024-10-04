@@ -14,11 +14,13 @@ import {
   renderSideBarItem,
   RenderTabsList,
   RenderVariations,
+  useWindowSize,
 } from "../helpers/helpers";
 import i18n from "../i18n/i18n_en.json";
 
 const AVATAR = i18n.avatar;
 const AvatarDisplay = () => {
+  const mobile = useWindowSize().width < 960;
   const theme = useTheme().theme!;
   const colorPalette = theme.colorPalette;
   const variationRefs = Array.from({ length: 5 }, () => React.createRef<HTMLDivElement>());

@@ -37,6 +37,7 @@ const LandingPage = () => {
             display: "flex",
             alignItems: "center",
             flexDirection: "column",
+            flexWrap: 'wrap'
         }}
         >
         <div
@@ -59,7 +60,7 @@ const LandingPage = () => {
             </Text>
         </div>
         <div
-            style={{ maxWidth: "800px", textAlign: "justify", marginTop: "8px" }}
+            style={{ maxWidth: "800px", textAlign: "justify", marginTop: "8px", flexWrap: "wrap", padding: "0 2rem", boxSizing: "border-box" }}
         >
             <Text
             color="secondary"
@@ -104,6 +105,8 @@ const LandingPage = () => {
             display: "flex",
             flexDirection: "row",
             gap: "2rem",
+            flexWrap: "wrap",
+            justifyContent:"center"
             }}
         >
             <Card
@@ -159,7 +162,7 @@ const LandingPage = () => {
         <div style={{marginTop:"240px", borderRadius: "8px", background: "lightgrey", maxWidth: "1600px"}}>
             <LandingPageGroup />
         </div>
-        <div style={{marginTop: "120px", display:"flex", flexDirection: "row", maxWidth: "1600px"}}>
+        <div style={{marginTop: "120px", display:"flex", flexDirection: "row", maxWidth: "1600px", flexWrap: "wrap"}}>
             <div style={{flex: "1 0 40%", width: "100%", padding: "2rem 4rem", display:"flex", gap: "1rem", flexDirection: "column"}}>
                 <Text color="component" variant="label" fontSize="36px"> Newer Variants Added </Text>
                 <Text color={defaultColor} variant="paragraph" style={{textAlign: "justify", marginTop: "1rem"}}> Introducing a groundbreaking design system that pushes the boundaries of customization! Unlike anything you've seen before, this system brings in fresh, innovative variants that redefine creativity and adaptability. Tailored for modern UI needs, it's perfect for developers looking to break free from the usual constraints and deliver something truly unique. Get ready to elevate your projects with a design system that's as flexible as your imagination! </Text>
