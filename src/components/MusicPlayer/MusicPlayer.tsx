@@ -13,7 +13,6 @@ import {
   IconPlayerTrackNextFilled,
   IconPlayerTrackPrevFilled,
 } from "@tabler/icons-react";
-import colorTokens from "../../../tokens/colors.json";
 
 const MUSIC_NAME = "BYE BYE BYE";
 const MUSIC_AUTHOR = "NSYNC";

@@ -1,5 +1,5 @@
 import React, { lazy, Suspense, useEffect, useState } from "react";
-import { Text, useTheme } from "stelios";
+import { useTheme } from "stelios";
 import NavigationBar from "../../components/NavigationBar/NavigationBar";
 import styled from "styled-components";
 import { useParams } from "react-router-dom";
