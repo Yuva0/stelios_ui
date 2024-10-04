@@ -22,7 +22,8 @@ import {
 const SWITCH = i18n.switch;
 const SwitchDisplay = () => {
   const windowSize = useWindowSize();
-  const mobile = windowSize.width < 768;
+  const mobile = windowSize.width < 480;
+  const laptop = windowSize.width < 768;
   const theme = useTheme().theme!;
   const colorPalette = theme.colorPalette;
 
@@ -68,7 +69,7 @@ const SwitchDisplay = () => {
   }, [variationRefs, propsRef, selectedTab]);
 
   return (
-    <div style={{ margin: "1.5rem 0 4rem 0", width: mobile ? "calc(100% - 12rem)" : "calc(100% - 22rem)"}}>
+    <div style={{ margin: "1.5rem 0 4rem 0", width: mobile ? "100%" : laptop ? "calc(100% - 12rem)" : "calc(100% - 22rem)"}}>
       <RenderBreadcrumbsForComponent
         name={SWITCH.title}
         path={SWITCH.path}
@@ -106,7 +107,7 @@ const SwitchDisplay = () => {
                 text={TEXT_1}
               />
 
-              {!mobile && renderSideBarItem([SWITCH.usage.installation.label, SWITCH.usage.sizes.label], selectedVariationSideBarItem, variationRefs)}
+              {!laptop && renderSideBarItem([SWITCH.usage.installation.label, SWITCH.usage.sizes.label], selectedVariationSideBarItem, variationRefs)}
             </TabPanel>
             <TabPanel value="props">
               <Text
@@ -153,7 +154,7 @@ const SwitchDisplay = () => {
                 defaultValue={SWITCH.props.label.default}
               />
 
-              {!mobile && renderSideBarItem([SWITCH.props.size.name, SWITCH.props.color.name, SWITCH.props.value.name, SWITCH.props.disabled.name, SWITCH.props.label.name], selectedPropsSideBarItem, propsRef)}
+              {!laptop && renderSideBarItem([SWITCH.props.size.name, SWITCH.props.color.name, SWITCH.props.value.name, SWITCH.props.disabled.name, SWITCH.props.label.name], selectedPropsSideBarItem, propsRef)}
             </TabPanel>
           </TabPanels>
         </Tabs>

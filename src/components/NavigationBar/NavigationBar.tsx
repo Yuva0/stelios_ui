@@ -10,10 +10,13 @@ import {
 import Topics, { TopicsProps } from "../../content/Topics";
 import { useNavigate, useParams } from "react-router-dom";
 import { memo } from "react";
+import { useWindowSize } from "../../helpers/helpers";
 
 const TOPICS: TopicsProps = Topics;
 
 const NavigationBar = () => {
+  const windowSize = useWindowSize();
+  const mobile = windowSize.width < 480;
   const theme = useTheme().theme!;
   const colorPalette = theme.colorPalette;
   const navigate = useNavigate();
@@ -86,7 +89,7 @@ const NavigationBar = () => {
     );
   });
 
-  return (
+  return (!mobile ? (
     <NavigationBarUI
       color="primary"
       style={{
@@ -103,7 +106,7 @@ const NavigationBar = () => {
     >
       {ChildrenArray}
     </NavigationBarUI>
-  );
+  ):<></>);
 };
 export default memo(NavigationBar);
 

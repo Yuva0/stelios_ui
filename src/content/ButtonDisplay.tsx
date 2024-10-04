@@ -23,7 +23,8 @@ const BUTTON = i18n.button;
 
 const ButtonDisplay = () => {
   const windowSize = useWindowSize();
-  const mobile = windowSize.width < 768;
+  const laptop = windowSize.width < 768;
+  const mobile = windowSize.width < 480;
   const theme = useTheme().theme!;
   const colorPalette = theme.colorPalette;
   const variationRefs = Array.from({ length: 7 }, () => React.createRef<HTMLDivElement>());
@@ -63,7 +64,7 @@ const ButtonDisplay = () => {
   },[variationRefs, propsRef, selectedTab]);
 
   return (
-    <div style={{ margin: "1.5rem 0 4rem 0", width: mobile ? "calc(100% - 12rem)" : "calc(100% - 22rem)"}}>
+    <div style={{ margin: "1.5rem 0 4rem 0", width: mobile ? "100%" : laptop ? "calc(100% - 12rem)" : "calc(100% - 22rem)"}}>
       <RenderBreadcrumbsForComponent name={BUTTON.title} path={BUTTON.path}/>
       <div style={{ padding: "1rem" }}>
         <RenderComponentHeading
@@ -133,7 +134,7 @@ const ButtonDisplay = () => {
                 text={TEXT_6}
               />
 
-              {!mobile && renderSideBarItem([
+              {!laptop && renderSideBarItem([
                 BUTTON.usage.installation.label,
                 BUTTON.usage.variants.label,
                 BUTTON.usage.sizes.label,
@@ -234,7 +235,7 @@ const ButtonDisplay = () => {
                 defaultValue={BUTTON.props.onClick.default}
               />
 
-              {!mobile && renderSideBarItem([
+              {!laptop && renderSideBarItem([
                 BUTTON.props.variant.name,
                 BUTTON.props.size.name,
                 BUTTON.props.rounded.name,

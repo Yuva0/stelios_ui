@@ -157,7 +157,9 @@ export const RenderVariations = forwardRef<HTMLDivElement,{label?: string, descr
       {!code && text && (
         <CodeDisplay
           text={text}
-          style={{ marginTop: "1rem", flexWrap: "wrap", width: "100%" }}
+          style={{ marginTop: "1rem", flexWrap: "wrap", width: "100%", boxSizing: "border-box" }}
+          syntaxHighlighterStyle={{ width: "100%", boxSizing: "border-box", flexWrap: "wrap" }}
+          codeStyle={{ width: "100%", boxSizing: "border-box", flexWrap: "wrap" }}
           color="primary"
           language={language}
         />
@@ -167,7 +169,7 @@ export const RenderVariations = forwardRef<HTMLDivElement,{label?: string, descr
           code={code}
           text={text}
           textStyle={{ width: "100%", boxSizing: "border-box" }}
-          codeStyle={{ backgroundColor: bgColor, width: "100%", boxSizing: "border-box", flexWrap: "wrap" }}
+          codeStyle={{ backgroundColor: bgColor, width: "100%", boxSizing: "border-box", flexWrap: "wrap", overflow: "scroll" }}
           style={{ marginTop: "1rem", flexWrap: "wrap", width: "100%", boxSizing: "border-box" }}
           color="primary"
           language={language}

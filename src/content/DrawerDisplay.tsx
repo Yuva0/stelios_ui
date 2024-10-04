@@ -23,7 +23,8 @@ import { useRef, useState } from "react";
 const DRAWER = i18n.drawer;
 const DrawerDisplay = () => {
   const windowSize = useWindowSize();
-  const mobile = windowSize.width < 768;
+  const mobile = windowSize.width < 480;
+  const laptop = windowSize.width < 768;
   const btnRef = useRef(null);
   const [open, setOpen] = useState(false);
   const theme = useTheme().theme!;
@@ -91,7 +92,7 @@ const DrawerDisplay = () => {
 </Drawer>`;
 
   return (
-    <div style={{ margin: "1.5rem 0 4rem 0", width: mobile ? "calc(100% - 12rem)" : "calc(100% - 22rem)" }}>
+    <div style={{ margin: "1.5rem 0 4rem 0", width: mobile ? "100%" : laptop ? "calc(100% - 12rem)" : "calc(100% - 22rem)" }}>
       <RenderBreadcrumbsForComponent name={DRAWER.title} path={DRAWER.path} />
 
       <div style={{ padding: "1rem" }}>
@@ -125,7 +126,7 @@ const DrawerDisplay = () => {
                 text={TEXT_1}
               />
 
-              {!mobile && renderSideBarItem([DRAWER.usage.installation.label, DRAWER.usage.default.label], selectedVariationSideBarItem, variationRefs)}
+              {!laptop && renderSideBarItem([DRAWER.usage.installation.label, DRAWER.usage.default.label], selectedVariationSideBarItem, variationRefs)}
             </TabPanel>
             <TabPanel value="props">
               <Text
@@ -151,7 +152,7 @@ const DrawerDisplay = () => {
                 defaultValue={DRAWER.props.color.default}
               />
 
-              {!mobile && renderSideBarItem([DRAWER.props.children.name, DRAWER.props.color.name], selectedPropsSideBarItem, propsRef)}
+              {!laptop && renderSideBarItem([DRAWER.props.children.name, DRAWER.props.color.name], selectedPropsSideBarItem, propsRef)}
             </TabPanel>
           </TabPanels>
         </Tabs>

@@ -21,7 +21,9 @@ import i18n from "../i18n/i18n_en.json";
 
 const ACCORDION = i18n.accordion;
 const AccordionDisplay = () => {
-  const mobile = useWindowSize().width < 768;
+  const windowSize = useWindowSize();
+  const laptop = windowSize.width < 768;
+  const mobile = windowSize.width < 480;
   const theme = useTheme().theme!;
   const colorPalette = theme.colorPalette;
   const variationRefs = Array.from({ length: 2 }, () => React.createRef<HTMLDivElement>());
@@ -61,7 +63,7 @@ const AccordionDisplay = () => {
   },[variationRefs, propsRef, selectedTab]);
 
   return (
-    <div style={{ margin: "1.5rem 0 4rem 0", width: mobile ? "calc(100% - 12rem)" : "calc(100% - 22rem)"}}>
+    <div style={{ margin: "1.5rem 0 4rem 0", width: mobile ? "100%" : laptop ? "calc(100% - 12rem)" : "calc(100% - 22rem)"}}>
       <RenderBreadcrumbsForComponent
         name={ACCORDION.title}
         path={ACCORDION.path}
@@ -99,7 +101,7 @@ const AccordionDisplay = () => {
                 language="javascript"
               />
 
-              {!mobile && renderSideBarItem([
+              {!laptop && renderSideBarItem([
                 ACCORDION.usage.installation.label,
                 ACCORDION.usage.variants.label,
               ], selectedVariationSideBarItem, variationRefs)}
@@ -121,7 +123,7 @@ const AccordionDisplay = () => {
                 marginTop="1rem"
               />
 
-              {!mobile && renderSideBarItem([
+              {!laptop && renderSideBarItem([
                 ACCORDION.props.variant.name,
               ], selectedPropsSideBarItem, propsRef)}
             </TabPanel>

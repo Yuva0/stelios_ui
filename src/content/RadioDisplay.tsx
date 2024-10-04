@@ -23,7 +23,8 @@ import {
 const RADIO = i18n.radio;
 const RadioDisplay = () => {
   const windowSize = useWindowSize();
-  const mobile = windowSize.width < 768;
+  const mobile = windowSize.width < 480;
+  const laptop = windowSize.width < 768;
   const theme = useTheme().theme!;
   const colorPalette = theme.colorPalette;
 
@@ -69,7 +70,7 @@ const RadioDisplay = () => {
   }, [variationRefs, propsRef, selectedTab]);
 
   return (
-    <div style={{ margin: "1.5rem 0 4rem 0", width: mobile ? "calc(100% - 12rem)" : "calc(100% - 22rem)"}}>
+    <div style={{ margin: "1.5rem 0 4rem 0", width: mobile ? "100%" : laptop ? "calc(100% - 12rem)" : "calc(100% - 22rem)"}}>
       <RenderBreadcrumbsForComponent
         name={RADIO.title}
         path={RADIO.path}
@@ -107,7 +108,7 @@ const RadioDisplay = () => {
                 text={TEXT_1}
               />
 
-              {!mobile && renderSideBarItem([RADIO.usage.installation.label, RADIO.usage.sizes.label], selectedVariationSideBarItem, variationRefs)}
+              {!laptop && renderSideBarItem([RADIO.usage.installation.label, RADIO.usage.sizes.label], selectedVariationSideBarItem, variationRefs)}
             </TabPanel>
             <TabPanel value="props">
               <Text
@@ -154,7 +155,7 @@ const RadioDisplay = () => {
                 defaultValue={RADIO.props.label.default}
               />
 
-              {!mobile && renderSideBarItem([RADIO.props.size.name, RADIO.props.color.name, RADIO.props.value.name, RADIO.props.disabled.name, RADIO.props.label.name], selectedPropsSideBarItem, propsRef)}
+              {!laptop && renderSideBarItem([RADIO.props.size.name, RADIO.props.color.name, RADIO.props.value.name, RADIO.props.disabled.name, RADIO.props.label.name], selectedPropsSideBarItem, propsRef)}
             </TabPanel>
           </TabPanels>
         </Tabs>

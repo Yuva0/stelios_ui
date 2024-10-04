@@ -20,7 +20,8 @@ import i18n from "../i18n/i18n_en.json";
 const TEXT = i18n.text;
 const TextDisplay = () => {
   const windowSize = useWindowSize();
-  const mobile = windowSize.width < 768;
+  const laptop = windowSize.width < 768;
+  const mobile = windowSize.width < 480;
   const theme = useTheme().theme!;
   const colorPalette = theme.colorPalette;
   const variationRefs = Array.from({ length: 3 }, () => React.createRef<HTMLDivElement>());
@@ -59,7 +60,7 @@ const TextDisplay = () => {
     },[variationRefs, propsRef, selectedTab]);
 
     return (
-      <div style={{ margin: "1.5rem 0 4rem 0", width: mobile ? "calc(100% - 12rem)" : "calc(100% - 22rem)" }}>
+      <div style={{ margin: "1.5rem 0 4rem 0", width: mobile ? "100%" : laptop ? "calc(100% - 12rem)" : "calc(100% - 22rem)" }}>
         <RenderBreadcrumbsForComponent name={TEXT.title} path={TEXT.path}/>
   
         <div style={{ padding: "1rem" }}>
@@ -96,7 +97,7 @@ const TextDisplay = () => {
                   code={CODE_2}
                   text={TEXT_2}
                 />
-                {!mobile && renderSideBarItem([TEXT.usage.installation.label, TEXT.usage.variants.label, TEXT.usage.sizes.label], selectedVariationSideBarItem, variationRefs)}
+                {!laptop && renderSideBarItem([TEXT.usage.installation.label, TEXT.usage.variants.label, TEXT.usage.sizes.label], selectedVariationSideBarItem, variationRefs)}
               </TabPanel>
               <TabPanel value="props">
                 <Text
@@ -147,7 +148,7 @@ const TextDisplay = () => {
                     TEXT.props.children.default
                   }
                 />
-                {!mobile && renderSideBarItem([TEXT.props.variant.name, TEXT.props.size.name, TEXT.props.color.name, TEXT.props.children.name], selectedPropsSideBarItem, propsRef)}
+                {!laptop && renderSideBarItem([TEXT.props.variant.name, TEXT.props.size.name, TEXT.props.color.name, TEXT.props.children.name], selectedPropsSideBarItem, propsRef)}
               </TabPanel>
             </TabPanels>
           </Tabs>

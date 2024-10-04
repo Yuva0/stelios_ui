@@ -22,7 +22,8 @@ import i18n from "../i18n/i18n_en.json";
 const LIST = i18n.list;
 const ListDisplay = () => {
   const windowSize = useWindowSize();
-  const mobile = windowSize.width < 768;
+  const laptop = windowSize.width < 768;
+  const mobile = windowSize.width < 480;
   const theme = useTheme().theme!;
   const colorPalette = theme.colorPalette;
 
@@ -67,7 +68,7 @@ const ListDisplay = () => {
   }, [variationRefs, propsRef, selectedTab]);
 
     return (
-      <div style={{ margin: "1.5rem 0 4rem 0", width: mobile ? "calc(100% - 12rem)" : "calc(100% - 22rem)"}}>
+      <div style={{ margin: "1.5rem 0 4rem 0", width: mobile ? "100%" : laptop ? "calc(100% - 12rem)" : "calc(100% - 22rem)"}}>
         <RenderBreadcrumbsForComponent name={LIST.title} path={LIST.path}/>
   
         <div style={{ padding: "1rem" }}>
@@ -107,7 +108,7 @@ const ListDisplay = () => {
                   code={CODE_2}
                   text={TEXT_2}
                 />
-                {!mobile && renderSideBarItem([LIST.usage.installation.label, LIST.usage.variants.label, LIST.usage.sizes.label], selectedVariationSideBarItem, variationRefs)}
+                {!laptop && renderSideBarItem([LIST.usage.installation.label, LIST.usage.variants.label, LIST.usage.sizes.label], selectedVariationSideBarItem, variationRefs)}
               </TabPanel>
               <TabPanel value="props">
                 <Text
@@ -151,7 +152,7 @@ const ListDisplay = () => {
                     LIST.props.children.default
                   }
                 />
-                {!mobile && renderSideBarItem([LIST.props.variant.name, LIST.props.color.name, LIST.props.children.name], selectedPropsSideBarItem, propsRef)}
+                {!laptop && renderSideBarItem([LIST.props.variant.name, LIST.props.color.name, LIST.props.children.name], selectedPropsSideBarItem, propsRef)}
               </TabPanel>
             </TabPanels>
           </Tabs>

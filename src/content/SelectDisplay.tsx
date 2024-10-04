@@ -20,7 +20,8 @@ import i18n from "../i18n/i18n_en.json";
 
 const SELECT = i18n.select;
 const SelectDisplay = () => {
-  const mobile = useWindowSize().width < 768;
+  const laptop = useWindowSize().width < 768;
+  const mobile = useWindowSize().width < 480;
   const theme = useTheme().theme!;
   const colorPalette = theme.colorPalette;
 
@@ -66,7 +67,7 @@ const SelectDisplay = () => {
   }, [variationRefs, propsRef, selectedTab]);
 
     return (
-      <div style={{ margin: "1.5rem 0 4rem 0", width: mobile ? "calc(100% - 12rem)" : "calc(100% - 22rem)"}}>
+      <div style={{ margin: "1.5rem 0 4rem 0", width: mobile ? "100%" : laptop ? "calc(100% - 12rem)" : "calc(100% - 22rem)"}}>
         <RenderBreadcrumbsForComponent name={SELECT.title} path={SELECT.path}/>
   
         <div style={{ padding: "1rem" }}>
@@ -109,7 +110,7 @@ const SelectDisplay = () => {
                   text={TEXT_2}
                 />
   
-                {!mobile && renderSideBarItem([SELECT.usage.installation.label, SELECT.usage.variants.label, SELECT.usage.sizes.label], selectedVariationSideBarItem, variationRefs)}
+                {!laptop && renderSideBarItem([SELECT.usage.installation.label, SELECT.usage.variants.label, SELECT.usage.sizes.label], selectedVariationSideBarItem, variationRefs)}
               </TabPanel>
               <TabPanel value="props">
                 <Text
@@ -202,7 +203,7 @@ const SelectDisplay = () => {
                   defaultValue={SELECT.props.onClick.default}
                 />
   
-                {!mobile && renderSideBarItem([SELECT.props.variant.name, SELECT.props.size.name, SELECT.props.label.name, SELECT.props.open.name, SELECT.props.placeholder.name, SELECT.props.options.name, SELECT.props.color.name, SELECT.props.onClick.name], selectedPropsSideBarItem, propsRef)}
+                {!laptop && renderSideBarItem([SELECT.props.variant.name, SELECT.props.size.name, SELECT.props.label.name, SELECT.props.open.name, SELECT.props.placeholder.name, SELECT.props.options.name, SELECT.props.color.name, SELECT.props.onClick.name], selectedPropsSideBarItem, propsRef)}
               </TabPanel>
             </TabPanels>
           </Tabs>

@@ -21,7 +21,8 @@ import {
 const LOADER = i18n.loader;
 const LoaderDisplay = () => {
   const windowSize = useWindowSize();
-  const mobile = windowSize.width < 768;
+  const laptop = windowSize.width < 768;
+  const mobile = windowSize.width < 480;
   const theme = useTheme().theme!;
   const colorPalette = theme.colorPalette;
 
@@ -67,7 +68,7 @@ const LoaderDisplay = () => {
   }, [variationRefs, propsRef, selectedTab]);
 
   return (
-    <div style={{ margin: "1.5rem 0 4rem 0", width: mobile ? "calc(100% - 12rem)" : "calc(100% - 22rem)" }}>
+    <div style={{ margin: "1.5rem 0 4rem 0", width: mobile ? "100%" : laptop ? "calc(100% - 12rem)" : "calc(100% - 22rem)" }}>
       <RenderBreadcrumbsForComponent name={LOADER.title} path={LOADER.path} />
       <div style={{ padding: "1rem" }}>
         <RenderComponentHeading
@@ -100,7 +101,7 @@ const LoaderDisplay = () => {
                 language="javascript"
               />
 
-              {!mobile && renderSideBarItem([LOADER.usage.installation.label, LOADER.usage.sizes.label], selectedVariationSideBarItem, variationRefs)}
+              {!laptop && renderSideBarItem([LOADER.usage.installation.label, LOADER.usage.sizes.label], selectedVariationSideBarItem, variationRefs)}
             </TabPanel>
             <TabPanel value="props">
               <Text
@@ -135,7 +136,7 @@ const LoaderDisplay = () => {
                 defaultValue={LOADER.props.width.default}
               />
 
-              {!mobile && renderSideBarItem([LOADER.props.shape.name, LOADER.props.height.name, LOADER.props.width.name], selectedPropsSideBarItem, propsRef)}
+              {!laptop && renderSideBarItem([LOADER.props.shape.name, LOADER.props.height.name, LOADER.props.width.name], selectedPropsSideBarItem, propsRef)}
             </TabPanel>
           </TabPanels>
         </Tabs>

@@ -22,7 +22,8 @@ import i18n from "../i18n/i18n_en.json";
 const SIDEBAR = i18n["sidebar"];
 const NavigationBarDisplay = () => {  
   const windowSize = useWindowSize();
-  const mobile = windowSize.width < 768;
+  const mobile = windowSize.width < 480;
+  const laptop = windowSize.width < 768;
   const theme = useTheme().theme!;
   const colorPalette = theme.colorPalette;
 
@@ -68,7 +69,7 @@ const NavigationBarDisplay = () => {
   }, [variationRefs, propsRef, selectedTab]);
 
     return (
-      <div style={{ margin: "1.5rem 0 4rem 0", width: mobile ? "calc(100% - 12rem)" : "calc(100% - 22rem)" }}>
+      <div style={{ margin: "1.5rem 0 4rem 0", width: mobile ? "100%" : laptop ? "calc(100% - 12rem)" : "calc(100% - 22rem)" }}>
         <RenderBreadcrumbsForComponent name={SIDEBAR.title} path={SIDEBAR.path}/>
   
         <div style={{ padding: "1rem" }}>
@@ -103,7 +104,7 @@ const NavigationBarDisplay = () => {
                   code={CODE_1}
                   text={TEXT_1}
                 />
-                {!mobile && renderSideBarItem([SIDEBAR.usage.installation.label, SIDEBAR.usage.group.label], selectedVariationSideBarItem, variationRefs)}
+                {!laptop && renderSideBarItem([SIDEBAR.usage.installation.label, SIDEBAR.usage.group.label], selectedVariationSideBarItem, variationRefs)}
               </TabPanel>
               <TabPanel value="props">
                 <Text
@@ -136,7 +137,7 @@ const NavigationBarDisplay = () => {
                     SIDEBAR.props.color.default
                   }
                 />
-                {!mobile && renderSideBarItem([SIDEBAR.props.children.name, SIDEBAR.props.color.name], selectedPropsSideBarItem, propsRef)}
+                {!laptop && renderSideBarItem([SIDEBAR.props.children.name, SIDEBAR.props.color.name], selectedPropsSideBarItem, propsRef)}
               </TabPanel>
             </TabPanels>
           </Tabs>

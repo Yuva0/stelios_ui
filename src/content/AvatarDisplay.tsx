@@ -21,7 +21,8 @@ import i18n from "../i18n/i18n_en.json";
 const AVATAR = i18n.avatar;
 const AvatarDisplay = () => {
   const windowSize = useWindowSize();
-  const mobile = windowSize.width < 768;
+  const laptop = windowSize.width < 768;
+  const mobile = windowSize.width < 480;
   const theme = useTheme().theme!;
   const colorPalette = theme.colorPalette;
   const variationRefs = Array.from({ length: 5 }, () => React.createRef<HTMLDivElement>());
@@ -60,7 +61,7 @@ const AvatarDisplay = () => {
   },[variationRefs, propsRef, selectedTab]);
 
     return (
-      <div style={{ margin: "1.5rem 0 4rem 0", width: mobile ? "calc(100% - 12rem)" : "calc(100% - 22rem)"}}>
+      <div style={{ margin: "1.5rem 0 4rem 0", width: mobile ? "100%" : laptop ? "calc(100% - 12rem)" : "calc(100% - 22rem)"}}>
         <RenderBreadcrumbsForComponent name={AVATAR.title} path={AVATAR.path}/>
   
         <div style={{ padding: "1rem" }}>
@@ -115,7 +116,7 @@ const AvatarDisplay = () => {
                   text={TEXT_4}
                 />
   
-                {!mobile && renderSideBarItem([
+                {!laptop && renderSideBarItem([
                   AVATAR.usage.installation.label,
                   AVATAR.usage.sizes.label,
                   AVATAR.usage.shape.label,
@@ -188,7 +189,7 @@ const AvatarDisplay = () => {
                   }
                 />
   
-                {!mobile && renderSideBarItem([
+                {!laptop && renderSideBarItem([
                   AVATAR.props.src.name,
                   AVATAR.props.alt.name,
                   AVATAR.props.type.name,

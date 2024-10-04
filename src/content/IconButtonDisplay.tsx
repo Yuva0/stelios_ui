@@ -23,7 +23,8 @@ const ICONBUTTON = i18n.iconButton;
 
 const IconButtonDisplay = () => {
   const windowSize = useWindowSize();
-  const mobile = windowSize.width < 768;
+  const laptop = windowSize.width < 768;
+  const mobile = windowSize.width < 480;
   const theme = useTheme().theme!;
   const colorPalette = theme.colorPalette;
   const variationRefs = Array.from({ length: 4 }, () => React.createRef<HTMLDivElement>());
@@ -62,7 +63,7 @@ const IconButtonDisplay = () => {
   },[variationRefs, propsRef, selectedTab]);
 
   return (
-    <div style={{ margin: "1.5rem 0 4rem 0", width: mobile ? "calc(100% - 12rem)" : "calc(100% - 22rem)"}}>
+    <div style={{ margin: "1.5rem 0 4rem 0", width: mobile ? "100%" : laptop ? "calc(100% - 12rem)" : "calc(100% - 22rem)"}}>
       <RenderBreadcrumbsForComponent name={ICONBUTTON.title} />
 
       <div style={{ padding: "1rem" }}>
@@ -110,7 +111,7 @@ const IconButtonDisplay = () => {
                 text={TEXT_3}
               />
 
-              {!mobile && renderSideBarItem([
+              {!laptop && renderSideBarItem([
                 ICONBUTTON.usage.installation.label,
                 ICONBUTTON.usage.variants.label,
                 ICONBUTTON.usage.sizes.label,
@@ -178,7 +179,7 @@ const IconButtonDisplay = () => {
                 wordSpacing="4px"
               />
 
-              {!mobile && renderSideBarItem([
+              {!laptop && renderSideBarItem([
                   ICONBUTTON.props.variant.name,
                   ICONBUTTON.props.size.name,
                   ICONBUTTON.props.disabled.name,

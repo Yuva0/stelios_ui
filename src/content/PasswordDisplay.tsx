@@ -21,7 +21,8 @@ import i18n from "../i18n/i18n_en.json";
 const PASSWORDTEXT = i18n.password;
 const PasswordDisplay = () => {
   const windowSize = useWindowSize();
-  const mobile = windowSize.width < 768;
+  const laptop = windowSize.width < 768;
+  const mobile = windowSize.width < 480;
   const theme = useTheme().theme!;
   const colorPalette = theme.colorPalette;
 
@@ -67,7 +68,7 @@ const PasswordDisplay = () => {
   }, [variationRefs, propsRef, selectedTab]);
 
   return (
-    <div style={{ margin: "1.5rem 0 4rem 0", width: mobile ? "calc(100% - 12rem)" : "calc(100% - 22rem)"}}>
+    <div style={{ margin: "1.5rem 0 4rem 0", width: mobile ? "100%" : laptop ? "calc(100% - 12rem)" : "calc(100% - 22rem)"}}>
       <RenderBreadcrumbsForComponent name={PASSWORDTEXT.title} path={PASSWORDTEXT.path} />
       <div style={{ padding: "1rem" }}>
         <RenderComponentHeading title={PASSWORDTEXT.title} description={PASSWORDTEXT.description} />
@@ -93,7 +94,7 @@ const PasswordDisplay = () => {
                <RenderVariations ref={variationRefs[3]} label={PASSWORDTEXT.usage.hasError.label} description={PASSWORDTEXT.usage.hasError.description} code={CODE_3} text={TEXT_3}/>
                <RenderVariations ref={variationRefs[4]} label={PASSWORDTEXT.usage.labelPlaceholder.label} description={PASSWORDTEXT.usage.labelPlaceholder.description} code={CODE_4} text={TEXT_4}/>
                
-               {!mobile && renderSideBarItem([PASSWORDTEXT.usage.installation.label, PASSWORDTEXT.usage.variants.label, PASSWORDTEXT.usage.sizes.label, PASSWORDTEXT.usage.hasError.label, PASSWORDTEXT.usage.labelPlaceholder.label], selectedVariationSideBarItem,  variationRefs)}
+               {!laptop && renderSideBarItem([PASSWORDTEXT.usage.installation.label, PASSWORDTEXT.usage.variants.label, PASSWORDTEXT.usage.sizes.label, PASSWORDTEXT.usage.hasError.label, PASSWORDTEXT.usage.labelPlaceholder.label], selectedVariationSideBarItem,  variationRefs)}
             </TabPanel>
             <TabPanel value="props">
             <Text
@@ -116,7 +117,7 @@ const PasswordDisplay = () => {
               <RenderProps ref={propsRef[9]} propName={PASSWORDTEXT.props.labelPosition.name} description={PASSWORDTEXT.props.labelPosition.description} type={PASSWORDTEXT.props.labelPosition.type} defaultValue={PASSWORDTEXT.props.labelPosition.default}/>
               <RenderProps ref={propsRef[10]} propName={PASSWORDTEXT.props.placeholder.name} description={PASSWORDTEXT.props.placeholder.description} type={PASSWORDTEXT.props.placeholder.type} defaultValue={PASSWORDTEXT.props.placeholder.default}/>
             
-              {!mobile && renderSideBarItem([PASSWORDTEXT.props.variant.name, PASSWORDTEXT.props.size.name, PASSWORDTEXT.props.cursor.name, PASSWORDTEXT.props.color.name, PASSWORDTEXT.props.width.name, PASSWORDTEXT.props.value.name, PASSWORDTEXT.props.disabled.name, PASSWORDTEXT.props.fullWidth.name, PASSWORDTEXT.props.label.name, PASSWORDTEXT.props.labelPosition.name, PASSWORDTEXT.props.placeholder.name], selectedPropsSideBarItem, propsRef)}
+              {!laptop && renderSideBarItem([PASSWORDTEXT.props.variant.name, PASSWORDTEXT.props.size.name, PASSWORDTEXT.props.cursor.name, PASSWORDTEXT.props.color.name, PASSWORDTEXT.props.width.name, PASSWORDTEXT.props.value.name, PASSWORDTEXT.props.disabled.name, PASSWORDTEXT.props.fullWidth.name, PASSWORDTEXT.props.label.name, PASSWORDTEXT.props.labelPosition.name, PASSWORDTEXT.props.placeholder.name], selectedPropsSideBarItem, propsRef)}
 
             </TabPanel>
           </TabPanels>

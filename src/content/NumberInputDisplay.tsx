@@ -21,7 +21,8 @@ import {
 const NUMBERINPUT = i18n.numberInput;
 const NumberInputDisplay = () => {
   const windowSize = useWindowSize();
-  const mobile = windowSize.width < 768;
+  const laptop = windowSize.width < 768;
+  const mobile = windowSize.width < 480;
   const theme = useTheme().theme!;
   const colorPalette = theme.colorPalette;
 
@@ -67,7 +68,7 @@ const NumberInputDisplay = () => {
   }, [variationRefs, propsRef, selectedTab]);
 
   return (
-    <div style={{ margin: "1.5rem 0 4rem 0", width: mobile ? "calc(100% - 12rem)" : "calc(100% - 22rem)"}}>
+    <div style={{ margin: "1.5rem 0 4rem 0", width: mobile ? "100%" : laptop ? "calc(100% - 12rem)" : "calc(100% - 22rem)"}}>
       <RenderBreadcrumbsForComponent
         name={NUMBERINPUT.title}
         path={NUMBERINPUT.path}
@@ -112,7 +113,7 @@ const NumberInputDisplay = () => {
                 text={TEXT_2}
               />
 
-              {!mobile && renderSideBarItem([NUMBERINPUT.usage.installation.label, NUMBERINPUT.usage.variants.label, NUMBERINPUT.usage.sizes.label], selectedVariationSideBarItem, variationRefs)}
+              {!laptop && renderSideBarItem([NUMBERINPUT.usage.installation.label, NUMBERINPUT.usage.variants.label, NUMBERINPUT.usage.sizes.label], selectedVariationSideBarItem, variationRefs)}
             </TabPanel>
             <TabPanel value="props">
               <Text
@@ -205,7 +206,7 @@ const NumberInputDisplay = () => {
                 wordSpacing="2px"
               />
 
-              {!mobile && renderSideBarItem([NUMBERINPUT.props.variant.name, NUMBERINPUT.props.size.name, NUMBERINPUT.props.color.name, NUMBERINPUT.props.max.name, NUMBERINPUT.props.value.name, NUMBERINPUT.props.onChange.name, NUMBERINPUT.props.value.name, NUMBERINPUT.props.label.name, NUMBERINPUT.props.onChange.name, NUMBERINPUT.props.onIncrement.name, NUMBERINPUT.props.onDecrement.name], selectedPropsSideBarItem, propsRef)}
+              {!laptop && renderSideBarItem([NUMBERINPUT.props.variant.name, NUMBERINPUT.props.size.name, NUMBERINPUT.props.color.name, NUMBERINPUT.props.max.name, NUMBERINPUT.props.value.name, NUMBERINPUT.props.onChange.name, NUMBERINPUT.props.value.name, NUMBERINPUT.props.label.name, NUMBERINPUT.props.onChange.name, NUMBERINPUT.props.onIncrement.name, NUMBERINPUT.props.onDecrement.name], selectedPropsSideBarItem, propsRef)}
             </TabPanel>
           </TabPanels>
         </Tabs>

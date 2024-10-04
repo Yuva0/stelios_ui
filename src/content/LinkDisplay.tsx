@@ -21,7 +21,8 @@ import i18n from "../i18n/i18n_en.json";
 const LINK = i18n.link;
 const LinkDisplay = () => {
   const windowSize = useWindowSize();
-  const mobile = windowSize.width < 768;
+  const laptop = windowSize.width < 768;
+  const mobile = windowSize.width < 480;
   const theme = useTheme().theme!;
   const colorPalette = theme.colorPalette;
 
@@ -67,7 +68,7 @@ const LinkDisplay = () => {
   }, [variationRefs, propsRef, selectedTab]);
 
   return (
-    <div style={{ margin: "1.5rem 0 4rem 0", width: mobile ? "calc(100% - 12rem)" : "calc(100% - 22rem)" }}>
+    <div style={{ margin: "1.5rem 0 4rem 0", width: mobile ? "100%" : laptop ? "calc(100% - 12rem)" : "calc(100% - 22rem)" }}>
       <RenderBreadcrumbsForComponent name={LINK.title} path={LINK.path}/>
 
       <div style={{ padding: "1rem" }}>
@@ -109,7 +110,7 @@ const LinkDisplay = () => {
                 code={CODE_2}
                 text={TEXT_2}
               />
-              {!mobile && renderSideBarItem([LINK.usage.installation.label, LINK.usage.variants.label, LINK.usage.sizes.label], selectedVariationSideBarItem, variationRefs)}
+              {!laptop && renderSideBarItem([LINK.usage.installation.label, LINK.usage.variants.label, LINK.usage.sizes.label], selectedVariationSideBarItem, variationRefs)}
             </TabPanel>
             <TabPanel value="props">
               <Text
@@ -189,7 +190,7 @@ const LinkDisplay = () => {
                   LINK.props.children.default
                 }
               />
-              {!mobile && renderSideBarItem([LINK.props.variant.name, LINK.props.size.name, LINK.props.href.name, LINK.props.target.name, LINK.props.color.name, LINK.props.children.name], selectedPropsSideBarItem, propsRef)}
+              {!laptop && renderSideBarItem([LINK.props.variant.name, LINK.props.size.name, LINK.props.href.name, LINK.props.target.name, LINK.props.color.name, LINK.props.children.name], selectedPropsSideBarItem, propsRef)}
             </TabPanel>
           </TabPanels>
         </Tabs>

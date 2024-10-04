@@ -21,7 +21,8 @@ import {
 const INPUTTEXT = i18n.input;
 const InputDisplay = () => {
   const windowSize = useWindowSize();
-  const mobile = windowSize.width < 768;
+  const laptop = windowSize.width < 768;
+  const mobile = windowSize.width < 480;
   const theme = useTheme().theme!;
   const colorPalette = theme.colorPalette;
 
@@ -67,7 +68,7 @@ const InputDisplay = () => {
   }, [variationRefs, propsRef, selectedTab]);
 
   return (
-    <div style={{ margin: "1.5rem 0 4rem 0", width: mobile ? "calc(100% - 12rem)" : "calc(100% - 22rem)" }}>
+    <div style={{ margin: "1.5rem 0 4rem 0", width: mobile ? "100%" : laptop ? "calc(100% - 12rem)" : "calc(100% - 22rem)" }}>
       <RenderBreadcrumbsForComponent
         name={INPUTTEXT.title}
         path={INPUTTEXT.path}
@@ -114,7 +115,7 @@ const InputDisplay = () => {
                 text={TEXT_2}
               />
 
-              {!mobile && renderSideBarItem(
+              {!laptop && renderSideBarItem(
                 [
                   INPUTTEXT.usage.installation.label,
                   INPUTTEXT.usage.variants.label,
@@ -247,7 +248,7 @@ const InputDisplay = () => {
                 defaultValue={INPUTTEXT.props.trailingIcon.default}
               />
 
-              {!mobile && renderSideBarItem(
+              {!laptop && renderSideBarItem(
                 [
                   INPUTTEXT.props.variant.name,
                   INPUTTEXT.props.size.name,

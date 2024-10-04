@@ -22,7 +22,8 @@ import i18n from "../i18n/i18n_en.json";
 const BREADCRUMBS = i18n.breadcrumbs;
 const BreadcrumbsDisplay = () => {
   const windowSize = useWindowSize();
-  const mobile = windowSize.width < 768;
+  const laptop = windowSize.width < 768;
+  const mobile = windowSize.width < 480;
   const theme = useTheme().theme!;
   const colorPalette = theme.colorPalette;
   const variationRefs = Array.from({ length: 4 }, () => React.createRef<HTMLDivElement>());
@@ -61,7 +62,7 @@ const BreadcrumbsDisplay = () => {
   },[variationRefs, propsRef, selectedTab]);
 
     return (
-      <div style={{ margin: "1.5rem 0 4rem 0", width: mobile ? "calc(100% - 12rem)" : "calc(100% - 22rem)" }}>
+      <div style={{ margin: "1.5rem 0 4rem 0", width: mobile ? "100%" : laptop ? "calc(100% - 12rem)" : "calc(100% - 22rem)" }}>
         <RenderBreadcrumbsForComponent name={BREADCRUMBS.title} path={BREADCRUMBS.path}/>
   
         <div style={{ padding: "1rem" }}>
@@ -101,7 +102,7 @@ const BreadcrumbsDisplay = () => {
                   code={CODE_2}
                   text={TEXT_2}
                 />
-                {!mobile && renderSideBarItem([
+                {!laptop && renderSideBarItem([
                   BREADCRUMBS.usage.installation.label,
                   BREADCRUMBS.usage.variants.label,
                   BREADCRUMBS.usage.sizes.label,
@@ -139,7 +140,7 @@ const BreadcrumbsDisplay = () => {
                   }
                   marginTop="1rem"
                 />
-                {!mobile && renderSideBarItem([
+                {!laptop && renderSideBarItem([
                   BREADCRUMBS.props.variant.name,
                   BREADCRUMBS.props.size.name,
                 ], selectedPropsSideBarItem, propsRef)}

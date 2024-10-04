@@ -22,7 +22,8 @@ import { IconAward } from "@tabler/icons-react";
 const TAG = i18n.tag;
 const TagDisplay = () => {
   const windowSize = useWindowSize();
-  const mobile = windowSize.width < 768;
+  const laptop = windowSize.width < 768;
+  const mobile = windowSize.width < 480;
   const theme = useTheme().theme!;
   const colorPalette = theme.colorPalette;  
   const variationRefs = Array.from({ length: 3 }, () => React.createRef<HTMLDivElement>());
@@ -61,7 +62,7 @@ const TagDisplay = () => {
   },[variationRefs, propsRef, selectedTab]);
 
     return (
-      <div style={{ margin: "1.5rem 0 4rem 0", width: mobile ? "calc(100% - 12rem)" : "calc(100% - 22rem)"}}>
+      <div style={{ margin: "1.5rem 0 4rem 0", width: mobile ? "100%" : laptop ? "calc(100% - 12rem)" : "calc(100% - 22rem)"}}>
         <RenderBreadcrumbsForComponent name={TAG.title} path={TAG.path}/>
   
         <div style={{ padding: "1rem" }}>
@@ -111,7 +112,7 @@ const TagDisplay = () => {
                   text={TEXT_4}
                 />
   
-                {!mobile && renderSideBarItem([
+                {!laptop && renderSideBarItem([
                   TAG.usage.installation.label,
                   TAG.usage.sizes.label,
                   TAG.usage.variants.label],
@@ -202,7 +203,7 @@ const TagDisplay = () => {
                   }
                 />
   
-                {!mobile && renderSideBarItem(
+                {!laptop && renderSideBarItem(
                   [
                     TAG.props.variant.name,
                     TAG.props.size.name,

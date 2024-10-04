@@ -22,7 +22,8 @@ import { IconAward } from "@tabler/icons-react";
 const BANNER = i18n.banner;
 const BannerDisplay = () => {
   const windowSize = useWindowSize();
-  const mobile = windowSize.width < 768;
+  const laptop = windowSize.width < 768;
+  const mobile = windowSize.width < 480;
   const theme = useTheme().theme!;
   const colorPalette = theme.colorPalette;
   const variationRefs = Array.from({ length: 4 }, () => React.createRef<HTMLDivElement>());
@@ -61,7 +62,7 @@ const BannerDisplay = () => {
     colorPalette.primary.appearance === "light" ? "black" : "white";
 
     return (
-      <div style={{ margin: "1.5rem 0 4rem 0", width: mobile ? "calc(100% - 12rem)" : "calc(100% - 22rem)"}}>
+      <div style={{ margin: "1.5rem 0 4rem 0", width: mobile ? "100%" : laptop ? "calc(100% - 12rem)" : "calc(100% - 22rem)"}}>
         <RenderBreadcrumbsForComponent name={BANNER.title} path={BANNER.path}/>
   
         <div style={{ padding: "1rem" }}>
@@ -109,7 +110,7 @@ const BannerDisplay = () => {
                   text={TEXT_3}
                 />
   
-                {!mobile && renderSideBarItem([
+                {!laptop && renderSideBarItem([
                   BANNER.usage.installation.label,
                   BANNER.usage.variants.label,
                   BANNER.usage.title.label,
@@ -203,7 +204,7 @@ const BannerDisplay = () => {
                   }
                 />
   
-                {!mobile && renderSideBarItem([
+                {!laptop && renderSideBarItem([
                   BANNER.props.variant.name,
                   BANNER.props.title.name,
                   BANNER.props.description.name,

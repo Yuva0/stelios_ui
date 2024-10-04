@@ -23,7 +23,8 @@ const CapsuleDisplay = () => {
   const theme = useTheme().theme!;
   const colorPalette = theme.colorPalette;
   const windowSize = useWindowSize();
-  const mobile = windowSize.width < 768;
+  const laptop = windowSize.width < 768;
+  const mobile = windowSize.width < 480;
   
   const variationRefs = Array.from({ length: 2 }, () => React.createRef<HTMLDivElement>());
   const propsRef = Array.from({ length: 10 }, () => React.createRef<HTMLDivElement>());
@@ -61,7 +62,7 @@ const CapsuleDisplay = () => {
   },[variationRefs, propsRef, selectedTab]);
 
   return (
-    <div style={{ margin: "1.5rem 0 4rem 0", width: mobile ? "calc(100% - 12rem)" : "calc(100% - 22rem)"}}>
+    <div style={{ margin: "1.5rem 0 4rem 0", width: mobile ? "100%" : laptop ? "calc(100% - 12rem)" : "calc(100% - 22rem)"}}>
       <RenderBreadcrumbsForComponent name={CAPSULE.title} path={CAPSULE.path}/>
 
       <div style={{ padding: "1rem" }}>
@@ -94,7 +95,7 @@ const CapsuleDisplay = () => {
                 code={CODE_1}
                 text={TEXT_1}
               />
-              {!mobile && renderSideBarItem([CAPSULE.usage.installation.label, CAPSULE.usage.variants.label], selectedVariationSideBarItem, variationRefs)}
+              {!laptop && renderSideBarItem([CAPSULE.usage.installation.label, CAPSULE.usage.variants.label], selectedVariationSideBarItem, variationRefs)}
             </TabPanel>
             <TabPanel value="props">
               <Text
@@ -216,7 +217,7 @@ const CapsuleDisplay = () => {
                 }
               />
 
-              {!mobile && renderSideBarItem([
+              {!laptop && renderSideBarItem([
                 CAPSULE.props.variant.name,
                 CAPSULE.props.color.name,
                 CAPSULE.props.width.name,
