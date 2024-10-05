@@ -1,5 +1,12 @@
 import React from "react";
-import { IconMoon, IconSettings, IconSun } from "@tabler/icons-react";
+import {
+  IconBrandGithub,
+  IconBrandLinkedin,
+  IconBrandStorybook,
+  IconMoon,
+  IconSettings,
+  IconSun,
+} from "@tabler/icons-react";
 import {
   Button,
   Collapsible,
@@ -14,6 +21,7 @@ import {
 } from "stelios";
 import styled from "styled-components";
 import colors from "../../tokens/colors.json";
+import { useWindowSize } from "../../helpers/helpers";
 
 const StyledDrawerChildren = styled.div`
   display: flex;
@@ -27,6 +35,8 @@ const StyledDrawerChildrenItem = styled.div`
 `;
 
 const Settings = () => {
+  const windowSize = useWindowSize();
+  const mobile = windowSize.width < 480;
   const [drawerOpen, setDrawerOpen] = React.useState(false);
   const colorPalette = useTheme().theme!.colorPalette;
   const [appearance, setAppearance] = React.useState<"light" | "dark">(
@@ -84,7 +94,7 @@ const Settings = () => {
         component: color,
       },
     });
-  }
+  };
 
   const _onClickRevert = () => {
     setAppearance(colors.appearance as "light" | "dark");
@@ -120,6 +130,47 @@ const Settings = () => {
         style={{ backgroundColor: colorPalette.primary.accentScale[1] }}
       >
         <StyledDrawerChildren>
+          {mobile && (
+            <div>
+              <div>
+                <Text color="primary">Useful Links -</Text>
+              </div>
+              <div style={{ margin: "0.5rem 0", display: "flex", gap: "1rem" }}>
+                <IconButton
+                  color="primary"
+                  size="small"
+                  variant="soft"
+                  alt="github"
+                  icon={<IconBrandGithub />}
+                  onClick={() =>
+                    window.open("https://yuva0.github.io/stelios/storybook")
+                  }
+                />
+                <IconButton
+                  size="small"
+                  variant="soft"
+                  color="primary"
+                  alt="storybook"
+                  icon={<IconBrandStorybook />}
+                  onClick={() =>
+                    window.open("https://yuva0.github.io/stelios/storybook")
+                  }
+                />
+                <IconButton
+                  size="small"
+                  variant="soft"
+                  color="primary"
+                  alt="linkedin"
+                  icon={<IconBrandLinkedin />}
+                  onClick={() =>
+                    window.open(
+                      "https://www.linkedin.com/in/tanuj-sengupta-872a05129/"
+                    )
+                  }
+                />
+              </div>
+            </div>
+          )}
           <StyledDrawerChildrenItem>
             <Text color="primary" variant="paragraph">
               Appearance
@@ -176,7 +227,11 @@ const Settings = () => {
             className="revert-button"
             style={{ marginTop: "0.5rem" }}
           >
-            <Button variant="contained" color="#AD2831" onClick={_onClickRevert}>
+            <Button
+              variant="contained"
+              color="#AD2831"
+              onClick={_onClickRevert}
+            >
               Revert to Default Settings
             </Button>
           </StyledDrawerChildrenItem>
