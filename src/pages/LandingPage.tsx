@@ -159,20 +159,20 @@ const LandingPage = () => {
             </Card>
         </div>
         </div>
-        <div style={{marginTop:"240px", borderRadius: "8px", background: "lightgrey", maxWidth: "1600px"}}>
+        <div style={{marginTop:"240px", borderRadius: "8px", maxWidth: "1600px", width: "100%"}}>
             <LandingPageGroup />
         </div>
         <div style={{marginTop: "120px", display:"flex", flexDirection: "row", maxWidth: "1600px", flexWrap: "wrap"}}>
             <div style={{flex: "1 0 40%", width: "100%", padding: "2rem 4rem", display:"flex", gap: "1rem", flexDirection: "column"}}>
-                <Text color="component" variant="label" fontSize="36px"> Newer Variants Added </Text>
+                <Text color="component" variant="label" fontSize="36px" lineHeight="4rem"> Newer Variants Added </Text>
                 <Text color={defaultColor} variant="paragraph" style={{textAlign: "justify", marginTop: "1rem"}}> Introducing a groundbreaking design system that pushes the boundaries of customization! Unlike anything you've seen before, this system brings in fresh, innovative variants that redefine creativity and adaptability. Tailored for modern UI needs, it's perfect for developers looking to break free from the usual constraints and deliver something truly unique. Get ready to elevate your projects with a design system that's as flexible as your imagination! </Text>
-                <Text color={defaultColor} variant="paragraph" style={{textAlign: "justify"}}> This design system is all about unlocking endless possibilities. With never-before-seen variants, you’ll have the tools to craft interfaces that stand out while staying perfectly responsive and accessible. It's built with flexibility in mind, making it effortless to adapt for any use case, from sleek laptop apps to complex web platforms. Whether you’re a seasoned designer or a developer looking to experiment with bold new styles, this system empowers you to create dynamic, future-proof experiences! </Text>
+                <Text color={defaultColor} variant="paragraph" style={{textAlign: "justify"}}> This design system is all about unlocking endless possibilities. With never-before-seen variants, you’ll have the tools to craft interfaces that stand out while staying perfectly responsive and accessible. It's built with flexibility in mind, making it effortless to adapt for any use case, from sleek laptop apps to complex web platforms. Whether you're a seasoned designer or a developer looking to experiment with bold new styles, this system empowers you to create dynamic, future-proof experiences! </Text>
             </div>
             <div style={{display:"flex", flex: "1 0 40%", width: "100%", justifyContent: "center", alignItems: "center"}}>
                 <MusicPlayerComp/>
             </div>
         </div>
-        <div style={{backgroundColor: colorPalette.primary.accentScale[8], width: "100%", color: colorPalette.primary.accentContrast, marginTop: "160px", justifyContent: "center", display: "flex", padding: "60px 0", gap: "5rem"}}>
+        <div style={{backgroundColor: colorPalette.primary.accentScale[8], width: "100%", color: colorPalette.primary.accentContrast, marginTop: "160px", justifyContent: "center", display: "flex", padding: "60px 0", gap: "5rem", flexWrap: "wrap"}}>
             <List variant="none" size="large" title={<Text preciseColor="white" size="large">Links</Text>} color="white">
                 <ListItem><Link variant="underline" preciseColor="white" href="/" size="medium">Home</Link></ListItem>
                 <ListItem><Link variant="underline" preciseColor="white" href="/components/button" size="medium">Components</Link></ListItem>
@@ -183,7 +183,7 @@ const LandingPage = () => {
                 <ListItem><Link variant="underline" preciseColor="white" href="https://github.com/yuva0" size="medium" target="_blank">Github</Link></ListItem>
             </List>
             <List variant="none" size="large" title={<Text preciseColor="white" size="large">Projects</Text>}>
-            <ListItem><Link variant="underline" preciseColor="white" href="https://yuva0.github.io/react-tutor/" size="medium">React Tutor</Link></ListItem>
+            <ListItem><Link variant="underline" preciseColor="white" href="https://yuva0.github.io/react-tutor/" size="medium" target="_blank">React Tutor</Link></ListItem>
             <ListItem><Text preciseColor="white" size="medium">More Upcoming!</Text></ListItem>
             </List>
         </div>
