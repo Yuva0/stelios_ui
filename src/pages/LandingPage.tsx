@@ -168,11 +168,11 @@ const LandingPage = () => {
                 <Text color={defaultColor} variant="paragraph" style={{textAlign: "justify", marginTop: "1rem"}}> Introducing a groundbreaking design system that pushes the boundaries of customization! Unlike anything you've seen before, this system brings in fresh, innovative variants that redefine creativity and adaptability. Tailored for modern UI needs, it's perfect for developers looking to break free from the usual constraints and deliver something truly unique. Get ready to elevate your projects with a design system that's as flexible as your imagination! </Text>
                 <Text color={defaultColor} variant="paragraph" style={{textAlign: "justify"}}> This design system is all about unlocking endless possibilities. With never-before-seen variants, you’ll have the tools to craft interfaces that stand out while staying perfectly responsive and accessible. It's built with flexibility in mind, making it effortless to adapt for any use case, from sleek laptop apps to complex web platforms. Whether you're a seasoned designer or a developer looking to experiment with bold new styles, this system empowers you to create dynamic, future-proof experiences! </Text>
             </div>
-            <div style={{display:"flex", flex: "1 0 40%", width: "100%", justifyContent: "center", alignItems: "center"}}>
+            <div style={{display:"flex", flex: "1 0 40%", width: "100%", maxWidth: "100vw", justifyContent: "center", alignItems: "center"}}>
                 <MusicPlayerComp/>
             </div>
         </div>
-        <div style={{backgroundColor: colorPalette.primary.accentScale[8], width: "100%", color: colorPalette.primary.accentContrast, marginTop: "160px", justifyContent: "center", display: "flex", padding: "60px 0", gap: "5rem", flexWrap: "wrap"}}>
+        <div style={{backgroundColor: "rgb(45, 35, 26)", width: "100%", color: colorPalette.primary.accentContrast, marginTop: "160px", justifyContent: "center", display: "flex", padding: "60px 0", gap: "5rem", flexWrap: "wrap"}}>
             <List variant="none" size="large" title={<Text preciseColor="white" size="large">Links</Text>} color="white">
                 <ListItem><Link variant="underline" preciseColor="white" href="/" size="medium">Home</Link></ListItem>
                 <ListItem><Link variant="underline" preciseColor="white" href="/components/button" size="medium">Components</Link></ListItem>
