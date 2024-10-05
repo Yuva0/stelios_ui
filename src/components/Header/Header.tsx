@@ -18,12 +18,14 @@ import {
 import Settings from "./Settings";
 import { useWindowSize } from "../../helpers/helpers";
 import NavigationBarMobile from "./NavigationBarMobile";
+import { useNavigate } from "react-router-dom";
 
 const Header = () => {
   const theme = useTheme().theme!;
   const colorPalette = theme.colorPalette;
   const windowSize = useWindowSize();
   const mobile = windowSize.width < 480;
+  const navigate = useNavigate();
   return (
     <HeaderUI
       id="header"
@@ -37,7 +39,7 @@ const Header = () => {
           <NavigationBarMobile/>
         </HeaderItem>}
         <HeaderItem style={{ height: "100%", display:"flex", justifyContent:"center", alignItems:"center" }}>
-          <Link href="/"><Text fontFamily='"Caveat", cursive' variant="h3" color="primary" size="large">Stelios</Text></Link>
+          <Link onClick={() => {navigate("/")}}><Text fontFamily='"Caveat", cursive' variant="h3" color="primary" size="large">Stelios</Text></Link>
         </HeaderItem>
       </HeaderGroup>
       <HeaderGroup style={{ marginRight: "1rem" }}>
