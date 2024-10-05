@@ -2,7 +2,7 @@
   "name": "stelios_ui",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://yuva0.github.io/stelios_ui",
+  "homepage": "https://steliosui.com",
   "dependencies": {
     "@tabler/icons-react": "^3.15.0",
     "@testing-library/jest-dom": "^5.17.0",
