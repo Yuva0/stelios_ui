@@ -1,5 +1,5 @@
-import React from "react";
-import { Button, Card, CodePreview, Link, List, ListItem, Text, useTheme } from "stelios";
+import React, { useState, useEffect, useMemo } from "react";
+import { Button, Card, Link, List, ListItem, Text, useTheme } from "stelios";
 import LandingPageGroup from "../components/LandingPageGroup/LandingPageGroup";
 import MusicPlayerComp from "../components/MusicPlayer/MusicPlayer";
 import { useNavigate } from "react-router-dom";
@@ -10,6 +10,42 @@ const LandingPage = () => {
     const navigate = useNavigate();
 
     const defaultColor = colorPalette.primary.appearance === "light" ? "black" : "white";
+
+    const textArray = useMemo(() => ["Responsive", "Customizable", "Accessible", "Stelios"], []);
+    const [displayText, setDisplayText] = useState(textArray[0]);
+    const [isErasing, setIsErasing] = useState(true);
+    const [isTyping, setIsTyping] = useState(false);
+    const [textIndex, setTextIndex] = useState(0);
+
+    useEffect(() => {
+        let timer: NodeJS.Timeout;
+
+        const animateText = () => {
+            if (isErasing) {
+                if (displayText.length > 1) {
+                    setDisplayText(prev => prev.slice(0, -1));
+                } else {
+                    setIsErasing(false);
+                    setIsTyping(true);
+                    setTextIndex((prevIndex) => (prevIndex + 1) % textArray.length);
+                    setDisplayText("");
+                }
+            } 
+            else if (isTyping) {
+                const currentWord = textArray[textIndex];
+                if (displayText.trim().length < currentWord.length) {
+                    setDisplayText(prev => currentWord.slice(0, prev.trim().length + 1));
+                } else {
+                    setIsTyping(false);
+                    setTimeout(() => setIsErasing(true), 1000);
+                }
+            }
+        };
+
+        timer = setInterval(animateText, 150);
+
+        return () => clearInterval(timer);
+    }, [displayText, isErasing, isTyping, textIndex, textArray]);
 
     const _onClickGetStarted = () => {
         navigate("/components/button")
@@ -46,15 +82,29 @@ const LandingPage = () => {
             flexWrap: "wrap",
             lineHeight: "4rem",
             textAlign: "center",
+            position: "relative",
+            flexDirection: "row",
             }}
         >
-            <Text color="component" variant="span" fontSize="48px">
-            Stelios{" "}
-            </Text>
+            <div style={{position: "relative"}}>
+                <Text color="component" variant="span" fontSize="36px" lineHeight="4rem">
+                {displayText.trim() || " "}{" "}
+                </Text>
+                <span
+                style={{
+                    borderRight: `2px solid ${defaultColor}`,
+                    animation: "blink 0.7s step-end infinite",
+                    position: "absolute",
+                    height: "36px",
+                    top: "4px",
+                    
+                }}
+                />
+            </div>
             <Text
             preciseColor={defaultColor}
             variant="span"
-            fontSize="48px"
+            fontSize="36px"
             >
             Design
             </Text>
