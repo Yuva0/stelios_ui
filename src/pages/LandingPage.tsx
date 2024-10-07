@@ -225,7 +225,7 @@ const LandingPage = () => {
         <div style={{backgroundColor: "rgb(45, 35, 26)", width: "100%", color: colorPalette.primary.accentContrast, marginTop: "160px", justifyContent: "center", display: "flex", padding: "60px 0", gap: "5rem", flexWrap: "wrap"}}>
             <List variant="none" size="large" title={<Text preciseColor="white" size="large">Links</Text>} color="white">
                 <ListItem><Link variant="underline" preciseColor="white" href="/" size="medium">Home</Link></ListItem>
-                <ListItem><Link variant="underline" preciseColor="white" href="/components/button" size="medium">Components</Link></ListItem>
+                <ListItem><Link variant="underline" preciseColor="white" href="/#/components/button" size="medium">Components</Link></ListItem>
                 <ListItem><Link variant="underline" preciseColor="white" href="https://yuva0.github.io/stelios/storybook" target="_blank" size="medium">Storybook</Link></ListItem>
             </List>
             <List variant="none" size="large" title={<Text preciseColor="white" size="large">Socials</Text>}>
@@ -233,8 +233,8 @@ const LandingPage = () => {
                 <ListItem><Link variant="underline" preciseColor="white" href="https://github.com/yuva0" size="medium" target="_blank">Github</Link></ListItem>
             </List>
             <List variant="none" size="large" title={<Text preciseColor="white" size="large">Projects</Text>}>
-            <ListItem><Link variant="underline" preciseColor="white" href="https://yuva0.github.io/react-tutor/" size="medium" target="_blank">React Tutor</Link></ListItem>
-            <ListItem><Text preciseColor="white" size="medium">More Upcoming!</Text></ListItem>
+                <ListItem><Link variant="underline" preciseColor="white" href="https://yuva0.github.io/react-tutor/" size="medium" target="_blank">React Tutor</Link></ListItem>
+                <ListItem><Text preciseColor="white" size="medium">More Upcoming!</Text></ListItem>
             </List>
         </div>
     </div>

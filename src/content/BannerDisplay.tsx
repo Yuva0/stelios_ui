@@ -232,6 +232,7 @@ const CODE_1 = (
       flexWrap: "wrap",
       justifyContent: "center",
       alignItems: "center",
+      maxWidth: "100%",
     }}
   >
     <Banner title={title} description={description} variant="contained" color="component"/>
@@ -255,6 +256,7 @@ const CODE_2 = (
       flexWrap: "wrap",
       justifyContent: "center",
       alignItems: "center",
+      maxWidth: "100%",
     }}
   >
     <Banner title={title} description={description} variant="contained" color="component" titleIcon={<IconAward/>}/>
@@ -274,6 +276,7 @@ const CODE_3 = (
       flexWrap: "wrap",
       justifyContent: "center",
       alignItems: "center",
+      maxWidth: "100%",
     }}
   >
     <Banner title={title} description={description} variant="contained" color="component" width="400px"/>

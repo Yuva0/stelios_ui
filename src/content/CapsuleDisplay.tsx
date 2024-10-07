@@ -250,6 +250,7 @@ const CODE_1 = (
       flexWrap: "wrap",
       justifyContent: "center",
       alignItems: "center",
+      maxWidth: "100%",
     }}
   >
     <Capsule image={IMAGE_URL} imageAlt="No Man's Sky" title={title} description={description} variant="contained" color="component"/>
