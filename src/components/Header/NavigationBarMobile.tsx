@@ -19,15 +19,6 @@ const TOPICS: TopicsProps = Topics;
 const NavigationBarMobile = () => {
   const [drawerOpen, setDrawerOpen] = React.useState(false);
   const colorPalette = useTheme().theme!.colorPalette;
-  const [appearance, setAppearance] = React.useState<"light" | "dark">(
-    colorPalette.primary.appearance
-  );
-  const [primaryColor, setPrimaryColor] = React.useState(
-    colorPalette.primary.main
-  );
-  const [componentColor, setComponentColor] = React.useState(
-    colorPalette.component.main
-  );
   const navigate = useNavigate();
 
   const _handleDrawerOpen = () => {
@@ -45,8 +36,8 @@ const NavigationBarMobile = () => {
   const DrawerChildren = Object.keys(TOPICS).map((topicGroup) => {
     const groupedTopics = TOPICS[topicGroup];
     return (
-      <AccordionItem color="primary" title={groupedTopics.title} variant="soft">
-        <List color="primary" style={{marginTop:0}}>
+      <AccordionItem expanded color="primary" title={groupedTopics.title} variant="soft">
+        <List variant="none" color="primary" style={{marginTop:0}}>
           {Object.keys(groupedTopics.content).map((topic) => {
             const topics = groupedTopics.content[topic];
             if (!topics.content) {
@@ -110,7 +101,6 @@ const NavigationBarMobile = () => {
         color="primary"
         style={{ backgroundColor: colorPalette.primary.accentScale[1] }}
       >
-        {DrawerChildren}
         <Accordion>
           {DrawerChildren}
         </Accordion>
