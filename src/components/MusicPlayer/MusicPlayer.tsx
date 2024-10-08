@@ -27,6 +27,7 @@ const MusicPlayerComp = () => {
     <Card
       width="350px"
       variant="neumorph"
+      color="primary"
       header={<MusicPlayerHeader />}
       footer={<MusicPlayerFooter />}
     >
@@ -102,20 +103,20 @@ const MusicPlayerFooter = () => {
     >
       <IconButton
         alt="prev"
-        color={SECONDARY}
+        color="secondary"
         icon={<IconPlayerTrackPrevFilled />}
         variant="neumorph"
       />
       <IconButton
         alt="pause"
-        color={PRIMARY}
+        color="primary"
         size="large"
         icon={<IconPlayerPauseFilled />}
-        variant="neumorph-contained"
+        variant="neumorph"
       />
       <IconButton
         alt="next"
-        color={SECONDARY}
+        color="secondary"
         icon={<IconPlayerTrackNextFilled />}
         variant="neumorph"
       />

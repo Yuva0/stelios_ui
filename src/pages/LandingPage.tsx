@@ -4,11 +4,15 @@ import LandingPageGroup from "../components/LandingPageGroup/LandingPageGroup";
 import MusicPlayerComp from "../components/MusicPlayer/MusicPlayer";
 import { useNavigate } from "react-router-dom";
 import colors from "../tokens/colors.json";
+import { useWindowSize } from "../helpers/helpers";
 
 const LandingPage = () => {
     const theme = useTheme().theme!;
     const colorPalette = theme.colorPalette;
     const navigate = useNavigate();
+    const windowSize = useWindowSize();
+    const isMobile = windowSize.width < 768;
+    const [showCursor, setShowCursor] = useState(true);
 
     const defaultColor = colorPalette.primary.appearance === "light" ? "black" : "white";
 
@@ -24,9 +28,7 @@ const LandingPage = () => {
         const animateText = () => {
             if (isErasing) {
                 if (displayText.length > 1) {
-                    timer = setTimeout(() => {
-                        setDisplayText(prev => prev.slice(0, -1));
-                    }, 30);
+                    setDisplayText(prev => prev.slice(0, -1));
                 } else {
                     setIsErasing(false);
                     setIsTyping(true);
@@ -42,9 +44,10 @@ const LandingPage = () => {
                     setIsTyping(false);
                     if (textIndex === textArray.length - 1) {
                         setIsErasing(false);
+                        setShowCursor(false);
                     }
                     else {
-                        setTimeout(() => setIsErasing(true), 360);
+                        setTimeout(() => setIsErasing(true), 960);
                     }
                 }
             }
@@ -77,7 +80,7 @@ const LandingPage = () => {
     >
         <div
         style={{
-            marginTop: "8rem",
+            marginTop: isMobile ? "4rem" : "8rem",
             display: "flex",
             alignItems: "center",
             flexDirection: "column",
@@ -86,37 +89,38 @@ const LandingPage = () => {
         >
         <div
             style={{
-            display: "flex",
-            flexDirection: "row",
-            maxWidth: "400px",
-            flexWrap: "wrap",
-            lineHeight: "4rem",
-            textAlign: "center",
-            justifyContent: "center",
-            position: "relative",
+                display: "flex",
+                flexDirection: "row",
+                maxWidth: "400px",
+                flexWrap: "wrap",
+                lineHeight: "4rem",
+                textAlign: "center",
+                justifyContent: "center",
+                position: "relative",
+                height: "3rem"
             }}
         >
-            <div style={{position: "relative", display: "flex", justifyContent: "center"}}>
-                <Text color="component" variant="span" fontSize="36px" lineHeight="4rem">
-                {displayText.trim() || " "}{" "}
+            <div style={{position: "relative", display: "flex", justifyContent: "center", height: "100%"}}>
+                <Text color="component" variant="span" fontSize={isMobile ? "28px" : "36px"} lineHeight="4rem" style={{display: "flex", alignItems: "center"}}>
+                {displayText.trim()}{" "}
                 </Text>
-                {/* <span
+                {showCursor && <span
                 style={{
                     borderRight: `2px solid ${defaultColor}`,
                     animation: "blink 0.7s step-end infinite",
                     position: "absolute",
-                    height: "36px",
-                    right: "0px",
-                    bottom: "-2px"
+                    height: isMobile ? "28px" : "36px",
+                    right: "-4px",
+                    bottom: isMobile ? "10px" : "6px"
                     
                 }}
-                /> */}
+                />}
             </div>
             <Text
                 preciseColor={defaultColor}
                 variant="span"
-                fontSize="36px"
-                style={{marginLeft: "1rem", display: "flex", alignItems: "center"}}
+                fontSize={isMobile ? "28px" : "36px"}
+                style={{marginLeft: "1rem", display: "flex", textAlign: "center", alignItems: "center", height: "100%"}}
             >
             Design
             </Text>
@@ -226,7 +230,7 @@ const LandingPage = () => {
         </div>
         <div style={{marginTop: "120px", display:"flex", flexDirection: "row", maxWidth: "1600px", flexWrap: "wrap"}}>
             <div style={{flex: "1 0 40%", width: "100%", padding: "2rem 4rem", display:"flex", gap: "1rem", flexDirection: "column"}}>
-                <Text color="component" variant="label" fontSize="36px" lineHeight="5rem" style={{lineHeight: "5rem"}}> Newer Variants Added </Text>
+                <Text color="component" variant="label" fontSize="36px" lineHeight="5rem" style={{lineHeight: "3rem"}}> Newer Variants Added </Text>
                 <Text color={defaultColor} variant="paragraph" style={{textAlign: "justify", marginTop: "1rem"}}> Introducing a groundbreaking design system that pushes the boundaries of customization! Unlike anything you've seen before, this system brings in fresh, innovative variants that redefine creativity and adaptability. Tailored for modern UI needs, it's perfect for developers looking to break free from the usual constraints and deliver something truly unique. Get ready to elevate your projects with a design system that's as flexible as your imagination! </Text>
                 <Text color={defaultColor} variant="paragraph" style={{textAlign: "justify"}}> This design system is all about unlocking endless possibilities. With never-before-seen variants, you’ll have the tools to craft interfaces that stand out while staying perfectly responsive and accessible. It's built with flexibility in mind, making it effortless to adapt for any use case, from sleek laptop apps to complex web platforms. Whether you're a seasoned designer or a developer looking to experiment with bold new styles, this system empowers you to create dynamic, future-proof experiences! </Text>
             </div>
