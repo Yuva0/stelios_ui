@@ -1,13 +1,17 @@
 import * as React from "react";
 import { Loader } from "stelios";
+import { useWindowSize } from "../../helpers/helpers";
 
 const getRandomInt = () => {
   return Math.random() * 0.5;
 };
 
 const Loading: React.FunctionComponent = () => {
+  const windowSize = useWindowSize();
+  const mobile = windowSize.width < 480;
+  const laptop = windowSize.width < 768;
   return (
-    <div style={{ margin: "1.5rem 0 4rem 1rem", width: "calc(100% - 22rem)" }}>
+    <div style={{ margin: "1.5rem 0 4rem 1rem", width: mobile ? "100%" : laptop ? "calc(100% - 12rem)" : "calc(100% - 22rem)" }}>
       <div
         style={{ display: "flex", flexDirection: "row", paddingTop: "0.5rem" }}
       >

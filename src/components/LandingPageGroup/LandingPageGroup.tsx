@@ -72,8 +72,6 @@ const LandingPageThemeProvider = () => {
       <Breadcrumbs color="primary" variant="contained" size="small">
         <BreadcrumbsItem title="Text 1" />
         <BreadcrumbsItem title="Link 1" link="test" />
-        <BreadcrumbsItem title="Link 2" link="test" />
-        <BreadcrumbsItem title="Link 3" link="test" />
       </Breadcrumbs>
       <div
         style={{
