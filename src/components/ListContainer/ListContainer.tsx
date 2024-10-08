@@ -5,6 +5,7 @@ import styled from "styled-components";
 import { useParams } from "react-router-dom";
 import NavigationBarDisplay from "../../content/NavigationBarDisplay";
 import Loading from "../Loading/Loading";
+import colors from "../../tokens/colors.json";
 
 interface ListContainerStyleProps {
   $colorPalette: any;
@@ -143,7 +144,7 @@ const StyledContainer = styled.div<ListContainerStyleProps>`
   display: flex;
   flex-direction: row;
   background-color: ${(props) =>
-    props.$colorPalette.primary.appearance === "light" ? "white" : "black"};
+    props.$colorPalette.primary.appearance === "light" ? colors.background.light : colors.background.dark};
   min-height: 100vh;
   width: 100%;
 `;

@@ -11,6 +11,7 @@ import Topics, { TopicsProps } from "../../content/Topics";
 import { useNavigate, useParams } from "react-router-dom";
 import { memo } from "react";
 import { useWindowSize } from "../../helpers/helpers";
+import colors from "../../tokens/colors.json";
 
 const TOPICS: TopicsProps = Topics;
 
@@ -99,7 +100,7 @@ const NavigationBar = () => {
         padding: "1rem 0",
         boxSizing: "border-box",
         backgroundColor:
-          colorPalette.primary.appearance === "light" ? "white" : "black",
+          colorPalette.primary.appearance === "light" ? colors.background.light : colors.background.dark,
         borderRight: 0,
         top: "4rem",
       }}

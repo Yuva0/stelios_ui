@@ -3,6 +3,7 @@ import { Button, Card, Link, List, ListItem, Text, useTheme } from "stelios";
 import LandingPageGroup from "../components/LandingPageGroup/LandingPageGroup";
 import MusicPlayerComp from "../components/MusicPlayer/MusicPlayer";
 import { useNavigate } from "react-router-dom";
+import colors from "../tokens/colors.json";
 
 const LandingPage = () => {
     const theme = useTheme().theme!;
@@ -23,7 +24,9 @@ const LandingPage = () => {
         const animateText = () => {
             if (isErasing) {
                 if (displayText.length > 1) {
-                    setDisplayText(prev => prev.slice(0, -1));
+                    timer = setTimeout(() => {
+                        setDisplayText(prev => prev.slice(0, -1));
+                    }, 30);
                 } else {
                     setIsErasing(false);
                     setIsTyping(true);
@@ -37,12 +40,17 @@ const LandingPage = () => {
                     setDisplayText(prev => currentWord.slice(0, prev.trim().length + 1));
                 } else {
                     setIsTyping(false);
-                    setTimeout(() => setIsErasing(true), 40);
+                    if (textIndex === textArray.length - 1) {
+                        setIsErasing(false);
+                    }
+                    else {
+                        setTimeout(() => setIsErasing(true), 360);
+                    }
                 }
             }
         };
 
-        timer = setInterval(animateText, 40);
+        animateText();
 
         return () => clearInterval(timer);
     }, [displayText, isErasing, isTyping, textIndex, textArray]);
@@ -64,7 +72,7 @@ const LandingPage = () => {
         alignItems: "center",
         flexDirection: "column",
         backgroundColor:
-            colorPalette.primary.appearance === "light" ? "white" : "black",
+            colorPalette.primary.appearance === "light" ? colors.background.light : colors.background.dark,
         }}
     >
         <div
@@ -92,7 +100,7 @@ const LandingPage = () => {
                 <Text color="component" variant="span" fontSize="36px" lineHeight="4rem">
                 {displayText.trim() || " "}{" "}
                 </Text>
-                <span
+                {/* <span
                 style={{
                     borderRight: `2px solid ${defaultColor}`,
                     animation: "blink 0.7s step-end infinite",
@@ -102,7 +110,7 @@ const LandingPage = () => {
                     bottom: "-2px"
                     
                 }}
-                />
+                /> */}
             </div>
             <Text
                 preciseColor={defaultColor}

@@ -4,5 +4,9 @@
     "component": "#e21d5b",
     "grey": "#F5F5F5"
   },
-  "appearance": "light"
+  "appearance": "dark",
+  "background": {
+    "light": "#FFFFFF",
+    "dark": "#000000"
+  }
 }
