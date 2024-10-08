@@ -34,7 +34,7 @@ const COLOR = "#006d77";
 
 const LandingPageGroup = () => {
   return (
-    <ThemeProvider accents={{ primary: COLOR }}>
+    <ThemeProvider accents={{ primary: COLOR }} appearance="dark">
       <LandingPageThemeProvider />
     </ThemeProvider>
   );
