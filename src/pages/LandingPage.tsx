@@ -37,12 +37,12 @@ const LandingPage = () => {
                     setDisplayText(prev => currentWord.slice(0, prev.trim().length + 1));
                 } else {
                     setIsTyping(false);
-                    setTimeout(() => setIsErasing(true), 1000);
+                    setTimeout(() => setIsErasing(true), 40);
                 }
             }
         };
 
-        timer = setInterval(animateText, 150);
+        timer = setInterval(animateText, 40);
 
         return () => clearInterval(timer);
     }, [displayText, isErasing, isTyping, textIndex, textArray]);
@@ -78,15 +78,17 @@ const LandingPage = () => {
         >
         <div
             style={{
+            display: "flex",
+            flexDirection: "row",
             maxWidth: "400px",
             flexWrap: "wrap",
             lineHeight: "4rem",
             textAlign: "center",
+            justifyContent: "center",
             position: "relative",
-            flexDirection: "row",
             }}
         >
-            <div style={{position: "relative"}}>
+            <div style={{position: "relative", display: "flex", justifyContent: "center"}}>
                 <Text color="component" variant="span" fontSize="36px" lineHeight="4rem">
                 {displayText.trim() || " "}{" "}
                 </Text>
@@ -96,15 +98,17 @@ const LandingPage = () => {
                     animation: "blink 0.7s step-end infinite",
                     position: "absolute",
                     height: "36px",
-                    top: "4px",
+                    right: "0px",
+                    bottom: "-2px"
                     
                 }}
                 />
             </div>
             <Text
-            preciseColor={defaultColor}
-            variant="span"
-            fontSize="36px"
+                preciseColor={defaultColor}
+                variant="span"
+                fontSize="36px"
+                style={{marginLeft: "1rem", display: "flex", alignItems: "center"}}
             >
             Design
             </Text>
@@ -214,7 +218,7 @@ const LandingPage = () => {
         </div>
         <div style={{marginTop: "120px", display:"flex", flexDirection: "row", maxWidth: "1600px", flexWrap: "wrap"}}>
             <div style={{flex: "1 0 40%", width: "100%", padding: "2rem 4rem", display:"flex", gap: "1rem", flexDirection: "column"}}>
-                <Text color="component" variant="label" fontSize="36px" lineHeight="4rem"> Newer Variants Added </Text>
+                <Text color="component" variant="label" fontSize="36px" lineHeight="5rem" style={{lineHeight: "5rem"}}> Newer Variants Added </Text>
                 <Text color={defaultColor} variant="paragraph" style={{textAlign: "justify", marginTop: "1rem"}}> Introducing a groundbreaking design system that pushes the boundaries of customization! Unlike anything you've seen before, this system brings in fresh, innovative variants that redefine creativity and adaptability. Tailored for modern UI needs, it's perfect for developers looking to break free from the usual constraints and deliver something truly unique. Get ready to elevate your projects with a design system that's as flexible as your imagination! </Text>
                 <Text color={defaultColor} variant="paragraph" style={{textAlign: "justify"}}> This design system is all about unlocking endless possibilities. With never-before-seen variants, you’ll have the tools to craft interfaces that stand out while staying perfectly responsive and accessible. It's built with flexibility in mind, making it effortless to adapt for any use case, from sleek laptop apps to complex web platforms. Whether you're a seasoned designer or a developer looking to experiment with bold new styles, this system empowers you to create dynamic, future-proof experiences! </Text>
             </div>
